@@ -21,6 +21,7 @@
   home.packages = with pkgs; [
     _1password
     _1password-gui
+    keybase-gui
     thunderbird
     chromium
     slack
@@ -29,12 +30,19 @@
     spotify
     php81
     php81Packages.composer
+    symfony-cli
     nodejs
     nodePackages.npm
+    go
     postgresql_14
     dhall
     dhall-json
+    exercism
   ];
+
+  fonts.fontconfig.enable = true;
+
+  programs.gpg.enable = true;
 
   programs.vim.enable = true;
 
@@ -71,6 +79,10 @@
     enable = true;
     userName = "Gaël Reyrol";
     userEmail = "me@gaelreyrol.dev";
+    signing = {
+      key = "DFB9B69A2C427F61";
+      signByDefault = true;
+    };
     extraConfig = {
       init = {
         defaultBranch = "main";
