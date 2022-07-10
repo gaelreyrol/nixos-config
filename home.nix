@@ -56,16 +56,16 @@
     };
   };
 
-  programs.ssh = {
-    enable = true;
-    matchBlocks = {
-      "github.com" = {
-        extraOptions = {
-          IdentityAgent = "~/.1password/agent.sock"
-        }
-      };
-    };
-  };
+  # programs.ssh = {
+  #   enable = true;
+  #   matchBlocks = {
+  #     "github.com" = {
+  #       extraOptions = {
+  #         IdentityAgent = "~/.1password/agent.sock"
+  #       }
+  #     };
+  #   };
+  # };
 
   programs.git = {
     enable = true;
