@@ -7,9 +7,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager }:
+  outputs = inputs@{ nixpkgs, home-manager }:
     let
-      lib = nixpkgs.lib;
       nixConf = pkgs: {
         nix = {
           package = pkgs.nixFlakes;
@@ -24,23 +23,25 @@
             options = "--delete-older-than 60d";
           };
         };
+        nixpkgs.config.allowUnfree = true;
       };
     in
     {
       nixosConfigurations = {
         thinkpad = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
+          system = "x86_64-linux";
 
-            modules = [
-                (nixConf nixpkgs.legacyPackages.${system})
-                ./configuration.nix
-                home-manager.nixosModules.home-manager
-                {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.users.gael = import ./home.nix;
-                }
-            ];
+          modules = [
+            (nixConf nixpkgs.legacyPackages.${system})
+            ./hosts/thinkpad/hardware-configuration.nix
+            ./hosts/thinkpad/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.gael = import ./users/gael/home.nix;
+            }
+          ];
         };
       };
     };

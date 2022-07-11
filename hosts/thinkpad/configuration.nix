@@ -1,21 +1,6 @@
 { config, pkgs, ... }:
-let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-in
+
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   networking.hostName = "thinkpad";
   networking.networkmanager.enable = true;
 
@@ -35,6 +20,7 @@ in
   };
 
   services.printing.enable = true;
+
   hardware.bluetooth.enable = true;
 
   sound.enable = true;
@@ -51,13 +37,6 @@ in
 
   users.defaultUserShell = pkgs.bash;
 
-  users.users.gael = {
-    isNormalUser = true;
-    description = "Gaël Reyrol";
-    extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.fish;
-  };
-
   fonts.fontconfig.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -70,15 +49,8 @@ in
     jq
     xclip
     fish
-    firefox
-    vscodium
-    vlc
     alacritty
-    filezilla
-    libreoffice
     gthumb
-    jetbrains-mono
-    jetbrains.phpstorm
     gnome.gnome-tweaks
     gnome.dconf-editor
     gnome.gnome-themes-extra
@@ -96,12 +68,6 @@ in
   security.pam.services.gdm.enableGnomeKeyring = true;
   security.pam.services."gdm-password".enableGnomeKeyring = true;
   security.pam.services."gdm-launch-environment".enableGnomeKeyring = true;
-
-  programs._1password-gui = {
-    enable = true;
-    gid = 5000;
-    polkitPolicyOwners = [ "gael" ];
-  };
 
   services.gnome.chrome-gnome-shell.enable = true;
   programs.dconf.enable = true;
