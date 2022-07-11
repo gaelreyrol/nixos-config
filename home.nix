@@ -49,8 +49,11 @@
   fonts.fontconfig.enable = true;
 
   services.keybase.enable = true;
+  services.kbfs.enable = true;
 
   programs.gpg.enable = true;
+  services.gpg-agent.enable = true;
+  services.gpg-agent.enableFishIntegration = true;
 
   programs.vim.enable = true;
 
