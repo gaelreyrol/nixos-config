@@ -80,6 +80,7 @@
   #   matchBlocks = {
   #     "github.com" = {
   #       extraOptions = {
+  #         https://1password.community/discussion/121912/keyring-isnt-suid-on-nixos
   #         IdentityAgent = "~/.1password/agent.sock";
   #       };
   #     };
