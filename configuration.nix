@@ -7,15 +7,9 @@ in
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      (import "${home-manager}/nixos")
     ];
 
   nixpkgs.config.allowUnfree = true;
-
-  nix.gc.automatic = true;
-  nix.gc.dates = "daily";
-  nix.gc.persistent = true;
-  nix.gc.options = "--delete-older-than 60d";
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
 
@@ -151,10 +145,5 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
-
-  home-manager.users.gael = import ./home.nix;
 }
 
