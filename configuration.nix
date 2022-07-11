@@ -58,11 +58,12 @@ in
 
   users.users.gael = {
     isNormalUser = true;
-    createHome = true;
     description = "Gaël Reyrol";
     extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.fish;
   };
+
+  fonts.fontconfig.enable = true;
 
   environment.systemPackages = with pkgs; [
     openssl
@@ -77,15 +78,20 @@ in
     vscodium
     vlc
     alacritty
+    filezilla
+    libreoffice
+    gthumb
     jetbrains-mono
     jetbrains.phpstorm
-    chrome-gnome-shell
-    gnome.gnome-shell
     gnome.gnome-tweaks
+    gnome.dconf-editor
+    gnomeExtensions.user-themes
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.gsconnect
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
+    gnomeExtensions.removable-drive-menu
+    dconf2nix
   ];
 
   programs.dconf.enable = true;
@@ -110,8 +116,10 @@ in
     atomix # puzzle game
   ]);
 
+  services.dbus.packages = with pkgs; [ gnome.dconf ];
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
+  xdg.autostart.enable = true;
   xdg.mime.enable = true;
   xdg.mime.defaultApplications = {
     "text/html" = "firefox.desktop";
