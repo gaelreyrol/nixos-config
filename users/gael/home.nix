@@ -159,6 +159,8 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
+    # https://github.com/nix-community/home-manager/issues/2798
+    mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
     ];
