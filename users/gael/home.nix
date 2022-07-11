@@ -20,7 +20,6 @@
     kbfs
     keybase-gui
 
-    firefox
     chromium
 
     slack
