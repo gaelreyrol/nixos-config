@@ -118,7 +118,7 @@ in
     atomix # puzzle game
   ]);
 
-  services.dbus.packages = with pkgs; [ gnome.dconf ];
+  services.dbus.packages = with pkgs; [ dconf ];
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
   xdg.autostart.enable = true;
