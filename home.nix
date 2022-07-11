@@ -26,6 +26,7 @@
     _1password
     _1password-gui
     keybase
+    kbfs
     keybase-gui
     thunderbird
     chromium
@@ -49,8 +50,7 @@
 
   services.keybase.enable = true;
 
-  programs.gnupg.enable = true;
-  programs.gnupg.agent.enable = true;
+  programs.gpg.enable = true;
 
   programs.vim.enable = true;
 
