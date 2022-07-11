@@ -147,6 +147,8 @@
     ];
     userSettings = {
       "workbench.colorTheme" = "Solarized Light";
+      "editor.fontFamily" = "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace";
+      "editor.fontSize" = 16;
     };
   };
 }
