@@ -121,7 +121,7 @@
           white = "#fdf6e3";
         };
       };
-    }
+    };
   };
 
   programs.git = {

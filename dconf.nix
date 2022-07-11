@@ -12,7 +12,7 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       enabled-extensions = [
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
-        "caffeine@patapon.info" "services-systemd@abteil.org"
+        "caffeine@patapon.info"
         "appindicatorsupport@rgcjonas.gmail.com"
         "gsconnect@andyholmes.github.io"
         "trayIconsReloaded@selfmade.pl"

@@ -4,7 +4,8 @@ let
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       (import "${home-manager}/nixos")
     ];
@@ -92,6 +93,7 @@ in
     gnomeExtensions.caffeine
     gnomeExtensions.removable-drive-menu
     dconf2nix
+    nixpkgs-fmt
   ];
 
   programs.dconf.enable = true;
