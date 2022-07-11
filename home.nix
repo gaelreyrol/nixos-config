@@ -25,6 +25,7 @@
   home.packages = with pkgs; [
     _1password
     _1password-gui
+    keybase
     keybase-gui
     thunderbird
     chromium
@@ -46,7 +47,10 @@
 
   fonts.fontconfig.enable = true;
 
-  programs.gpg.enable = true;
+  services.keybase.enable = true;
+
+  programs.gnupg.enable = true;
+  programs.gnupg.agent.enable = true;
 
   programs.vim.enable = true;
 
