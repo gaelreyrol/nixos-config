@@ -1,14 +1,27 @@
 # nixos-config
 
-## Switch
+## Setup
 
 ```bash
 git clone git@github.com:gaelreyrol/nixos-config.git ~/.config/nix
 cd ~/.config/nix
+```
+
+## Actions
+
+### Switch
+
+```bash
 sudo nixos-rebuild switch -I nixos-config=./configuration.nix -p main
 ```
 
-## Keybase
+### Format
+
+```bash
+nixpkgs-fmt *.nix
+```
+
+### Import Keybase keys
 
 ```bash
 keybase pgp export -s | gpg --allow-secret-key-import --import
