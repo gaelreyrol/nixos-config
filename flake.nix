@@ -2,12 +2,11 @@
   description = "system configuration flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/release-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager }:
+  outputs = inputs@{ self, nixpkgs, home-manager }:
     let
       nixConf = pkgs: {
         nix = {
@@ -28,7 +27,7 @@
     in
     {
       nixosConfigurations = {
-        thinkpad = nixpkgs.lib.nixosSystem {
+        thinkpad = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
 
           modules = [
