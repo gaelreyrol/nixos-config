@@ -14,13 +14,13 @@
           extraOptions = ''
             experimental-features = nix-command flakes
           '';
-          autoOptimiseStore = true;
           gc = {
             automatic = true;
             dates = "daily";
             persistent = true;
             options = "--delete-older-than 60d";
           };
+          settings.auto-optimise-store = true;
         };
         nixpkgs.config.allowUnfree = true;
       };
@@ -34,6 +34,7 @@
             (nixConf nixpkgs.legacyPackages.${system})
             ./hosts/thinkpad/hardware-configuration.nix
             ./hosts/thinkpad/configuration.nix
+            ./users/gael/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
