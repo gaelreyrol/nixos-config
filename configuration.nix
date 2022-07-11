@@ -74,6 +74,7 @@ in
     git
     tmux
     jq
+    xclip
     fish
     firefox
     vscodium
@@ -102,7 +103,11 @@ in
   security.pam.services."gdm-password".enableGnomeKeyring = true;
   security.pam.services."gdm-launch-environment".enableGnomeKeyring = true;
 
-  programs._1password-gui.polkitPolicyOwners = [ "unix-user:gael" ];
+  programs._1password-gui = {
+    enable = true;
+    gid = 5000;
+    polkitPolicyOwners = [ "gael" ];
+  };
 
   services.gnome.chrome-gnome-shell.enable = true;
   programs.dconf.enable = true;
