@@ -86,6 +86,7 @@ in
     jetbrains.phpstorm
     gnome.gnome-tweaks
     gnome.dconf-editor
+    gnome.gnome-themes-extra
     gnomeExtensions.user-themes
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.gsconnect
@@ -96,10 +97,15 @@ in
     nixpkgs-fmt
   ];
 
-  programs.dconf.enable = true;
-  services.gnome.chrome-gnome-shell.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services."gdm-password".enableGnomeKeyring = true;
+  security.pam.services."gdm-launch-environment".enableGnomeKeyring = true;
+
+  programs._1password-gui.polkitPolicyOwners = [ "unix-user:gael" ];
+
+  services.gnome.chrome-gnome-shell.enable = true;
+  programs.dconf.enable = true;
 
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
@@ -131,10 +137,7 @@ in
     "x-scheme-handler/unknown" = "firefox.desktop";
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  environment.shells = with pkgs; [ fish ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
