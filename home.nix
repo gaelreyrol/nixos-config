@@ -127,6 +127,13 @@
     };
   };
 
+  programs.fish.enable = true;
+  programs.fish.shellAliases = {
+    pbcopy = "${pkgs.xclip}/bin/xclip -selection clipboard";
+    pbpaste = "${pkgs.xclip}/bin/xclip -selection clipboard -o";
+    code = "${pkgs.vscodium}/bin/codium";
+  };
+
   programs.git = {
     enable = true;
     userName = "Gaël Reyrol";
