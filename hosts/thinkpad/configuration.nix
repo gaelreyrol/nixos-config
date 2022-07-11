@@ -41,6 +41,7 @@
 
   environment.systemPackages = with pkgs; [
     openssl
+    gnumake
     vim
     wget
     curl

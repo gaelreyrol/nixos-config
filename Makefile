@@ -1,9 +1,5 @@
 HOSTNAME = $(shell hostname)
 
-
-fmt:
-	nixpkgs-fmt **/*.nix
-
 nixos-switch:
 	nixos-rebuild switch --flake .#${HOSTNAME}
 

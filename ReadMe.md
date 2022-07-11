@@ -12,13 +12,13 @@ cd ~/.config/nix
 ### Switch
 
 ```bash
-sudo nixos-rebuild switch -I nixos-config=./configuration.nix -p main
+sudo make nixos-switch
 ```
 
-### Format
+### Upgrade
 
 ```bash
-nixpkgs-fmt *.nix
+sudo make nixos-upgrade
 ```
 
 ### Import Keybase keys
