@@ -42,6 +42,8 @@
   environment.systemPackages = with pkgs; [
     openssl
     gnumake
+    yubico-pam
+    xdg-utils
     vim
     wget
     curl
@@ -91,7 +93,7 @@
   ]);
 
   services.dbus.packages = with pkgs; [ dconf ];
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon yubikey-personalization ];
 
   xdg.autostart.enable = true;
   xdg.mime.enable = true;

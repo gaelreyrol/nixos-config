@@ -27,6 +27,13 @@ sudo make nixos-upgrade
 keybase pgp export -s | gpg --allow-secret-key-import --import
 ```
 
+### Setup Yubikey challenge-response
+
+```bash
+ykman otp chalresp --touch --generate 2
+ykpamcfg -2 -v
+```
+
 ## Credits
 
 - https://github.com/PierreZ/nixos-config

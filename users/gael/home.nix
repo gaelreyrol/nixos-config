@@ -14,8 +14,13 @@
   };
 
   home.packages = with pkgs; [
+    yubikey-personalization
+    yubikey-manager
+    yubikey-manager-qt
+
     _1password
     _1password-gui
+
     keybase
     kbfs
     keybase-gui
