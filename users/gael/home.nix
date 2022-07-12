@@ -148,11 +148,16 @@
     };
   };
 
-  programs.fish.enable = true;
-  programs.fish.shellAliases = {
-    pbcopy = "${pkgs.xclip}/bin/xclip -selection clipboard";
-    pbpaste = "${pkgs.xclip}/bin/xclip -selection clipboard -o";
-    code = "${pkgs.vscodium}/bin/codium";
+  programs.fish = {
+    enable = true;
+    functions = {
+      fish_greeting = "";
+    }
+    shellAliases = {
+      pbcopy = "${pkgs.xclip}/bin/xclip -selection clipboard";
+      pbpaste = "${pkgs.xclip}/bin/xclip -selection clipboard -o";
+      code = "${pkgs.vscodium}/bin/codium";
+    };
   };
 
   programs.git = {
