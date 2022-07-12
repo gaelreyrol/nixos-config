@@ -9,7 +9,7 @@
     home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager }:
     let
       nixConf = pkgs: {
         nix = {
@@ -35,6 +35,7 @@
 
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
+            nixos-hardware.nixosModules.lenovo-thinkpad-p53
             ./hosts/thinkpad/hardware-configuration.nix
             ./hosts/thinkpad/configuration.nix
             ./users/gael/configuration.nix

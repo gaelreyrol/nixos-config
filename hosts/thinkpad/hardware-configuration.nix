@@ -3,7 +3,6 @@
 {
   imports =
     [
-      ../hardwares/thinkpad/p52s.nix
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
