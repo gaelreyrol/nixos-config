@@ -32,3 +32,4 @@ keybase pgp export -s | gpg --allow-secret-key-import --import
 - https://github.com/PierreZ/nixos-config
 - https://gitlab.com/putchar/dotnix
 - https://github.com/stefanDeveloper/nixos-lenovo-config
+- https://github.com/hlissner/dotfiles
