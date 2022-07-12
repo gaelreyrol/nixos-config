@@ -36,6 +36,7 @@
 
     vscodium
     jetbrains.phpstorm
+    insomnia
 
     php81
     php81Packages.composer
