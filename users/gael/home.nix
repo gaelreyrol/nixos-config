@@ -75,6 +75,20 @@
     };
     profiles.default = {
       id = 0;
+      bookmarks = {
+        nixpkgs = {
+          keyword = "@nixpkgs, np";
+          url = "https://search.nixos.org/packages?query=%s";
+        };
+        nixoptions = {
+          keyword = "@nixoptions, no";
+          url = "https://search.nixos.org/options?query=%s";
+        };
+        packagist = {
+          keyword = "@packgist, p";
+          url = "https://packagist.org/?query=%s";
+        };
+      };
       settings = {
         "services.sync.username" = "me@gaelreyrol.com";
       };
