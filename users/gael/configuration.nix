@@ -14,11 +14,12 @@
     polkitPolicyOwners = [ "gael" ];
   };
 
-  # security.pam.yubico = {
-  #   enable = true;
-  #   debug = true;
-  #   mode = "challenge-response";
-  # };
+  security.pam.yubico = {
+    enable = true;
+    debug = true;
+    control = "required";
+    mode = "challenge-response";
+  };
 
   systemd.services."xlock" = {
     description = "Lock all sessions with loginctl";
