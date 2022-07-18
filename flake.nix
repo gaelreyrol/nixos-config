@@ -30,6 +30,24 @@
     in
     {
       nixosConfigurations = {
+        dell = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+
+          modules = [
+            (nixConf nixpkgs.legacyPackages.${system})
+            nixos-hardware.nixosModules.dell-precision-5530
+            ./hosts/dell/hardware-configuration.nix
+            ./hosts/dell/configuration.nix
+            ./users/gael/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.gael = import ./users/gael/home.nix;
+            }
+          ];
+        };
+
         thinkpad = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
 
