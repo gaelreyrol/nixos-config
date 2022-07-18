@@ -38,6 +38,7 @@
             nixos-hardware.nixosModules.dell-precision-5530
             ./hosts/dell/hardware-configuration.nix
             ./hosts/dell/configuration.nix
+            /home/gael/.config/recisio/configuration.nix
             ./users/gael/configuration.nix
             home-manager.nixosModules.home-manager
             {

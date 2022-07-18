@@ -65,6 +65,7 @@
     gnomeExtensions.removable-drive-menu
     dconf2nix
     nixpkgs-fmt
+    strongswan
   ];
 
   services.gnome.gnome-keyring.enable = true;
