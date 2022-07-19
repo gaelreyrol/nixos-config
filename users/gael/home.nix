@@ -253,17 +253,23 @@
     };
   };
 
-  # programs.ssh = {
-  #   enable = true;
-  #   matchBlocks = {
-  #     "github.com" = {
-  #       extraOptions = {
-  #         https://1password.community/discussion/121912/keyring-isnt-suid-on-nixos
-  #         IdentityAgent = "~/.1password/agent.sock";
-  #       };
-  #     };
-  #   };
-  # };
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      # "github.com" = {
+      #   extraOptions = {
+      #     https://1password.community/discussion/121912/keyring-isnt-suid-on-nixos
+      #     IdentityAgent = "~/.1password/agent.sock";
+      #   };
+      # };
+      "dev.gael.office" = {
+          user = "gael";
+          identityFile = "~/.ssh/id_ed25519";
+          forwardAgent = true;
+        };
+
+    };
+  };
 
   programs.alacritty = {
     enable = true;
@@ -316,6 +322,7 @@
       pbcopy = "${pkgs.xclip}/bin/xclip -selection clipboard";
       pbpaste = "${pkgs.xclip}/bin/xclip -selection clipboard -o";
       code = "${pkgs.vscodium}/bin/codium";
+      office = "${pkgs.openssh}/bin/ssh dev.gael.office";
     };
   };
 
@@ -357,15 +364,16 @@
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       editorconfig.editorconfig
+      # vscode-icons-team.vscode-icons
       jnoortheen.nix-ide
       octref.vetur
       foam.foam-vscode
       yzhang.markdown-all-in-one
-      kortina.vscode-markdown-notes
-      mushan.vscode-paste-image
+      # kortina.vscode-markdown-notes
+      # mushan.vscode-paste-image
       hashicorp.terraform
       redhat.vscode-yaml
-      redhat.ansible
+      # redhat.ansible
       timonwong.shellcheck
       gruntfuggly.todo-tree
     ];
