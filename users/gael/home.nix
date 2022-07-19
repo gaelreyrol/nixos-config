@@ -357,6 +357,20 @@
     };
   };
 
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    tmux.enableShellIntegration = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    plugins = with pkgs; [
+      tmuxPlugins.cpu
+      tmuxPlugins.tmux-fzf
+    ];
+  };
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
