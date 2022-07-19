@@ -52,8 +52,15 @@
 
     postgresql_14
 
+    terraform
+    ansible
+    ansible-lint
+    shellcheck
     dhall
     dhall-json
+    ripgrep
+    fzf
+    dig
 
     exercism
   ];
@@ -349,7 +356,18 @@
     # https://github.com/nix-community/home-manager/issues/2798
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
+      editorconfig.editorconfig
       jnoortheen.nix-ide
+      octref.vetur
+      foam.foam-vscode
+      yzhang.markdown-all-in-one
+      kortina.vscode-markdown-notes
+      mushan.vscode-paste-image
+      hashicorp.terraform
+      redhat.vscode-yaml
+      redhat.ansible
+      timonwong.shellcheck
+      gruntfuggly.todo-tree
     ];
     userSettings = {
       "workbench.colorTheme" = "Solarized Light";
