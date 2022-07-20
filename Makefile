@@ -1,10 +1,16 @@
 HOSTNAME = $(shell hostname)
 
 nixos-switch:
-	nixos-rebuild switch --flake .#${HOSTNAME}
+	sudo nixos-rebuild switch --flake .#${HOSTNAME}
 
 nixos-upgrade:
-	nixos-rebuild switch --upgrade --flake .#${HOSTNAME}
+	sudo nixos-rebuild switch --upgrade --flake .#${HOSTNAME}
 
-nixos-diff:
+nix-flake-check:
+	nix flake check
+
+nix-profile-diff:
 	nix profile diff-closures --profile /nix/var/nix/profiles/system
+
+nix-garbage-collect:
+	sudo nix-collect-garbage -d
