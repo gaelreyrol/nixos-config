@@ -48,6 +48,7 @@
     symfony-cli
     nodejs
     nodePackages.npm
+    nodePackages.yarn
     go
 
     postgresql_14
@@ -351,9 +352,10 @@
       ];
 
     extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
+      init.defaultBranch = "main";
+      pull.rebase = true;
+      fetch.prune = true;
+      diff.colorMoved = "default"
     };
   };
 
