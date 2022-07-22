@@ -325,6 +325,11 @@
       code = "${pkgs.vscodium}/bin/codium";
       office = "${pkgs.openssh}/bin/ssh dev.gael.office";
     };
+    interactiveShellInit = ''
+      if status is-interactive and not set -q TMUX
+        tmux new-session -A -s default
+      end
+    '';
   };
 
   programs.git = {
