@@ -11,6 +11,7 @@
 
   home.sessionVariables = {
     EDITOR = "vim";
+    BAT_THEME = "Solarized (light)";
   };
 
   home.packages = with pkgs; [
@@ -59,10 +60,6 @@
     shellcheck
     dhall
     dhall-json
-    ripgrep
-    fzf
-    dig
-    exa
 
     exercism
   ];
@@ -324,6 +321,9 @@
       pbcopy = "${pkgs.xclip}/bin/xclip -selection clipboard";
       pbpaste = "${pkgs.xclip}/bin/xclip -selection clipboard -o";
       code = "${pkgs.vscodium}/bin/codium";
+      dig = "dog";
+      ls = "exa";
+      cat = "bat";
       office = "${pkgs.openssh}/bin/ssh dev.gael.office";
     };
     interactiveShellInit = ''

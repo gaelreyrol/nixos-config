@@ -50,6 +50,18 @@
     git
     tmux
     jq
+    ripgrep
+    fzf
+    dog
+    exa
+    bat
+    delta
+    duf
+    broot
+    fd
+    tldr
+    procs
+    httpie
     xclip
     fish
     alacritty
