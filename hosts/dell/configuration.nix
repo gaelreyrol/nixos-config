@@ -3,6 +3,7 @@
 {
   networking.hostName = "dell";
   networking.networkmanager.enable = true;
+  networking.networkmanager.enableStrongSwan = true;
 
   time.timeZone = "Europe/Paris";
 
@@ -78,6 +79,8 @@
     dconf2nix
     nixpkgs-fmt
     strongswan
+    networkmanagerapplet
+    networkmanager_strongswan
   ];
 
   services.gnome.gnome-keyring.enable = true;

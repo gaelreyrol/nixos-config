@@ -9,6 +9,8 @@
     ./dconf.nix
   ];
 
+  services.network-manager-applet.enable = true;
+
   home.sessionVariables = {
     EDITOR = "vim";
     BAT_THEME = "Solarized (light)";
