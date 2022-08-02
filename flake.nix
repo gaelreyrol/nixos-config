@@ -40,6 +40,9 @@
 
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-pc
+            nixos-hardware.nixosModules.common-pc-ssd
             ./hosts/tower/hardware-configuration.nix
             ./hosts/tower/configuration.nix
             ./users/gael/configuration.nix

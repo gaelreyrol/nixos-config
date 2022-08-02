@@ -288,7 +288,7 @@
     settings = {
       font = {
         normal.family = "JetBrains Mono";
-        size = 14.0;
+        size = 12.0;
       };
 
       colors = {
