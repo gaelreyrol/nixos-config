@@ -1,5 +1,7 @@
 # nixos-config
 
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+
 ## Setup
 
 ```bash
