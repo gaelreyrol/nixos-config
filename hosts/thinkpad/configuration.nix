@@ -52,7 +52,7 @@
     jq
     ripgrep
     fzf
-    dog
+    dogdns
     exa
     bat
     delta
