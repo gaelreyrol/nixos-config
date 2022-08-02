@@ -275,10 +275,10 @@
       #   };
       # };
       "dev.gael.office" = {
-          user = "gael";
-          identityFile = "~/.ssh/id_ed25519";
-          forwardAgent = true;
-        };
+        user = "gael";
+        identityFile = "~/.ssh/id_ed25519";
+        forwardAgent = true;
+      };
 
     };
   };
@@ -288,7 +288,7 @@
     settings = {
       font = {
         normal.family = "JetBrains Mono";
-        size = 12.0;
+        size = 14.0;
       };
 
       colors = {
@@ -356,20 +356,20 @@
       signByDefault = true;
     };
     includes = [
-        {
-          condition = "gitdir:/home/gael/dev/recisio/";
-          contents = {
-            user = {
-              email = "gael@recisio.com";
-              name = "Gaël Reyrol";
-              signingKey = "273123EAC37D2A99";
-            };
-            commit = {
-              gpgSign = true;
-            };
+      {
+        condition = "gitdir:/home/gael/dev/recisio/";
+        contents = {
+          user = {
+            email = "gael@recisio.com";
+            name = "Gaël Reyrol";
+            signingKey = "273123EAC37D2A99";
           };
-        }
-      ];
+          commit = {
+            gpgSign = true;
+          };
+        };
+      }
+    ];
 
     extraConfig = {
       init.defaultBranch = "main";

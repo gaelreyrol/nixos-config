@@ -35,6 +35,23 @@
     in
     {
       nixosConfigurations = {
+        tower = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+
+          modules = [
+            (nixConf nixpkgs.legacyPackages.${system})
+            ./hosts/tower/hardware-configuration.nix
+            ./hosts/tower/configuration.nix
+            ./users/gael/configuration.nix
+            nur.nixosModules.nur
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.gael = import ./users/gael/home.nix;
+            }
+          ];
+        };
         dell = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
 
