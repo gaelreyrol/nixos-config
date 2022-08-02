@@ -10,9 +10,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nur.url = github:nix-community/NUR;
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur }:
     let
       nixConf = pkgs: {
         nix = {
@@ -29,6 +30,7 @@
           settings.auto-optimise-store = true;
         };
         nixpkgs.config.allowUnfree = true;
+        nixpkgs.overlays = [ nur.overlay ];
       };
     in
     {
@@ -43,6 +45,7 @@
             ./hosts/dell/configuration.nix
             /home/gael/.config/recisio/configuration.nix
             ./users/gael/configuration.nix
+            nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -61,6 +64,7 @@
             ./hosts/thinkpad/hardware-configuration.nix
             ./hosts/thinkpad/configuration.nix
             ./users/gael/configuration.nix
+            nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

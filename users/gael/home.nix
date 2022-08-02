@@ -86,6 +86,17 @@
         enableGnomeExtensions = true;
       };
     };
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      french-dictionary
+      french-language-pack
+      onepassword-password-manager
+      facebook-container
+      multi-account-containers
+      decentraleyes
+      clearurls
+      ublock-origin
+      consent-o-matic
+    ];
     profiles.default = {
       id = 0;
       bookmarks = {
