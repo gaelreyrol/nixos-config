@@ -11,6 +11,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = github:nix-community/NUR;
+
+    recisio.url = "git+ssh://github:gaelreyrol/nixos-recisio";
+    recisio.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur }:
