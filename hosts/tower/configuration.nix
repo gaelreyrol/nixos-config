@@ -41,6 +41,7 @@
   environment.systemPackages = with pkgs; [
     openssl
     gnumake
+    pciutils
     yubico-pam
     xdg-utils
     vim
@@ -76,6 +77,8 @@
     gnomeExtensions.removable-drive-menu
     dconf2nix
     nixpkgs-fmt
+    rnix-lsp
+    nixdoc
   ];
 
   services.gnome.gnome-keyring.enable = true;

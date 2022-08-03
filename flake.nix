@@ -20,6 +20,7 @@
           package = pkgs.nixFlakes;
           extraOptions = ''
             experimental-features = nix-command flakes
+            plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
           '';
           gc = {
             automatic = true;
