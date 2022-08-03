@@ -36,6 +36,11 @@ ykman otp chalresp --touch --generate 2
 ykpamcfg -2 -v
 ```
 
+## ToDo
+
+- [ ] Modules
+  - [ ] Firefox profile generator
+
 ## Credits
 
 - https://github.com/PierreZ/nixos-config
