@@ -79,6 +79,9 @@
     nixpkgs-fmt
     rnix-lsp
     nixdoc
+    strongswan
+    networkmanagerapplet
+    networkmanager_strongswan
   ];
 
   services.gnome.gnome-keyring.enable = true;

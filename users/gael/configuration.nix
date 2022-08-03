@@ -10,7 +10,6 @@
 
   programs._1password-gui = {
     enable = true;
-    gid = 5000;
     polkitPolicyOwners = [ "gael" ];
   };
 

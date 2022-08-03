@@ -12,11 +12,10 @@
 
     nur.url = github:nix-community/NUR;
 
-    recisio.url = "git+ssh://github:gaelreyrol/nixos-recisio";
-    recisio.inputs.nixpkgs.follows = "nixpkgs";
+    recisio.url = "git+ssh://git@github.com/gaelreyrol/nixos-recisio";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur, recisio }:
     let
       nixConf = pkgs: {
         nix = {
@@ -36,6 +35,13 @@
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [ nur.overlay ];
       };
+      userConf = {
+        name = "gael";
+        recisio = {
+          user = "test"; # TODO: Replace with secrets
+          password = "test"; # TODO: Replace with secrets
+        };
+      };
     in
     {
       nixosConfigurations = {
@@ -49,13 +55,17 @@
             nixos-hardware.nixosModules.common-pc-ssd
             ./hosts/tower/hardware-configuration.nix
             ./hosts/tower/configuration.nix
-            ./users/gael/configuration.nix
+            ./users/${userConf.name}/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
+            recisio.nixosModules.default
             {
+              recisio = userConf.recisio // {
+                enable = true;
+              };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.gael = import ./users/gael/home.nix;
+              home-manager.users.${userConf.name} = builtins.import ./users/${userConf.name}/home.nix;
             }
           ];
         };
@@ -67,14 +77,17 @@
             nixos-hardware.nixosModules.dell-precision-5530
             ./hosts/dell/hardware-configuration.nix
             ./hosts/dell/configuration.nix
-            /home/gael/.config/recisio/configuration.nix
-            ./users/gael/configuration.nix
+            ./users/${userConf.name}/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
+            recisio.nixosModules.default
             {
+              recisio = userConf.recisio // {
+                enable = true;
+              };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.gael = import ./users/gael/home.nix;
+              home-manager.users.${userConf.name} = builtins.import ./users/${userConf.name}/home.nix;
             }
           ];
         };
@@ -87,13 +100,13 @@
             nixos-hardware.nixosModules.lenovo-thinkpad-p53
             ./hosts/thinkpad/hardware-configuration.nix
             ./hosts/thinkpad/configuration.nix
-            ./users/gael/configuration.nix
+            ./users/${userConf.name}/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.gael = import ./users/gael/home.nix;
+              home-manager.users.${userConf.name} = builtins.import ./users/${userConf.name}/home.nix;
             }
           ];
         };
