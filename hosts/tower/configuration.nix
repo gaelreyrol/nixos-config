@@ -15,6 +15,11 @@
 
   services.xserver.enable = true;
 
+  hardware.nvidia.prime = {
+    offload.enable = false;
+    nvidiaBusId = "PCI:01:00:0";
+  };
+
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
