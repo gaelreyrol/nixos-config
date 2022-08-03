@@ -16,56 +16,6 @@
     BAT_THEME = "Solarized (light)";
   };
 
-  home.packages = with pkgs; [
-    yubikey-personalization
-    yubikey-manager
-    yubikey-manager-qt
-
-    _1password
-    _1password-gui
-
-    keybase
-    kbfs
-    keybase-gui
-
-    chromium
-
-    slack
-    discord
-    zoom-us
-
-    thunderbird
-    vlc
-    filezilla
-    libreoffice
-    spotify
-
-    jetbrains-mono
-
-    vscodium
-    jetbrains.phpstorm
-    insomnia
-
-    php81
-    php81Packages.composer
-    symfony-cli
-    nodejs
-    nodePackages.npm
-    nodePackages.yarn
-    go
-
-    postgresql_14
-
-    terraform
-    ansible
-    ansible-lint
-    shellcheck
-    dhall
-    dhall-json
-
-    exercism
-  ];
-
   fonts.fontconfig.enable = true;
 
   services.keybase.enable = true;

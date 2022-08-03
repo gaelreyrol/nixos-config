@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-  let cfg = config.desktop.firefox;
+let cfg = config.desktop.firefox;
 in {
   options.desktop.firefox = {
     enable = lib.mkOption {
@@ -206,7 +206,7 @@ in {
           "app.normandy.enabled" = false;
           "app.normandy.api_url" = "";
           "app.shield.optoutstudies.enabled" = false;
-          
+
           # Disable health reports (basically more telemetry)
           # https://support.mozilla.org/en-US/kb/firefox-health-report-understand-your-browser-perf
           # https://gecko.readthedocs.org/en/latest/toolkit/components/telemetry/telemetry/preferences.html
