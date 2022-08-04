@@ -76,6 +76,7 @@
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.dell-precision-5530
+            nixos-hardware.nixosModules.common-gpu-nvidia
             ./hosts/dell/hardware-configuration.nix
             ./hosts/dell/configuration.nix
             ./users/${userConf.name}/configuration.nix
