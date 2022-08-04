@@ -33,6 +33,7 @@
     slack
     discord
     zoom-us
+    fractal
 
     thunderbird
     vlc
