@@ -10,6 +10,8 @@ with lib.hm.gvariant;
       color-scheme = "default";
       locate-pointer = true;
       clock-show-date = true;
+      # text-scaling-factor = 1.25;
+      enable-animations = false;
     };
 
     "org/gnome/desktop/calendar" = {
