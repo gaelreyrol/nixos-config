@@ -100,6 +100,7 @@
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.lenovo-thinkpad-p53
+            nixos-hardware.nixosModules.common-gpu-nvidia
             ./hosts/thinkpad/hardware-configuration.nix
             ./hosts/thinkpad/configuration.nix
             ./users/${userConf.name}/configuration.nix
