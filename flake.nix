@@ -38,8 +38,8 @@
       userConf = {
         name = "gael";
         recisio = {
-          user = "test"; # TODO: Replace with secrets
-          password = "test"; # TODO: Replace with secrets
+          user = builtins.getEnv "RECISIO_USER";
+          password = builtins.getEnv "RECISIO_PASSWORD";
         };
       };
     in
