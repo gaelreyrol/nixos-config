@@ -356,6 +356,8 @@
     nix-direnv.enable = true;
   };
 
+  programs.nix-index.enable = true;
+
   programs.git = {
     enable = true;
     userName = "Gaël Reyrol";
