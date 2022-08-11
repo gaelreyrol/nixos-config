@@ -97,6 +97,9 @@
       clearurls
       ublock-origin
       consent-o-matic
+      onetab
+      gnome-shell-integration
+      gsconnect
     ];
     profiles.default = {
       id = 0;
