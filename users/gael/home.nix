@@ -356,7 +356,10 @@
     nix-direnv.enable = true;
   };
 
-  programs.nix-index.enable = true;
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = false;
+  };
 
   programs.git = {
     enable = true;
