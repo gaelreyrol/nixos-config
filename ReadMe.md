@@ -37,6 +37,10 @@ ykman otp chalresp --touch --generate 2
 ykpamcfg -2 -v
 ```
 
+## ToDo
+
+- [ ] Refactor with modules #1
+
 ## Credits
 
 - https://github.com/PierreZ/nixos-config
