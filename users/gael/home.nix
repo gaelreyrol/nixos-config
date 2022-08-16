@@ -63,6 +63,7 @@
     shellcheck
     dhall
     dhall-json
+    dhall-lsp-server
 
     exercism
   ];
@@ -426,6 +427,7 @@
       # redhat.ansible
       timonwong.shellcheck
       gruntfuggly.todo-tree
+      dhall.vscode-dhall-lsp-server
     ];
     userSettings = {
       "workbench.colorTheme" = "Solarized Light";
