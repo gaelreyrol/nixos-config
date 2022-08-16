@@ -42,11 +42,20 @@ with lib.hm.gvariant;
         "gsconnect@andyholmes.github.io"
         "trayIconsReloaded@selfmade.pl"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "systemd-manager@hardpixel.eu"
+        "sound-output-device-chooser@kgshank.net"
       ];
     };
 
     "org/gnome/shell/extensions/caffeine" = {
       user-enabled = true;
+    };
+
+    "org/gnome/shell/extensions/systemd-manager" = {
+      command-method = "systemctl";
+      systemd = [
+        { name = "Strongswan"; service = "strongswan.service"; type = "system"; }
+      ];
     };
   };
 }

@@ -4,7 +4,7 @@
   users.users.gael = {
     isNormalUser = true;
     description = "Gaël Reyrol";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "onepassword" ];
     shell = pkgs.fish;
   };
 
