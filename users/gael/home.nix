@@ -61,6 +61,7 @@
     ansible
     ansible-lint
     shellcheck
+    checkmake
     dhall
     dhall-json
     dhall-lsp-server
