@@ -39,7 +39,7 @@ ykpamcfg -2 -v
 
 ## ToDo
 
-- [ ] Refactor with modules #1
+- [ ] Refactor with modules
 
 ## Credits
 
@@ -47,3 +47,4 @@ ykpamcfg -2 -v
 - https://gitlab.com/putchar/dotnix
 - https://github.com/stefanDeveloper/nixos-lenovo-config
 - https://github.com/hlissner/dotfiles
+- https://github.com/Xe/nixos-configs
