@@ -34,6 +34,7 @@
         };
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [ nur.overlay ];
+        nixpkgs.hostPlatform = "x86_64-linux";
       };
       userConf = {
         name = "gael";
@@ -42,12 +43,32 @@
           password = builtins.getEnv "RECISIO_PASSWORD";
         };
       };
+      system = "x86_64-linux";
     in
     {
+      devShells = {
+        ${system}.default = nixpkgs.legacyPackages.${system}.mkShell {
+          name = "gael-on-${system}-system";
+
+          packages = builtins.attrValues {
+
+            inherit
+              (nixpkgs.legacyPackages.${system})
+              gnumake
+              nvd
+              scc
+              vim
+              git
+              nix
+              nixos-rebuild
+              ;
+            inherit (home-manager.packages.${system}) home-manager;
+          };
+        };
+      };
+
       nixosConfigurations = {
         tower = nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.common-cpu-intel
@@ -71,8 +92,6 @@
           ];
         };
         dell = nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.dell-precision-5530
@@ -95,8 +114,6 @@
         };
 
         thinkpad = nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.lenovo-thinkpad-p53
