@@ -125,6 +125,14 @@
               name = "Home Manager";
               url = "https://rycee.gitlab.io/home-manager/options.html";
             }
+            {
+              name = "SensCritique - BD";
+              url = "https://www.senscritique.com/bd";
+            }
+            {
+              name = "Leslibrairies.fr";
+              url = "https://www.leslibraires.fr";
+            }
           ];
         }
       ];

@@ -70,7 +70,10 @@
     xclip
     fish
     alacritty
+    evolution-data-server
     gthumb
+    gnome.nautilus
+    gnome.nautilus-python
     gnome.gnome-tweaks
     gnome.dconf-editor
     gnome.gnome-themes-extra
