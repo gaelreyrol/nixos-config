@@ -105,20 +105,29 @@
     ];
     profiles.default = {
       id = 0;
-      bookmarks = {
-        nixpkgs = {
-          keyword = "@nixpkgs, np";
-          url = "https://search.nixos.org/packages?query=%s";
-        };
-        nixoptions = {
-          keyword = "@nixoptions, no";
-          url = "https://search.nixos.org/options?query=%s";
-        };
-        packagist = {
-          keyword = "@packgist, p";
-          url = "https://packagist.org/?query=%s";
-        };
-      };
+      bookmarks = [
+        {
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "Add to bookmarks";
+              url = "javascript:(function(){var a=window,b=document,c=encodeURIComponent,e=c(document.title),d=a.open('https://cloud.gaelreyrol.com/apps/bookmarks/bookmarklet?url='+c(b.location)+'&title='+e,'bkmk_popup','left='+((a.screenX||a.screenLeft)+10)+',top='+((a.screenY||a.screenTop)+10)+',height=650px,width=550px,resizable=1,alwaysRaised=1');a.setTimeout(function(){d.focus()},300);})();";
+            }
+            {
+              name = "NixOS Packages";
+              url = "https://search.nixos.org/packages";
+            }
+            {
+              name = "NixOS Options";
+              url = "https://search.nixos.org/options";
+            }
+            {
+              name = "Home Manager";
+              url = "https://rycee.gitlab.io/home-manager/options.html";
+            }
+          ];
+        }
+      ];
       settings = {
         "services.sync.username" = "me@gaelreyrol.com";
 
