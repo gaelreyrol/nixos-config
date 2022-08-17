@@ -1,12 +1,11 @@
-
 { config, lib, pkgs, ... }:
 
 with lib;
 with lib.hm.gvariant;
 
-let cfg = config.desktop.gnome;
+let desktopCfg = config.custom.desktop;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf desktopCfg.enable {
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         enable-hot-corners = false;
@@ -54,10 +53,9 @@ in {
         user-enabled = true;
       };
 
-      # ToDo: Add if strongswan is installed
       "org/gnome/shell/extensions/systemd-manager" = {
         command-method = "systemctl";
-        systemd = [
+        systemd = mkIf config.recisio.enable [
           ''{"name":"Strongswan","service":"strongswan.service","type":"system"}''
         ];
       };

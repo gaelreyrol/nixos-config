@@ -2,9 +2,9 @@
 
 with lib;
 
-let cfg = config.system.yubikey;
+let cfg = config.custom.programs.yubikey;
 in {
-  options.system.yubikey = {
+  options.custom.programs.yubikey = {
     enable = mkEnableOption "Enable Yubikey";
   };
 

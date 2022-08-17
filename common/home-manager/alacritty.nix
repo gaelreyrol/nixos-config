@@ -2,9 +2,12 @@
 
 with lib;
 
-let cfg = config.desktop.alacritty;
-in {
-  options.desktop.alacritty = {
+let
+  globalCfg = config.custom;
+  cfg = config.custom.home-manager.alacritty;
+in
+{
+  options.custom.home-manager.alacritty = {
     enable = mkEnableOption "Enable Alacritty";
   };
 
@@ -13,10 +16,12 @@ in {
       enable = true;
       settings = {
         font = {
-          normal.family = "JetBrains Mono";
+          # ToDo: Parametrize
+          normal.family = "${globalCfg.fontFamily}";
           size = 12.0;
         };
 
+        # ToDo: Parametrize (Solarized Light)
         colors = {
           primary = {
             background = "#fdf6e3";

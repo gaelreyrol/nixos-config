@@ -2,15 +2,19 @@
 
 with lib;
 
-let cfg = config.system.git;
-in {
-  options.system.git = {
+let
+  globalCfg = config.custom;
+  cfg = config.custom.home-manager.git;
+in
+{
+  options.custom.home-manager.git = {
     enable = mkEnableOption "Enable Git";
   };
 
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
+      # ToDo: Parametrize
       userName = "Gaël Reyrol";
       userEmail = "me@gaelreyrol.dev";
       signing = {
@@ -19,6 +23,7 @@ in {
       };
       includes = [
         {
+          # ToDo: Configure if recisio is enabled
           condition = "gitdir:/home/gael/dev/recisio/";
           contents = {
             user = {

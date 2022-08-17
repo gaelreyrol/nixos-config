@@ -2,13 +2,11 @@
 
 with lib;
 
-let cfg = config.template;
+let cfg = config.custom.template;
 in {
-  options.template = {
+  options.custom.template = {
     enable = mkEnableOption "Enable Template";
   };
 
-  config = mkIf cfg.enable {
-
-  };
+  config = mkIf cfg.enable { };
 }

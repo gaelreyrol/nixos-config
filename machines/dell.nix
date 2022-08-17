@@ -1,18 +1,12 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -44,8 +38,11 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/f57c7654-12be-4b18-b2f6-ff56f2f0b937"; }];
 
-  networking.useDHCP = lib.mkDefault true;
+  powerManagement.cpuFreqGovernor = "powersave";
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.nvidia.prime = {
+    offload.enable = true;
+    intelBusId = "PCI:00:02:0";
+    nvidiaBusId = "PCI:01:00:0";
+  };
 }

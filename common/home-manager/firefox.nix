@@ -2,9 +2,12 @@
 
 with lib;
 
-let cfg = config.desktop.firefox;
-in {
-  options.desktop.firefox = {
+let
+  globalCfg = config.custom;
+  cfg = config.custom.home-manager.firefox;
+in
+{
+  options.custom.home-manager.firefox = {
     enable = mkEnableOption "Enable Firefox";
   };
 
@@ -13,12 +16,14 @@ in {
       enable = true;
       package = pkgs.firefox.override {
         cfg = {
-          enableGnomeExtensions = true;
+          # ToDo: Enable if gnome is enabled
+          enableGnomeExtensions = globalCfg.desktop.enable;
         };
       };
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         french-dictionary
         french-language-pack
+        # ToDo: Enable if onepassword is enabled
         onepassword-password-manager
         facebook-container
         multi-account-containers
@@ -27,6 +32,7 @@ in {
         ublock-origin
         consent-o-matic
         onetab
+        # ToDo: Enable if gnome is enabled
         gnome-shell-integration
         gsconnect
       ];
@@ -64,7 +70,8 @@ in {
           }
         ];
         settings = {
-          "services.sync.username" = "me@gaelreyrol.com";
+          # ToDo: Parametrize
+          "services.sync.username" = "${globalCfg.user.email}";
 
           # https://github.com/arkenfox/user.js
           # Enable ETP for decent security (makes firefox containers and many

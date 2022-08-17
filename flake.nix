@@ -38,12 +38,30 @@
       };
       userConf = {
         name = "gael";
-        recisio = {
-          user = builtins.getEnv "RECISIO_USER";
-          password = builtins.getEnv "RECISIO_PASSWORD";
+        description = "Gaël Reyrol";
+        email = "me@gaelreyrol.com";
+      };
+      devices = {
+        tower = {
+          system = "x86_64-linux";
+          desktop.enable = true;
+          recisio.enable = true;
+        };
+        thinkpad = {
+          system = "x86_64-linux";
+          desktop.enable = true;
+          recisio.enable = true;
+        };
+        dell = {
+          system = "x86_64-linux";
+          desktop.enable = true;
+          recisio.enable = true;
         };
       };
-      system = "x86_64-linux";
+      recisioConf = {
+        user = builtins.getEnv "RECISIO_USER";
+        password = builtins.getEnv "RECISIO_PASSWORD";
+      };
     in
     {
       devShells = {
@@ -51,7 +69,6 @@
           name = "gael-on-${system}-system";
 
           packages = builtins.attrValues {
-
             inherit
               (nixpkgs.legacyPackages.${system})
               gnumake
@@ -77,9 +94,6 @@
             nixos-hardware.nixosModules.common-gpu-nvidia
             nixos-hardware.nixosModules.common-pc
             nixos-hardware.nixosModules.common-pc-ssd
-            ./hosts/tower/hardware-configuration.nix
-            ./hosts/tower/configuration.nix
-            ./users/${userConf.name}/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             recisio.nixosModules.default
@@ -99,9 +113,6 @@
             (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.dell-precision-5530
             nixos-hardware.nixosModules.common-gpu-nvidia
-            ./hosts/dell/hardware-configuration.nix
-            ./hosts/dell/configuration.nix
-            ./users/${userConf.name}/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             recisio.nixosModules.default
@@ -122,9 +133,6 @@
             (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.lenovo-thinkpad-p53
             nixos-hardware.nixosModules.common-gpu-nvidia
-            ./hosts/thinkpad/hardware-configuration.nix
-            ./hosts/thinkpad/configuration.nix
-            ./users/${userConf.name}/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             ./common/activation/system-report-changes.nix

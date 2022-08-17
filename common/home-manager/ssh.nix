@@ -2,9 +2,9 @@
 
 with lib;
 
-let cfg = config.system.ssh;
+let cfg = config.custom.home-manager.ssh;
 in {
-  options.system.ssh = {
+  options.custom.home-manager.ssh = {
     enable = mkEnableOption "Enable SSH";
   };
 
@@ -18,6 +18,7 @@ in {
         #     IdentityAgent = "~/.1password/agent.sock";
         #   };
         # };
+        # Enable if recisio is enabled
         "dev.gael.office" = {
           user = "gael";
           identityFile = "~/.ssh/id_ed25519";

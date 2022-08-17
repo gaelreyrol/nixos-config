@@ -1,12 +1,8 @@
 { config, pkgs, lib, ... }:
 
 with lib;
-let cfg = config.desktop.gnome;
+let cfg = config.custom.desktop;
 in {
-  options.desktop.gnome = {
-    enable = mkEnableOption "Enable Gnome desktop environment";
-  };
-
   config = mkIf cfg.enable {
 
     services.xserver.displayManager.gdm.enable = true;

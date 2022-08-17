@@ -2,9 +2,12 @@
 
 with lib;
 
-let cfg = config.system.onepassword;
-in {
-  options.system.onepassword = {
+let
+  globalCfg = config.custom;
+  cfg = config.custom.programs.onepassword;
+in
+{
+  options.custom.system.onepassword = {
     enable = mkEnableOption "Enable 1Password";
   };
 
@@ -15,9 +18,10 @@ in {
     ];
     programs._1password-gui = {
       enable = true;
-      polkitPolicyOwners = [ "gael" ];
+      # ToDo: Parametrize
+      polkitPolicyOwners = [ "${globalCfg.user.name}" ];
     };
-    users.users.gael = {
+    users.users.${globalCfg.user.name} = {
       extraGroups = [ "onepassword" "onepassword-cli" ];
     };
   };

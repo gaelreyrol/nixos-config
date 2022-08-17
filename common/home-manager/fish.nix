@@ -2,9 +2,9 @@
 
 with lib;
 
-let cfg = config.system.fish;
+let cfg = config.custom.home-manager.fish;
 in {
-  options.system.fish = {
+  options.custom.home-manager.fish = {
     enable = mkEnableOption "Enable Fish";
   };
 
@@ -16,12 +16,15 @@ in {
           fish_greeting = "";
         };
       shellAliases = {
+        # ToDo: Define if desktop is enabled
         pbcopy = "${pkgs.xclip}/bin/xclip -selection clipboard";
         pbpaste = "${pkgs.xclip}/bin/xclip -selection clipboard -o";
+        # ToDo: Define if vscode is enabled
         code = "${pkgs.vscodium}/bin/codium";
         dig = "dog";
         ls = "exa";
         cat = "bat";
+        # ToDo: Define if recisio is configured
         office = "${pkgs.openssh}/bin/ssh dev.gael.office";
       };
       interactiveShellInit = ''
