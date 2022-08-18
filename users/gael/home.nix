@@ -35,6 +35,7 @@
     zoom-us
     fractal
     element-desktop
+    signal-desktop
 
     thunderbird
     vlc

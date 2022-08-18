@@ -54,6 +54,7 @@
     curl
     git
     tmux
+    zellij
     jq
     ripgrep
     fzf
