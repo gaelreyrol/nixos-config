@@ -428,6 +428,13 @@
     ];
   };
 
+  programs.zellij = {
+    enable = true;
+    settings = {
+      theme = "solarized-light";
+    };
+  };
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
