@@ -34,6 +34,7 @@
     discord
     zoom-us
     fractal
+    element-desktop
 
     thunderbird
     vlc
