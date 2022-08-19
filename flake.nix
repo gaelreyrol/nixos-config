@@ -81,6 +81,7 @@
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             recisio.nixosModules.default
+            ./common/activation/system-report-changes.nix
             {
               recisio = userConf.recisio // {
                 enable = true;
@@ -102,6 +103,7 @@
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             recisio.nixosModules.default
+            ./common/activation/system-report-changes.nix
             {
               recisio = userConf.recisio // {
                 enable = true;
@@ -123,6 +125,7 @@
             ./users/${userConf.name}/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
+            ./common/activation/system-report-changes.nix
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

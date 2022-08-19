@@ -16,7 +16,7 @@ nixos-upgrade:
 
 nixos-diff:
 	nix profile diff-closures --profile /nix/var/nix/profiles/system
-		ls -v /nix/var/nix/profiles | tail -n 2 | awk '{print "/nix/var/nix/profiles/" $$0}' - | xargs nvd diff
+	ls -v /nix/var/nix/profiles | tail -n 2 | awk '{print "/nix/var/nix/profiles/" $$0}' - | xargs nvd diff
 
 nix-flake-check:
 	nix flake check

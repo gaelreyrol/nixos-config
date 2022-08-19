@@ -7,6 +7,7 @@
 
   imports = [
     ./dconf.nix
+    ../../common/activation/home-report-changes.nix
   ];
 
   services.network-manager-applet.enable = true;
