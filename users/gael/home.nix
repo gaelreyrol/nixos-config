@@ -289,8 +289,9 @@
       # };
       "dev.gael.office" = {
         user = "gael";
-        identityFile = "~/.ssh/id_ed25519";
+        identityFile = "~/.ssh/recisio";
         forwardAgent = true;
+        remoteCommand = "tmux new -A -s default";
       };
 
     };
