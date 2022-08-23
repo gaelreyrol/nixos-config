@@ -40,6 +40,7 @@ ykpamcfg -2 -v
 ## ToDo
 
 - [ ] Refactor with modules
+- [ ] Security with vulnix
 
 ## Credits
 
