@@ -292,7 +292,8 @@
         identityFile = "~/.ssh/recisio";
         forwardAgent = true;
         extraOptions = {
-          remoteCommand = "tmux new -A -s default";
+          RequestTTY = "yes";
+          RemoteCommand = "tmux new -A -s default";
         };
       };
 
