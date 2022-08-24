@@ -291,7 +291,9 @@
         user = "gael";
         identityFile = "~/.ssh/recisio";
         forwardAgent = true;
-        remoteCommand = "tmux new -A -s default";
+        extraOptions = {
+          remoteCommand = "tmux new -A -s default";
+        };
       };
 
     };
