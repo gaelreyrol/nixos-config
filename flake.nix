@@ -61,6 +61,8 @@
               git
               nix
               nixos-rebuild
+              cargo
+              rustc
               ;
             inherit (home-manager.packages.${system}) home-manager;
           };
