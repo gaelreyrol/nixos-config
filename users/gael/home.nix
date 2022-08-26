@@ -49,6 +49,7 @@
     vscodium
     jetbrains.phpstorm
     insomnia
+    postman
 
     shellcheck
     checkmake
