@@ -87,6 +87,8 @@
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
     gnomeExtensions.removable-drive-menu
+    gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.systemd-manager
     dconf2nix
     nixpkgs-fmt
     rnix-lsp
