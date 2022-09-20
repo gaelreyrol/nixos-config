@@ -50,6 +50,7 @@
     jetbrains.phpstorm
     insomnia
     postman
+    zeal
 
     shellcheck
     checkmake
