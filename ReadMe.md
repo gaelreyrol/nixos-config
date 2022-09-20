@@ -41,6 +41,7 @@ ykpamcfg -2 -v
 
 - [ ] Refactor with modules
 - [ ] Security with vulnix
+- [ ] Setup Rofi launcher
 
 ## Credits
 
