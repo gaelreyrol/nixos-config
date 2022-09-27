@@ -3,9 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +17,7 @@
     let
       nixConf = pkgs: {
         nix = {
-          package = pkgs.nixFlakes;
+          package = pkgs.nixVersions.unstable;
           extraOptions = ''
             experimental-features = nix-command flakes
             plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
