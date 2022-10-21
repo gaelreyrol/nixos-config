@@ -13,7 +13,7 @@ in {
     services.xserver.desktopManager.gnome.enable = true;
 
     services.gnome.gnome-keyring.enable = true;
-    services.gnome.chrome-gnome-shell.enable = true;
+    services.gnome.gnome-browser-connector.enable = true;
 
     security.pam.services.gdm.enableGnomeKeyring = true;
     security.pam.services."gdm-password".enableGnomeKeyring = true;

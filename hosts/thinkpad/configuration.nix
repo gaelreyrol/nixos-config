@@ -98,7 +98,7 @@
   security.pam.services."gdm-password".enableGnomeKeyring = true;
   security.pam.services."gdm-launch-environment".enableGnomeKeyring = true;
 
-  services.gnome.chrome-gnome-shell.enable = true;
+  services.gnome.gnome-browser-connector.enable = true;
   programs.dconf.enable = true;
 
   environment.gnome.excludePackages = (with pkgs; [
