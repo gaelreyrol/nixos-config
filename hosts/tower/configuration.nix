@@ -8,6 +8,8 @@
   networking.hostName = "tower"; # Define your hostname.
   networking.networkmanager.enable = true;
 
+  recisio.autostart = false;
+
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
