@@ -69,11 +69,11 @@
     },
     "recisio": {
       "locked": {
-        "lastModified": 1666595114,
-        "narHash": "sha256-acK//d1eVc589skUcjmgngJaGJQuQm3TGdrvENjCi98=",
+        "lastModified": 1660209844,
+        "narHash": "sha256-W/XOtNdkqquFtgiVW1xt7q4nrfWcZl/cP/bHNzeu25Q=",
         "ref": "refs/heads/main",
-        "rev": "8d11be41572bdebbb0326d92cebd286aaf765eb3",
-        "revCount": 14,
+        "rev": "a9cecee252eac7525f29ebe0c29ed1a3dd01fd58",
+        "revCount": 13,
         "type": "git",
         "url": "ssh://git@github.com/gaelreyrol/nixos-recisio"
       },

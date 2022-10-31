@@ -8,7 +8,7 @@
   networking.hostName = "tower"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  recisio.autostart = false;
+  systemd.services.strongswan.wantedBy = [ ];
 
   time.timeZone = "Europe/Paris";
 
