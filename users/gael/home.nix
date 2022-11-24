@@ -388,6 +388,9 @@
       {
         condition = "gitdir:/home/gael/dev/recisio/";
         contents = {
+          core = {
+            excludesFile = "/home/gael/dev/.gitignore";
+          };
           user = {
             email = "gael@recisio.com";
             name = "Gaël Reyrol";
