@@ -380,6 +380,7 @@
     enable = true;
     userName = "Gaël Reyrol";
     userEmail = "me@gaelreyrol.dev";
+    lfs.enable = true;
     signing = {
       key = "DFB9B69A2C427F61";
       signByDefault = true;
