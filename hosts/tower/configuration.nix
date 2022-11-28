@@ -2,13 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   networking.hostName = "tower"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  systemd.services.strongswan.wantedBy = [ ];
+  systemd.services.strongswan.wantedBy = lib.mkForce [ ];
 
   time.timeZone = "Europe/Paris";
 
