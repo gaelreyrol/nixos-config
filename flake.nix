@@ -21,6 +21,8 @@
           extraOptions = ''
             experimental-features = nix-command flakes
             plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
+            min-free = 1073741824
+            max-free = 3221225472
           '';
           gc = {
             automatic = true;
