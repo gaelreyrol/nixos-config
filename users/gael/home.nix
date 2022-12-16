@@ -43,6 +43,8 @@
     filezilla
     libreoffice
     spotify
+    psst
+    spotifyd
 
     jetbrains-mono
 
