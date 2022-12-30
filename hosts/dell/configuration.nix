@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   networking.hostName = "dell";
   networking.networkmanager.enable = true;
-  networking.networkmanager.enableStrongSwan = true;
+
+  systemd.services.strongswan.wantedBy = lib.mkForce [ ];
 
   time.timeZone = "Europe/Paris";
 
