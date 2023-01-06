@@ -99,6 +99,45 @@
     ];
     profiles.default = {
       id = 0;
+      search.engines = {
+        "Nix Packages" = {
+          urls = [{
+            template = "https://search.nixos.org/packages";
+            params = [
+              { name = "type"; value = "packages"; }
+              { name = "query"; value = "{searchTerms}"; }
+            ];
+          }];
+          definedAliases = [ "@np" ];
+        };
+
+        "Nix Options" = {
+          urls = [{
+            template = "https://search.nixos.org/options";
+            params = [
+              { name = "type"; value = "packages"; }
+              { name = "query"; value = "{searchTerms}"; }
+            ];
+          }];
+          definedAliases = [ "@no" ];
+        };
+
+        "NixOS Wiki" = {
+          urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+          definedAliases = [ "@nw" ];
+        };
+
+        "Npm" = {
+          urls = [{ template = "https://www.npmjs.com/search?q={searchTerms}"; }];
+          definedAliases = [ "@npm" ];
+        };
+
+        "Packagist" = {
+          urls = [{ template = "https://packagist.org/?query={searchTerms}"; }];
+          definedAliases = [ "@packagist" ];
+        };
+
+      };
       bookmarks = [
         {
           toolbar = true;
@@ -108,24 +147,8 @@
               url = "javascript:(function(){var a=window,b=document,c=encodeURIComponent,e=c(document.title),d=a.open('https://cloud.gaelreyrol.com/apps/bookmarks/bookmarklet?url='+c(b.location)+'&title='+e,'bkmk_popup','left='+((a.screenX||a.screenLeft)+10)+',top='+((a.screenY||a.screenTop)+10)+',height=650px,width=550px,resizable=1,alwaysRaised=1');a.setTimeout(function(){d.focus()},300);})();";
             }
             {
-              name = "NixOS Packages";
-              url = "https://search.nixos.org/packages";
-            }
-            {
-              name = "NixOS Options";
-              url = "https://search.nixos.org/options";
-            }
-            {
               name = "Home Manager";
               url = "https://rycee.gitlab.io/home-manager/options.html";
-            }
-            {
-              name = "SensCritique - BD";
-              url = "https://www.senscritique.com/bd";
-            }
-            {
-              name = "Leslibrairies.fr";
-              url = "https://www.leslibraires.fr";
             }
           ];
         }
