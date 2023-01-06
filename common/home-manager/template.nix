@@ -8,7 +8,5 @@ in {
     enable = mkEnableOption "Enable Template";
   };
 
-  config = mkIf cfg.enable {
-
-  };
+  config = mkIf cfg.enable { };
 }
