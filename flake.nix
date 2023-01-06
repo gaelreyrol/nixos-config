@@ -46,6 +46,7 @@
       system = "x86_64-linux";
     in
     {
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       devShells = {
         ${system}.default = nixpkgs.legacyPackages.${system}.mkShell {
           name = "gael-on-${system}-system";
