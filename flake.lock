@@ -67,28 +67,12 @@
         "type": "github"
       }
     },
-    "recisio": {
-      "locked": {
-        "lastModified": 1671708020,
-        "narHash": "sha256-ZhI1b93NAezbylb5qSaoOSMQllA0F90bRQ8EgmL3Mb0=",
-        "ref": "refs/heads/main",
-        "rev": "1d200080561f653ac160b6c1addf2a3ad3f8da3f",
-        "revCount": 15,
-        "type": "git",
-        "url": "ssh://git@github.com/gaelreyrol/nixos-recisio"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/gaelreyrol/nixos-recisio"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nur": "nur",
-        "recisio": "recisio"
+        "nur": "nur"
       }
     },
     "utils": {

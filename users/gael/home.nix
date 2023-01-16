@@ -314,16 +314,6 @@
       #     IdentityAgent = "~/.1password/agent.sock";
       #   };
       # };
-      "dev.gael.office" = {
-        user = "gael";
-        identityFile = "~/.ssh/recisio";
-        forwardAgent = true;
-        extraOptions = {
-          RequestTTY = "yes";
-          RemoteCommand = "tmux new -A -s default";
-        };
-      };
-
     };
   };
 
@@ -410,24 +400,6 @@
       key = "DFB9B69A2C427F61";
       signByDefault = true;
     };
-    includes = [
-      {
-        condition = "gitdir:/home/gael/dev/recisio/";
-        contents = {
-          core = {
-            excludesFile = "/home/gael/dev/recisio/.gitignore";
-          };
-          user = {
-            email = "gael@recisio.com";
-            name = "Gaël Reyrol";
-            signingKey = "273123EAC37D2A99";
-          };
-          commit = {
-            gpgSign = true;
-          };
-        };
-      }
-    ];
 
     extraConfig = {
       init.defaultBranch = "main";

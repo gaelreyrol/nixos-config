@@ -9,11 +9,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = github:nix-community/NUR;
-
-    recisio.url = "git+ssh://git@github.com/gaelreyrol/nixos-recisio";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur, recisio }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur }:
     let
       nixConf = pkgs: {
         nix = {
@@ -38,10 +36,6 @@
       };
       userConf = {
         name = "gael";
-        recisio = {
-          user = builtins.getEnv "RECISIO_USER";
-          password = builtins.getEnv "RECISIO_PASSWORD";
-        };
       };
       system = "x86_64-linux";
     in
@@ -83,34 +77,8 @@
             ./users/${userConf.name}/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
-            recisio.nixosModules.default
             ./common/activation/system-report-changes.nix
             {
-              recisio = userConf.recisio // {
-                enable = true;
-              };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${userConf.name} = builtins.import ./users/${userConf.name}/home.nix;
-            }
-          ];
-        };
-        dell = nixpkgs.lib.nixosSystem rec {
-          modules = [
-            (nixConf nixpkgs.legacyPackages.${system})
-            nixos-hardware.nixosModules.dell-precision-5530
-            nixos-hardware.nixosModules.common-gpu-nvidia
-            ./hosts/dell/hardware-configuration.nix
-            ./hosts/dell/configuration.nix
-            ./users/${userConf.name}/configuration.nix
-            nur.nixosModules.nur
-            home-manager.nixosModules.home-manager
-            recisio.nixosModules.default
-            ./common/activation/system-report-changes.nix
-            {
-              recisio = userConf.recisio // {
-                enable = true;
-              };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${userConf.name} = builtins.import ./users/${userConf.name}/home.nix;

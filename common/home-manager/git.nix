@@ -17,21 +17,6 @@ in {
         key = "DFB9B69A2C427F61";
         signByDefault = true;
       };
-      includes = [
-        {
-          condition = "gitdir:/home/gael/dev/recisio/";
-          contents = {
-            user = {
-              email = "gael@recisio.com";
-              name = "Gaël Reyrol";
-              signingKey = "273123EAC37D2A99";
-            };
-            commit = {
-              gpgSign = true;
-            };
-          };
-        }
-      ];
 
       extraConfig = {
         init.defaultBranch = "main";
