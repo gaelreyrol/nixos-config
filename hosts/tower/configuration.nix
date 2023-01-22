@@ -12,8 +12,6 @@
   networking.hostName = "tower"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  systemd.services.strongswan.wantedBy = lib.mkForce [ ];
-
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -99,9 +97,7 @@
     nixpkgs-fmt
     rnix-lsp
     nixdoc
-    strongswan
     networkmanagerapplet
-    networkmanager_strongswan
   ];
 
   services.gnome.gnome-keyring.enable = true;

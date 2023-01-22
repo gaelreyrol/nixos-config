@@ -53,9 +53,7 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/systemd-manager" = {
       command-method = "systemctl";
-      systemd = [
-        ''{"name":"Strongswan","service":"strongswan.service","type":"system"}''
-      ];
+      systemd = [];
     };
   };
 }
