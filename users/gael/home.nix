@@ -99,45 +99,6 @@
     ];
     profiles.default = {
       id = 0;
-      search.engines = {
-        "Nix Packages" = {
-          urls = [{
-            template = "https://search.nixos.org/packages";
-            params = [
-              { name = "type"; value = "packages"; }
-              { name = "query"; value = "{searchTerms}"; }
-            ];
-          }];
-          definedAliases = [ "@np" ];
-        };
-
-        "Nix Options" = {
-          urls = [{
-            template = "https://search.nixos.org/options";
-            params = [
-              { name = "type"; value = "packages"; }
-              { name = "query"; value = "{searchTerms}"; }
-            ];
-          }];
-          definedAliases = [ "@no" ];
-        };
-
-        "NixOS Wiki" = {
-          urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-          definedAliases = [ "@nw" ];
-        };
-
-        "Npm" = {
-          urls = [{ template = "https://www.npmjs.com/search?q={searchTerms}"; }];
-          definedAliases = [ "@npm" ];
-        };
-
-        "Packagist" = {
-          urls = [{ template = "https://packagist.org/?query={searchTerms}"; }];
-          definedAliases = [ "@packagist" ];
-        };
-
-      };
       bookmarks = [
         {
           toolbar = true;
