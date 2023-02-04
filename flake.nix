@@ -56,6 +56,7 @@
               nixos-rebuild
               cargo
               rustc
+              nixos-generators
               ;
             inherit (home-manager.packages.x86_64-linux) home-manager;
           };
