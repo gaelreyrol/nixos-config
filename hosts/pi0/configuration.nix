@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # This value determines the NixOS release from which the default
@@ -8,6 +8,8 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
+
+  sdImage.compressImage = false;
 
   networking.hostName = "pi0";
   networking.wireless.enable = true;

@@ -18,8 +18,6 @@
     yubikey-personalization
     yubikey-manager
 
-    _1password
-
     jetbrains-mono
 
     shellcheck

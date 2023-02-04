@@ -9,9 +9,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = github:nix-community/NUR;
+
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur, nixos-generators }:
     let
       nixConf = pkgs: {
         nix = {
@@ -32,6 +35,7 @@
         };
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [ nur.overlay ];
+  
       };
       userConf = {
         name = "gael";
@@ -64,10 +68,10 @@
       };
 
       nixosConfigurations = {
-        pi0 = nixpkgs.lib.nixosSystem rec {
+        pi0 = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
-            (nixConf nixpkgs.legacyPackages.${system})
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
             ./hosts/pi0/hardware-configuration.nix
             ./hosts/pi0/configuration.nix
             ./users/lab/configuration.nix
@@ -81,10 +85,9 @@
           ];
         };
 
-        tower = nixpkgs.lib.nixosSystem rec {
+        tower = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.common-cpu-intel
             nixos-hardware.nixosModules.common-gpu-nvidia
             nixos-hardware.nixosModules.common-pc
@@ -103,10 +106,9 @@
           ];
         };
 
-        thinkpad = nixpkgs.lib.nixosSystem rec {
+        thinkpad = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.lenovo-thinkpad-p53
             nixos-hardware.nixosModules.common-gpu-nvidia
             ./hosts/thinkpad/hardware-configuration.nix
