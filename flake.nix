@@ -65,6 +65,22 @@
       };
 
       nixosConfigurations = {
+        pi0 = nixpkgs.lib.nixosSystem rec {
+          modules = [
+            (nixConf nixpkgs.legacyPackages.aarch64-linux)
+            ./hosts/pi0/hardware-configuration.nix
+            ./hosts/pi0/configuration.nix
+            ./users/lab/configuration.nix
+            home-manager.nixosModules.home-manager
+            ./common/activation/system-report-changes.nix
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.lab = builtins.import ./users/lab/home.nix;
+            }
+          ];
+        };
+
         tower = nixpkgs.lib.nixosSystem rec {
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
