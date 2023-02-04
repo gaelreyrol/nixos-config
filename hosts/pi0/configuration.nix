@@ -14,10 +14,16 @@
   networking.hostName = "pi0";
   networking.wireless.enable = true;
 
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+    permitRootLogin = "no";
+  };
+
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "fr";
+  console.keyMap = "us";
 
   users.defaultUserShell = pkgs.bash;
 
