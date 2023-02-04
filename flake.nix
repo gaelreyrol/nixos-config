@@ -32,23 +32,21 @@
         };
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [ nur.overlay ];
-        nixpkgs.hostPlatform = "x86_64-linux";
       };
       userConf = {
         name = "gael";
       };
-      system = "x86_64-linux";
     in
     {
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
-      devShells = {
-        ${system}.default = nixpkgs.legacyPackages.${system}.mkShell {
-          name = "gael-on-${system}-system";
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      devShells.x86_64-linux = {
+        default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+          name = "gael-on-x86_64-linux-system";
 
           packages = builtins.attrValues {
 
             inherit
-              (nixpkgs.legacyPackages.${system})
+              (nixpkgs.legacyPackages.x86_64-linux)
               gnumake
               nvd
               scc
@@ -59,15 +57,16 @@
               cargo
               rustc
               ;
-            inherit (home-manager.packages.${system}) home-manager;
+            inherit (home-manager.packages.x86_64-linux) home-manager;
           };
         };
       };
 
       nixosConfigurations = {
         pi0 = nixpkgs.lib.nixosSystem rec {
+          system = "aarch64-linux";
           modules = [
-            (nixConf nixpkgs.legacyPackages.aarch64-linux)
+            (nixConf nixpkgs.legacyPackages.${system})
             ./hosts/pi0/hardware-configuration.nix
             ./hosts/pi0/configuration.nix
             ./users/lab/configuration.nix
@@ -82,6 +81,7 @@
         };
 
         tower = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.common-cpu-intel
@@ -103,6 +103,7 @@
         };
 
         thinkpad = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.lenovo-thinkpad-p53
