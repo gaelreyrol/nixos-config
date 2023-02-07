@@ -16,10 +16,8 @@
 
   services.openssh = {
     enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-    };
+    passwordAuthentication = false;
+    permitRootLogin = "no";
   };
 
   time.timeZone = "Europe/Paris";
@@ -73,14 +71,14 @@
     statusPage = true;
     virtualHosts = {
       "home.local" = {
-        forceSSL = true;
-        enableACME = true;
+        forceSSL = false;
+        enableACME = false;
         locations."/" = {
           proxyPass = "http://[::1]:8123";
           proxyWebsockets = true;
         };
       };
-    }
+    };
   };
 
   services.home-assistant = {
@@ -92,27 +90,20 @@
         temperature_unit = "C";
       };
     };
-    http = {
-      use_x_forwarded_for = true;
-      trusted_proxies = [
-        "127.0.0.1"
-        "::1"
-      ];
-    };
   };
 
-  services.mosquitto = {
-    enable = true;
-  };
+  # services.mosquitto = {
+  #   enable = true;
+  # };
 
-  services.zigbee2mqtt = {
-    enable = true;
-    settings = {
-      homeassistant = config.services.home-assistant.enable;
-      permit_join = true;
-      serial = {
-        port = "/dev/ttyACM0";
-      };
-    };
-  };
+  # services.zigbee2mqtt = {
+  #  enable = true;
+  #   settings = {
+  #     homeassistant = config.services.home-assistant.enable;
+  #     permit_join = true;
+  #     serial = {
+  #       port = "/dev/ttyACM0";
+  #     };
+  #   };
+  #  };
 }

@@ -2,7 +2,7 @@
   description = "system configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager.url = "github:nix-community/home-manager";
@@ -69,6 +69,7 @@
           system = "aarch64-linux";
           modules = [
             "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            (nixConf nixpkgs.legacyPackages.aarch64-linux)
             ./hosts/pi0/hardware-configuration.nix
             ./hosts/pi0/configuration.nix
             ./users/lab/configuration.nix
@@ -85,6 +86,7 @@
         tower = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            (nixConf nixpkgs.legacyPackages.x86_64-linux)
             nixos-hardware.nixosModules.common-cpu-intel
             nixos-hardware.nixosModules.common-gpu-nvidia
             nixos-hardware.nixosModules.common-pc
@@ -106,6 +108,7 @@
         thinkpad = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            (nixConf nixpkgs.legacyPackages.x86_64-linux)
             nixos-hardware.nixosModules.lenovo-thinkpad-p53
             nixos-hardware.nixosModules.common-gpu-nvidia
             ./hosts/thinkpad/hardware-configuration.nix
