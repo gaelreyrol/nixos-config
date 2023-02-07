@@ -18,7 +18,7 @@
     let
       nixConf = pkgs: {
         nix = {
-          package = pkgs.nixVersions.unstable;
+          package = pkgs.nixFlakes;
           extraOptions = ''
             experimental-features = nix-command flakes
             plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
@@ -36,9 +36,6 @@
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [ nur.overlay ];
   
-      };
-      userConf = {
-        name = "gael";
       };
     in
     {
@@ -94,14 +91,14 @@
             nixos-hardware.nixosModules.common-pc-ssd
             ./hosts/tower/hardware-configuration.nix
             ./hosts/tower/configuration.nix
-            ./users/${userConf.name}/configuration.nix
+            ./users/gael/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             ./common/activation/system-report-changes.nix
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${userConf.name} = builtins.import ./users/${userConf.name}/home.nix;
+              home-manager.users.gael = builtins.import ./users/gael/home.nix;
             }
           ];
         };
@@ -113,14 +110,14 @@
             nixos-hardware.nixosModules.common-gpu-nvidia
             ./hosts/thinkpad/hardware-configuration.nix
             ./hosts/thinkpad/configuration.nix
-            ./users/${userConf.name}/configuration.nix
+            ./users/gael/configuration.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             ./common/activation/system-report-changes.nix
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${userConf.name} = builtins.import ./users/${userConf.name}/home.nix;
+              home-manager.users.gael = builtins.import ./users/gael/home.nix;
             }
           ];
         };
