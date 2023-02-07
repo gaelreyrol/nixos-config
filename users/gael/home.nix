@@ -411,6 +411,7 @@
       timonwong.shellcheck
       gruntfuggly.todo-tree
       dhall.vscode-dhall-lsp-server
+      bungcip.better-toml
     ];
     userSettings = {
       "workbench.colorTheme" = "Solarized Light";
