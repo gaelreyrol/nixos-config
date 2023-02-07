@@ -83,22 +83,22 @@
         enableGnomeExtensions = true;
       };
     };
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      french-dictionary
-      french-language-pack
-      onepassword-password-manager
-      facebook-container
-      multi-account-containers
-      decentraleyes
-      clearurls
-      ublock-origin
-      consent-o-matic
-      onetab
-      gnome-shell-integration
-      gsconnect
-    ];
     profiles.default = {
       id = 0;
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        french-dictionary
+        french-language-pack
+        onepassword-password-manager
+        facebook-container
+        multi-account-containers
+        decentraleyes
+        clearurls
+        ublock-origin
+        consent-o-matic
+        onetab
+        gnome-shell-integration
+        gsconnect
+      ];
       bookmarks = [
         {
           toolbar = true;
@@ -395,7 +395,7 @@
     enable = true;
     package = pkgs.vscodium;
     # https://github.com/nix-community/home-manager/issues/2798
-    mutableExtensionsDir = false;
+    # mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       editorconfig.editorconfig
       # vscode-icons-team.vscode-icons
