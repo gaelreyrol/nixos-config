@@ -59,7 +59,60 @@
     nixpkgs-fmt
     rnix-lsp
     nixdoc
+    nginx
+    home-assistant
+    home-assistant-cli
+    mosquitto
+    zigbee2mqtt
   ];
 
   environment.shells = with pkgs; [ fish ];
+
+  services.nginx = {
+    enable = true;
+    statusPage = true;
+    virtualHosts = {
+      "home.local" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://[::1]:8123";
+          proxyWebsockets = true;
+        };
+      };
+    }
+  };
+
+  services.home-assistant = {
+    enable = true;
+    config = {
+      homeassistant = {
+        unit_system = "metric";
+        time_zone = "Europe/Paris";
+        temperature_unit = "C";
+      };
+    };
+    http = {
+      use_x_forwarded_for = true;
+      trusted_proxies = [
+        "127.0.0.1"
+        "::1"
+      ];
+    };
+  };
+
+  services.mosquitto = {
+    enable = true;
+  };
+
+  services.zigbee2mqtt = {
+    enable = true;
+    settings = {
+      homeassistant = config.services.home-assistant.enable;
+      permit_join = true;
+      serial = {
+        port = "/dev/ttyACM0";
+      };
+    };
+  };
 }
