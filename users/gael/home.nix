@@ -99,6 +99,45 @@
         gnome-shell-integration
         gsconnect
       ];
+      # search.engines = {
+      #   "Nix Packages" = {
+      #     urls = [{
+      #       template = "https://search.nixos.org/packages";
+      #       params = [
+      #         { name = "type"; value = "packages"; }
+      #         { name = "query"; value = "{searchTerms}"; }
+      #       ];
+      #     }];
+      #     definedAliases = [ "@np" ];
+      #   };
+
+      #   "Nix Options" = {
+      #     urls = [{
+      #       template = "https://search.nixos.org/options";
+      #       params = [
+      #         { name = "type"; value = "packages"; }
+      #         { name = "query"; value = "{searchTerms}"; }
+      #       ];
+      #     }];
+      #     definedAliases = [ "@no" ];
+      #   };
+
+      #   "NixOS Wiki" = {
+      #     urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+      #     definedAliases = [ "@nw" ];
+      #   };
+
+      #   "Npm" = {
+      #     urls = [{ template = "https://www.npmjs.com/search?q={searchTerms}"; }];
+      #     definedAliases = [ "@npm" ];
+      #   };
+
+      #   "Packagist" = {
+      #     urls = [{ template = "https://packagist.org/?query={searchTerms}"; }];
+      #     definedAliases = [ "@packagist" ];
+      #   };
+
+      # };
       bookmarks = [
         {
           toolbar = true;
@@ -394,8 +433,6 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    # https://github.com/nix-community/home-manager/issues/2798
-    # mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       editorconfig.editorconfig
       # vscode-icons-team.vscode-icons
