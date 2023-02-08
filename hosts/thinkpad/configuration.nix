@@ -11,7 +11,7 @@
 
   networking.hostName = "thinkpad";
   networking.networkmanager.enable = true;
-  networking.nameservers = [ "193.110.81.0" "185.253.5.0" ];
+  networking.networkmanager.insertNameservers = [ "193.110.81.0" "185.253.5.0" ];
 
   time.timeZone = "Europe/Paris";
 
