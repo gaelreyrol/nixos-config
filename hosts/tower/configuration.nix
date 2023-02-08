@@ -9,8 +9,9 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?}
 
-  networking.hostName = "tower"; # Define your hostname.
+  networking.hostName = "tower";
   networking.networkmanager.enable = true;
+  networking.nameservers = [ "193.110.81.0" "185.253.5.0" ];
 
   time.timeZone = "Europe/Paris";
 

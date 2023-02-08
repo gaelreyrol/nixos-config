@@ -13,6 +13,7 @@
 
   networking.hostName = "pi0";
   networking.wireless.enable = true;
+  networking.nameservers = [ "193.110.81.0" "185.253.5.0" ];
 
   services.openssh = {
     enable = true;
