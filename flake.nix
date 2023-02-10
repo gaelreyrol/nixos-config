@@ -122,5 +122,7 @@
           ];
         };
       };
+
+      packages.x86_64-linux.piImage = self.nixosConfigurations.pi0.config.system.build.sdImage;
     };
 }
