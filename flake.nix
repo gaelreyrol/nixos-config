@@ -9,12 +9,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = github:nix-community/NUR;
-
-    nixos-generators.url = "github:nix-community/nixos-generators";
-    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur, nixos-generators }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur }:
     let
       nixConf = pkgs: {
         nix = {
@@ -35,11 +32,11 @@
         };
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [ nur.overlay ];
-  
       };
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+
       devShells.x86_64-linux = {
         default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
           name = "gael-on-x86_64-linux-system";
