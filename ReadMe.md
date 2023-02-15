@@ -1,7 +1,7 @@
 # nixos-config
 
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
-[![.github/workflows/flake.yml](https://github.com/gaelreyrol/nixos-config/actions/workflows/flake.yml/badge.svg)](https://github.com/gaelreyrol/nixos-config/actions/workflows/flake.yml)
+[![.github/workflows/ci.yml](https://github.com/gaelreyrol/nixos-config/actions/workflows/ci.yml/badge.svg)](https://github.com/gaelreyrol/nixos-config/actions/workflows/ci.yml)
 
 ## Setup
 
@@ -36,12 +36,6 @@ keybase pgp export -s | gpg --allow-secret-key-import --import
 ykman otp chalresp --touch --generate 2
 ykpamcfg -2 -v
 ```
-
-## ToDo
-
-- [ ] Refactor with modules
-- [ ] Security with vulnix
-- [ ] Setup Rofi launcher
 
 ## Credits
 
