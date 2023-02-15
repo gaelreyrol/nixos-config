@@ -54,6 +54,7 @@
     postman
     zeal
 
+    rnix-lsp
     shellcheck
     checkmake
     dhall
@@ -435,16 +436,13 @@
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       editorconfig.editorconfig
-      # vscode-icons-team.vscode-icons
       jnoortheen.nix-ide
       octref.vetur
       foam.foam-vscode
       yzhang.markdown-all-in-one
-      # kortina.vscode-markdown-notes
-      # mushan.vscode-paste-image
       hashicorp.terraform
       redhat.vscode-yaml
-      # redhat.ansible
+
       timonwong.shellcheck
       gruntfuggly.todo-tree
       dhall.vscode-dhall-lsp-server
@@ -452,11 +450,14 @@
       dhall.dhall-lang
     ];
     userSettings = {
+      "redhat.telemetry.enabled" = false;
       "workbench.colorTheme" = "Solarized Light";
       "editor.fontFamily" = "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace";
       "editor.fontSize" = 16;
       "nix.enableLanguageServer" = true;
-      "redhat.telemetry.enabled" = false;
+      "nix.serverPath" = "rnix-lsp";
+      "nix.formatterPath" = "nixpkgs-fmt";
+      "vscode-dhall-lsp-server.executable" = "dhall-lsp-server";
     };
   };
 }

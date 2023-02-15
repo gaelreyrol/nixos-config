@@ -99,7 +99,6 @@
     gnomeExtensions.systemd-manager
     dconf2nix
     nixpkgs-fmt
-    rnix-lsp
     nixdoc
     networkmanagerapplet
   ];

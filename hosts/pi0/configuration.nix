@@ -58,7 +58,6 @@
     procs
     fish
     nixpkgs-fmt
-    rnix-lsp
     nixdoc
     nginx
     home-assistant
