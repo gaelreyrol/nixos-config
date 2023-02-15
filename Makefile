@@ -10,10 +10,10 @@ home-manager-diff:
 nixos-switch:
 	nixos-rebuild switch --flake .#${HOSTNAME}
 
-nixos-upgrade:
-	nixos-rebuild switch --upgrade --flake .#${HOSTNAME}
+nixos-build:
+	nixos-rebuild build --flake .#${HOSTNAME}
 
-nixos-diff:
+nix-diff:
 	nix profile diff-closures --profile /nix/var/nix/profiles/system
 
 nix-flake-check:
