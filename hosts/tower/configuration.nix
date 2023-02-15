@@ -11,7 +11,8 @@
 
   networking.hostName = "tower";
   networking.networkmanager.enable = true;
-  networking.networkmanager.insertNameservers = [  # dns0.eu
+  networking.networkmanager.insertNameservers = [
+    # dns0.eu
     "193.110.81.0"
     "185.253.5.0"
   ];

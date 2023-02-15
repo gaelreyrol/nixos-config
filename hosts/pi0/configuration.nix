@@ -12,7 +12,8 @@
   sdImage.compressImage = false;
 
   networking.hostName = "pi0";
-  networking.nameservers = [  # dns0.eu
+  networking.nameservers = [
+    # dns0.eu
     "193.110.81.0"
     "185.253.5.0"
   ];

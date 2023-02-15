@@ -53,7 +53,7 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/systemd-manager" = {
       command-method = "systemctl";
-      systemd = [];
+      systemd = [ ];
     };
   };
 }
