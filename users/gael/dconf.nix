@@ -39,16 +39,16 @@ with lib.hm.gvariant;
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         "caffeine@patapon.info"
         "appindicatorsupport@rgcjonas.gmail.com"
-        "gsconnect@andyholmes.github.io"
-        "trayIconsReloaded@selfmade.pl"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "systemd-manager@hardpixel.eu"
-        "sound-output-device-chooser@kgshank.net"
+        # "sound-output-device-chooser@kgshank.net"
+        "system-monitor-next@paradoxxx.zero.gmail.com"
       ];
     };
 
     "org/gnome/shell/extensions/caffeine" = {
       user-enabled = true;
+      show-indicator = "always";
     };
 
     "org/gnome/shell/extensions/systemd-manager" = {

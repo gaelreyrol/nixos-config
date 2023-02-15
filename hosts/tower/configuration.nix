@@ -91,18 +91,17 @@
     gnome.dconf-editor
     gnome.gnome-themes-extra
     gnomeExtensions.user-themes
-    gnomeExtensions.tray-icons-reloaded
-    gnomeExtensions.gsconnect
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
     gnomeExtensions.removable-drive-menu
+    # https://github.com/kgshank/gse-sound-output-device-chooser/issues/258
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.systemd-manager
+    gnomeExtensions.system-monitor-next
     dconf2nix
     nixpkgs-fmt
     nixdoc
     nvd
-    networkmanagerapplet
   ];
 
   services.gnome.gnome-keyring.enable = true;

@@ -94,12 +94,11 @@
     gnome.dconf-editor
     gnome.gnome-themes-extra
     gnomeExtensions.user-themes
-    gnomeExtensions.tray-icons-reloaded
-    gnomeExtensions.gsconnect
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
     gnomeExtensions.removable-drive-menu
     gnomeExtensions.systemd-manager
+    gnomeExtensions.system-monitor-next
     dconf2nix
     nixpkgs-fmt
     nixdoc
