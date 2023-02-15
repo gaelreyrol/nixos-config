@@ -9,9 +9,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = github:nix-community/NUR;
+
+    sbomnix.url = github:tiiuae/sbomnix;
+    sbomnix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur, sbomnix }:
     let
       nixConf = pkgs: {
         nix = {
@@ -46,6 +49,7 @@
               vulnix
               ;
             inherit (home-manager.packages.x86_64-linux) home-manager;
+            inherit (sbomnix.packages.x86_64-linux) sbomnix;
           };
         };
       };
