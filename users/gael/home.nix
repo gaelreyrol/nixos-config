@@ -449,12 +449,14 @@
       gruntfuggly.todo-tree
       dhall.vscode-dhall-lsp-server
       bungcip.better-toml
+      dhall.dhall-lang
     ];
     userSettings = {
       "workbench.colorTheme" = "Solarized Light";
       "editor.fontFamily" = "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace";
       "editor.fontSize" = 16;
       "nix.enableLanguageServer" = true;
+      "redhat.telemetry.enabled" = false;
     };
   };
 }
