@@ -101,6 +101,7 @@
     dconf2nix
     nixpkgs-fmt
     nixdoc
+    nvd
     networkmanagerapplet
   ];
 

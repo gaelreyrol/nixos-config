@@ -103,6 +103,7 @@
     dconf2nix
     nixpkgs-fmt
     nixdoc
+    nvd
   ];
 
   services.gnome.gnome-keyring.enable = true;

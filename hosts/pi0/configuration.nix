@@ -60,6 +60,7 @@
     fish
     nixpkgs-fmt
     nixdoc
+    nvd
     nginx
     home-assistant
     home-assistant-cli

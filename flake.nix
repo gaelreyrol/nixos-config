@@ -39,22 +39,11 @@
 
       devShells.x86_64-linux = {
         default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
-          name = "gael-on-x86_64-linux-system";
-
           packages = builtins.attrValues {
-
             inherit
               (nixpkgs.legacyPackages.x86_64-linux)
-              gnumake
-              nvd
-              scc
-              vim
-              git
-              nix
-              nixos-rebuild
-              cargo
-              rustc
               nixos-generators
+              vulnix
               ;
             inherit (home-manager.packages.x86_64-linux) home-manager;
           };
