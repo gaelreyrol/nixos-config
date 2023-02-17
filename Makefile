@@ -1,8 +1,8 @@
 HOSTNAME = $(shell hostname)
 USER = $(shell whoami)
 
-home-manager-switch:
-	home-manager switch --flake .#${USER}@${HOSTNAME}
+system-diff:
+	nix profile diff-closures --profile /nix/var/nix/profiles/system
 
 home-manager-diff:
 	nix profile diff-closures --profile /nix/var/nix/profiles/per-user/${USER}/home-manager
@@ -12,9 +12,6 @@ nixos-switch:
 
 nixos-build:
 	nixos-rebuild build --flake .#${HOSTNAME}
-
-nix-diff:
-	nix profile diff-closures --profile /nix/var/nix/profiles/system
 
 nix-flake-check:
 	nix flake check
