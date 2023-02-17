@@ -58,70 +58,22 @@
       };
 
       nixosConfigurations = {
-
-        pi0 = nixpkgs.lib.nixosSystem rec {
+        pi0 = myLib.mkNixosSystem {
           system = "aarch64-linux";
-
-          specialArgs = {
-            inherit self inputs;
-          };
-
-          modules = [
-            (nixConf nixpkgs.legacyPackages.${system})
-            ./hosts/pi0/configuration.nix
-            ./users/lab/configuration.nix
-            home-manager.nixosModules.home-manager
-            ./common/activation/system-report-changes.nix
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.lab = builtins.import ./users/lab/home.nix;
-            }
-          ];
+          host = "pi0";
+          user = "lab";
         };
 
-        tower = nixpkgs.lib.nixosSystem rec {
+        tower = myLib.mkNixosSystem {
           system = "x86_64-linux";
-
-          specialArgs = {
-            inherit self inputs;
-          };
-
-          modules = [
-            (nixConf nixpkgs.legacyPackages.${system})
-            ./hosts/tower/configuration.nix
-            ./users/gael/configuration.nix
-            nur.nixosModules.nur
-            home-manager.nixosModules.home-manager
-            ./common/activation/system-report-changes.nix
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.gael = builtins.import ./users/gael/home.nix;
-            }
-          ];
+          host = "tower";
+          user = "gael";
         };
 
-        thinkpad = nixpkgs.lib.nixosSystem rec {
+        thinkpad = myLib.mkNixosSystem {
           system = "x86_64-linux";
-
-          specialArgs = {
-            inherit self inputs;
-          };
-
-          modules = [
-            (nixConf nixpkgs.legacyPackages.${system})
-            ./hosts/thinkpad/configuration.nix
-            ./users/gael/configuration.nix
-            nur.nixosModules.nur
-            home-manager.nixosModules.home-manager
-            ./common/activation/system-report-changes.nix
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.gael = builtins.import ./users/gael/home.nix;
-            }
-          ];
+          host = "thinkpad";
+          user = "gael";
         };
       };
 
