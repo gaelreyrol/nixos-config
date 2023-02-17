@@ -60,7 +60,6 @@
           modules = [
             "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
             (nixConf nixpkgs.legacyPackages.aarch64-linux)
-            ./hosts/pi0/hardware-configuration.nix
             ./hosts/pi0/configuration.nix
             ./users/lab/configuration.nix
             home-manager.nixosModules.home-manager
@@ -81,7 +80,6 @@
             nixos-hardware.nixosModules.common-gpu-nvidia
             nixos-hardware.nixosModules.common-pc
             nixos-hardware.nixosModules.common-pc-ssd
-            ./hosts/tower/hardware-configuration.nix
             ./hosts/tower/configuration.nix
             ./users/gael/configuration.nix
             nur.nixosModules.nur
@@ -101,7 +99,6 @@
             (nixConf nixpkgs.legacyPackages.x86_64-linux)
             nixos-hardware.nixosModules.lenovo-thinkpad-p53
             nixos-hardware.nixosModules.common-gpu-nvidia
-            ./hosts/thinkpad/hardware-configuration.nix
             ./hosts/thinkpad/configuration.nix
             ./users/gael/configuration.nix
             nur.nixosModules.nur
