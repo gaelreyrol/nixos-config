@@ -4,6 +4,7 @@
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
+      (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
     ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)

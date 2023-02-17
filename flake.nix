@@ -58,7 +58,6 @@
         pi0 = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
             (nixConf nixpkgs.legacyPackages.aarch64-linux)
             ./hosts/pi0/configuration.nix
             ./users/lab/configuration.nix
