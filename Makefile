@@ -13,8 +13,5 @@ nixos-switch:
 nixos-build:
 	nixos-rebuild build --flake .#${HOSTNAME}
 
-nix-flake-check:
-	nix flake check
-
 nix-garbage-collect:
 	nix-collect-garbage -d

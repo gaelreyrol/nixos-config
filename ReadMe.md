@@ -12,17 +12,32 @@ cd ~/.config/nix
 
 ## Actions
 
-### Switch
+### Build system
+
+```bash
+sudo make nixos-build
+```
+
+### Switch system
 
 ```bash
 sudo make nixos-switch
 ```
 
-### Upgrade
+### Garbage collect
 
 ```bash
-sudo make nixos-upgrade
+sudo make nix-garbage-collect
 ```
+
+### Diff system & home-manager generations
+
+```bash
+make system-diff
+make home-manager-diff
+```
+
+## Post actions
 
 ### Import Keybase keys
 
