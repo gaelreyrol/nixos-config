@@ -17,6 +17,11 @@
     "185.253.5.0"
   ];
 
+  services.journald.extraConfig = ''
+    SystemMaxUse=100M
+    MaxFileSec=5day
+  '';
+
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";

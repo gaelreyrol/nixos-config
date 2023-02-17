@@ -18,6 +18,11 @@
     "185.253.5.0"
   ];
 
+  services.journald.extraConfig = ''
+    SystemMaxUse=100M
+    MaxFileSec=5day
+  '';
+
   services.openssh = {
     enable = true;
     passwordAuthentication = false;
