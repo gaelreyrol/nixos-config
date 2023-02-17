@@ -127,11 +127,16 @@
             definedAliases = [ "@no" ];
           };
 
-          "NixOS Wiki" = {
+          "Nix Wiki" = {
             urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-            iconUpdateURL = "https://nixos.wiki/favicon.png";
-            updateInterval = 24 * 60 * 60 * 1000; # every day
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@nw" ];
+          };
+
+          "Nix Manual" = {
+            urls = [{ template = "https://nixos.org/manual/nix/stable/introduction.html?search={searchTerms}"; }];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@nm" ];
           };
         };
       };
@@ -142,6 +147,10 @@
             {
               name = "Add to bookmarks";
               url = "javascript:(function(){var a=window,b=document,c=encodeURIComponent,e=c(document.title),d=a.open('https://cloud.gaelreyrol.com/apps/bookmarks/bookmarklet?url='+c(b.location)+'&title='+e,'bkmk_popup','left='+((a.screenX||a.screenLeft)+10)+',top='+((a.screenY||a.screenTop)+10)+',height=650px,width=550px,resizable=1,alwaysRaised=1');a.setTimeout(function(){d.focus()},300);})();";
+            }
+            {
+              name = "NixOS Manual";
+              url = "https://nixos.org/manual/nixos/stable/index.html";
             }
             {
               name = "Home Manager";
