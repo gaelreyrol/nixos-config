@@ -1,9 +1,11 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ inputs, config, lib, pkgs, modulesPath, ... }:
 
 {
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p53
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     ];
 
   boot.loader.systemd-boot.enable = true;

@@ -1,9 +1,13 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ inputs, config, lib, pkgs, modulesPath, ... }:
 
 {
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+      inputs.nixos-hardware.nixosModules.common-pc
+      inputs.nixos-hardware.nixosModules.common-pc-ssd
     ];
 
   boot.loader.efi.canTouchEfiVariables = true;

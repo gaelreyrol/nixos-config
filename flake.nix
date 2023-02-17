@@ -61,6 +61,11 @@
 
         pi0 = nixpkgs.lib.nixosSystem rec {
           system = "aarch64-linux";
+
+          specialArgs = {
+            inherit self inputs;
+          };
+
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
             ./hosts/pi0/configuration.nix
@@ -77,12 +82,13 @@
 
         tower = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
+
+          specialArgs = {
+            inherit self inputs;
+          };
+
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
-            nixos-hardware.nixosModules.common-cpu-intel
-            nixos-hardware.nixosModules.common-gpu-nvidia
-            nixos-hardware.nixosModules.common-pc
-            nixos-hardware.nixosModules.common-pc-ssd
             ./hosts/tower/configuration.nix
             ./users/gael/configuration.nix
             nur.nixosModules.nur
@@ -98,10 +104,13 @@
 
         thinkpad = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
+
+          specialArgs = {
+            inherit self inputs;
+          };
+
           modules = [
             (nixConf nixpkgs.legacyPackages.${system})
-            nixos-hardware.nixosModules.lenovo-thinkpad-p53
-            nixos-hardware.nixosModules.common-gpu-nvidia
             ./hosts/thinkpad/configuration.nix
             ./users/gael/configuration.nix
             nur.nixosModules.nur

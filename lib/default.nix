@@ -7,6 +7,10 @@ in
   mkNixOsSystem = { system, host, user }: inputs.nixpkgs.lib.nixosSystem rec {
     inherit system;
 
+    specialArgs = {
+      inherit self inputs;
+    };
+
     modules = [
       (nixConf nixpkgs.legacyPackages.${system})
       ./hosts/${host}/configuration.nix
