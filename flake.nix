@@ -14,48 +14,12 @@
     sbomnix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, nur, home-manager, sbomnix }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     let
-      nixConf = pkgs: {
-        nix = {
-          package = pkgs.nixFlakes;
-          extraOptions = ''
-            experimental-features = nix-command flakes
-            plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
-            min-free = 1073741824
-            max-free = 3221225472
-          '';
-          gc = {
-            automatic = true;
-            dates = "daily";
-            persistent = true;
-            options = "--delete-older-than 60d";
-          };
-          settings.auto-optimise-store = true;
-        };
-        nixpkgs.config.allowUnfree = true;
-        nixpkgs.overlays = [ nur.overlay ];
-      };
-      myLib = import ./lib/default.nix {
-        inherit inputs nixConf;
-      };
+      myLib = import ./lib/default.nix { inherit inputs; };
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-
-      devShells.x86_64-linux = {
-        default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
-          packages = builtins.attrValues {
-            inherit
-              (nixpkgs.legacyPackages.x86_64-linux)
-              nixos-generators
-              vulnix
-              ;
-            inherit (home-manager.packages.x86_64-linux) home-manager;
-            inherit (sbomnix.packages.x86_64-linux) sbomnix;
-          };
-        };
-      };
 
       nixosConfigurations = {
         pi0 = myLib.mkNixosSystem {
@@ -77,6 +41,6 @@
         };
       };
 
-      packages.x86_64-linux.piImage = self.nixosConfigurations.pi0.config.system.build.sdImage;
+      packages.x86_64-linux.pi0Image = self.nixosConfigurations.pi0.config.system.build.sdImage;
     };
 }

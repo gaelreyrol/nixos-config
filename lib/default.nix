@@ -1,10 +1,10 @@
-{ inputs, nixConf, ... }:
+{ inputs, ... }:
 
 let
   inherit (inputs) self nixpkgs nur home-manager;
 in
 {
-  mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem rec {
+  mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem {
     inherit system;
 
     specialArgs = {
@@ -12,12 +12,19 @@ in
     };
 
     modules = [
-      (nixConf nixpkgs.legacyPackages.${system})
+      ({ config, ... }: {
+        nixpkgs.overlays = [
+          nur.overlay
+        ];
+      })
+
+      ../common/nix
+      ../hosts/common
       ../hosts/${host}/configuration.nix
       ../users/${user}/configuration.nix
+
       home-manager.nixosModules.home-manager
       nur.nixosModules.nur
-      ../common/activation/system-report-changes.nix
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
