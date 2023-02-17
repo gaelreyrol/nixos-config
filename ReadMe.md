@@ -44,3 +44,5 @@ ykpamcfg -2 -v
 - https://github.com/stefanDeveloper/nixos-lenovo-config
 - https://github.com/hlissner/dotfiles
 - https://github.com/Xe/nixos-configs
+- https://github.com/jakehamilton/config
+- https://github.com/drupol/nixos-x260
