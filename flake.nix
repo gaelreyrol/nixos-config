@@ -8,10 +8,6 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-
-    sbomnix.url = github:tiiuae/sbomnix;
-    sbomnix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, nixpkgs, ... }:
@@ -19,28 +15,32 @@
       myLib = import ./lib/default.nix { inherit inputs; };
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      formatter = {
+        x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      };
 
-      nixosConfigurations = {
-        pi0 = myLib.mkNixosSystem {
+      nixosConfigurations = myLib.mkNixosSystems [
+        {
           system = "aarch64-linux";
           host = "pi0";
           user = "lab";
-        };
-
-        tower = myLib.mkNixosSystem {
+        }
+        {
           system = "x86_64-linux";
           host = "tower";
           user = "gael";
-        };
-
-        thinkpad = myLib.mkNixosSystem {
+        }
+        {
           system = "x86_64-linux";
           host = "thinkpad";
           user = "gael";
+        }
+      ];
+
+      packages = {
+        x86_64-linux = {
+          pi0Image = self.nixosConfigurations.pi0.config.system.build.sdImage;
         };
       };
-
-      packages.x86_64-linux.pi0Image = self.nixosConfigurations.pi0.config.system.build.sdImage;
     };
 }

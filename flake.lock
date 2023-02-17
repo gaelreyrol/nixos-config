@@ -72,28 +72,7 @@
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nur": "nur",
-        "sbomnix": "sbomnix"
-      }
-    },
-    "sbomnix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1676442694,
-        "narHash": "sha256-UZccjXZR6DYw4LCqy+RJx5UkyQbhi2OjhX23Qx31zc0=",
-        "owner": "tiiuae",
-        "repo": "sbomnix",
-        "rev": "ced94bc02164c41c67e3e336444b6f15a3d16adc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tiiuae",
-        "repo": "sbomnix",
-        "type": "github"
+        "nur": "nur"
       }
     },
     "utils": {

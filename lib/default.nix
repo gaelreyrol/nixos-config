@@ -3,7 +3,7 @@
 let
   inherit (inputs) self nixpkgs nur home-manager;
 in
-{
+rec {
   mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem {
     inherit system;
 
@@ -32,4 +32,13 @@ in
       }
     ];
   };
+
+  mkNixosSystems = systems: builtins.listToAttrs (
+    builtins.map
+      (system: {
+        name = system.host;
+        value = (mkNixosSystem system);
+      })
+      systems
+  );
 }
