@@ -21,6 +21,7 @@
   '';
 
   environment.systemPackages = with pkgs; [
+    busybox
     openssl
     gnumake
     pciutils
