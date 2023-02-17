@@ -19,7 +19,6 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiSupport = true;
 
-
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
 
@@ -53,4 +52,3 @@
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
-

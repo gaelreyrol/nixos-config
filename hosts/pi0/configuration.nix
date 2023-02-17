@@ -7,6 +7,8 @@
 
   system.stateVersion = "22.11";
 
+  networking.hostName = "pi0";
+
   sdImage.compressImage = false;
 
   services.openssh = {

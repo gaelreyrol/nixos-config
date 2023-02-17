@@ -18,6 +18,8 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   boot.initrd.luks.devices."system" =
     {
       device = "/dev/disk/by-uuid/40de7136-9a09-47cd-94e5-75901ad435f6";
@@ -51,5 +53,6 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

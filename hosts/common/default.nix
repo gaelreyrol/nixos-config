@@ -1,17 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ../../common/activation
-  ];
-
   boot.cleanTmpDir = true;
 
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  networking.hostName = config.system.name;
   networking.networkmanager.enable = true;
   networking.networkmanager.insertNameservers = [
     # dns0.eu
@@ -55,4 +50,9 @@
   users.defaultUserShell = pkgs.bash;
 
   environment.shells = with pkgs; [ fish ];
+
+  system.activationScripts.report-changes = ''
+    PATH=$PATH:${lib.makeBinPath [ pkgs.nvd pkgs.nix ]}
+    nvd diff $(ls -dv /nix/var/nix/profiles/system-*-link | tail -2) && echo 'OK' || echo 'NOK'
+  '';
 }
