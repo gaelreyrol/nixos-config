@@ -2,30 +2,36 @@
 
 {
   services.xserver.enable = true;
+  services.xserver.libinput.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
 
   environment.systemPackages = with pkgs; [
+    dconf2nix
     xdg-utils
     xclip
     alacritty
     evolution-data-server
     gthumb
+
     gnome.nautilus
     gnome.nautilus-python
     gnome.gnome-tweaks
     gnome.dconf-editor
     gnome.gnome-themes-extra
+
     gnomeExtensions.user-themes
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
     gnomeExtensions.removable-drive-menu
-    # https://github.com/kgshank/gse-sound-output-device-chooser/issues/258
-    gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.audio-output-switcher # incompatible version
+    gnomeExtensions.sound-output-device-chooser # incompatible version
     gnomeExtensions.systemd-manager
-    gnomeExtensions.system-monitor-next
-    dconf2nix
+    gnomeExtensions.big-avatar # incompatible version
+    gnomeExtensions.no-overview
+    gnomeExtensions.wireless-hid
+    gnomeExtensions.gtile
   ];
 
   services.gnome.gnome-keyring.enable = true;

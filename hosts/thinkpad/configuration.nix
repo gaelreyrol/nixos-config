@@ -24,7 +24,6 @@
     nvidiaBusId = "PCI:02:00:0";
   };
 
-  services.xserver.libinput.enable = true;
   services.xserver = {
     layout = "fr";
     xkbVariant = "azerty";

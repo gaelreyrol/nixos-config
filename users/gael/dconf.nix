@@ -36,13 +36,15 @@ with lib.hm.gvariant;
 
     "org/gnome/shell" = {
       enabled-extensions = [
-        "drive-menu@gnome-shell-extensions.gcampax.github.com"
-        "caffeine@patapon.info"
         "appindicatorsupport@rgcjonas.gmail.com"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
+        "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "caffeine@patapon.info"
         "systemd-manager@hardpixel.eu"
-        # "sound-output-device-chooser@kgshank.net"
-        "system-monitor-next@paradoxxx.zero.gmail.com"
+        "gTile@vibou"
+        "wireless-hid@chlumskyvaclav.gmail.com"
+        "no-overview@fthx"
       ];
     };
 
