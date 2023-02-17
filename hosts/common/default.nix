@@ -24,6 +24,8 @@
     openssl
     gnumake
     pciutils
+    lshw
+    ethtool
     vim
     wget
     curl
