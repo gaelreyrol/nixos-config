@@ -99,45 +99,42 @@
         gnome-shell-integration
         gsconnect
       ];
-      # search.engines = {
-      #   "Nix Packages" = {
-      #     urls = [{
-      #       template = "https://search.nixos.org/packages";
-      #       params = [
-      #         { name = "type"; value = "packages"; }
-      #         { name = "query"; value = "{searchTerms}"; }
-      #       ];
-      #     }];
-      #     definedAliases = [ "@np" ];
-      #   };
+      search = {
+        default = "Google";
+        force = true;
+        engines = {
+          "Nix Packages" = {
+            urls = [{
+              template = "https://search.nixos.org/packages";
+              params = [
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@np" ];
+          };
 
-      #   "Nix Options" = {
-      #     urls = [{
-      #       template = "https://search.nixos.org/options";
-      #       params = [
-      #         { name = "type"; value = "packages"; }
-      #         { name = "query"; value = "{searchTerms}"; }
-      #       ];
-      #     }];
-      #     definedAliases = [ "@no" ];
-      #   };
+          "Nix Options" = {
+            urls = [{
+              template = "https://search.nixos.org/options";
+              params = [
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@no" ];
+          };
 
-      #   "NixOS Wiki" = {
-      #     urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-      #     definedAliases = [ "@nw" ];
-      #   };
-
-      #   "Npm" = {
-      #     urls = [{ template = "https://www.npmjs.com/search?q={searchTerms}"; }];
-      #     definedAliases = [ "@npm" ];
-      #   };
-
-      #   "Packagist" = {
-      #     urls = [{ template = "https://packagist.org/?query={searchTerms}"; }];
-      #     definedAliases = [ "@packagist" ];
-      #   };
-
-      # };
+          "NixOS Wiki" = {
+            urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+            iconUpdateURL = "https://nixos.wiki/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "@nw" ];
+          };
+        };
+      };
       bookmarks = [
         {
           toolbar = true;
