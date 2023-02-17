@@ -1,11 +1,19 @@
 { config, pkgs, ... }:
 
+let
+  gdmHome = config.users.users.gdm.home;
+  monitors = ../../assets/monitors.xml;
+in
 {
   services.xserver.enable = true;
   services.xserver.libinput.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  systemd.tmpfiles.rules = [
+    "d ${gdmHome}/.config 0711 gdm gdm"
+    "L+ ${gdmHome}/.config/monitors.xml - - - - ${monitors}"
+  ];
 
   environment.systemPackages = with pkgs; [
     dconf2nix
