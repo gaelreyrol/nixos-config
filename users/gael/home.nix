@@ -69,6 +69,7 @@
 
   programs.gpg.enable = true;
   services.gpg-agent.enable = true;
+  services.gpg-agent.enableSshSupport = true;
   services.gpg-agent.enableFishIntegration = true;
 
   programs.vim.enable = true;
