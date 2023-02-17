@@ -50,8 +50,6 @@
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  networking.useDHCP = lib.mkDefault true;
-
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

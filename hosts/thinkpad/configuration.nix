@@ -7,25 +7,7 @@
 
   system.stateVersion = "22.11";
 
-  networking.hostName = "thinkpad";
-  networking.networkmanager.enable = true;
-  networking.networkmanager.insertNameservers = [
-    # dns0.eu
-    "193.110.81.0"
-    "185.253.5.0"
-  ];
-
-  services.journald.extraConfig = ''
-    SystemMaxUse=100M
-    MaxFileSec=5day
-  '';
-
-  time.timeZone = "Europe/Paris";
-
-  i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "fr";
-
-  services.xserver.enable = true;
 
   hardware.nvidia.prime = {
     offload.enable = true;
@@ -33,8 +15,10 @@
     nvidiaBusId = "PCI:02:00:0";
   };
 
+  services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
   services.xserver.libinput.enable = true;
   services.xserver = {
     layout = "fr";
@@ -42,6 +26,9 @@
   };
 
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
 
   hardware.bluetooth.enable = true;
 
@@ -57,37 +44,11 @@
 
   services.fwupd.enable = true;
 
-  users.defaultUserShell = pkgs.bash;
-
   fonts.fontconfig.enable = true;
 
   environment.systemPackages = with pkgs; [
-    openssl
-    gnumake
-    pciutils
-    yubico-pam
     xdg-utils
-    vim
-    wget
-    curl
-    git
-    tmux
-    zellij
-    jq
-    ripgrep
-    fzf
-    dogdns
-    exa
-    bat
-    delta
-    duf
-    broot
-    fd
-    tldr
-    procs
-    httpie
     xclip
-    fish
     alacritty
     evolution-data-server
     gthumb
@@ -100,12 +61,11 @@
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
     gnomeExtensions.removable-drive-menu
+    # https://github.com/kgshank/gse-sound-output-device-chooser/issues/258
+    gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.systemd-manager
     gnomeExtensions.system-monitor-next
     dconf2nix
-    nixpkgs-fmt
-    nixdoc
-    nvd
   ];
 
   services.gnome.gnome-keyring.enable = true;
@@ -145,7 +105,4 @@
     "x-scheme-handler/about" = "firefox.desktop";
     "x-scheme-handler/unknown" = "firefox.desktop";
   };
-
-  environment.shells = with pkgs; [ fish ];
 }
-
