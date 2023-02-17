@@ -41,6 +41,7 @@
     fd
     tldr
     procs
+    httpie
     fish
     nixpkgs-fmt
     nixdoc
