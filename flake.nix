@@ -4,17 +4,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nur.url = github:nix-community/NUR;
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nur.url = github:nix-community/NUR;
 
     sbomnix.url = github:tiiuae/sbomnix;
     sbomnix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, nur, sbomnix }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, nur, home-manager, sbomnix }:
     let
       nixConf = pkgs: {
         nix = {
@@ -36,6 +36,9 @@
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [ nur.overlay ];
       };
+      myLib = import ./lib/default.nix {
+        inherit inputs nixConf;
+      };
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
@@ -55,10 +58,11 @@
       };
 
       nixosConfigurations = {
-        pi0 = nixpkgs.lib.nixosSystem {
+
+        pi0 = nixpkgs.lib.nixosSystem rec {
           system = "aarch64-linux";
           modules = [
-            (nixConf nixpkgs.legacyPackages.aarch64-linux)
+            (nixConf nixpkgs.legacyPackages.${system})
             ./hosts/pi0/configuration.nix
             ./users/lab/configuration.nix
             home-manager.nixosModules.home-manager
@@ -71,10 +75,10 @@
           ];
         };
 
-        tower = nixpkgs.lib.nixosSystem {
+        tower = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
           modules = [
-            (nixConf nixpkgs.legacyPackages.x86_64-linux)
+            (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.common-cpu-intel
             nixos-hardware.nixosModules.common-gpu-nvidia
             nixos-hardware.nixosModules.common-pc
@@ -92,10 +96,10 @@
           ];
         };
 
-        thinkpad = nixpkgs.lib.nixosSystem {
+        thinkpad = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
           modules = [
-            (nixConf nixpkgs.legacyPackages.x86_64-linux)
+            (nixConf nixpkgs.legacyPackages.${system})
             nixos-hardware.nixosModules.lenovo-thinkpad-p53
             nixos-hardware.nixosModules.common-gpu-nvidia
             ./hosts/thinkpad/configuration.nix
