@@ -73,8 +73,8 @@
   services.gpg-agent.enableFishIntegration = true;
 
   programs.vim.enable = true;
-
   programs.jq.enable = true;
+  programs.htop.enable = true;
 
   programs.firefox = {
     enable = true;
