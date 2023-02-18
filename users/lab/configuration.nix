@@ -4,7 +4,7 @@
   users.users.lab = {
     isNormalUser = true;
     description = "Home Lab";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.fish;
     password = "lab";
 
