@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.myNixOSModules.security.gpg;
+  cfg = config.gaelreyrol.security.gpg;
 in
 {
-  options.myNixOSModules.security.gpg = with types; {
+  options.gaelreyrol.security.gpg = with types; {
     enable = mkEnableOption "Whether or not to enable GPG.";
   };
 

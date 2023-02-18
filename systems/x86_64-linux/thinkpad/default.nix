@@ -17,10 +17,10 @@
 
   services.fwupd.enable = true;
 
-  gaelreyrol = {
-    archetypes = {
-      workstation.enable = true;
-    };
-  };
+  # gaelreyrol = {
+  #   archetypes = {
+  #     workstation.enable = true;
+  #   };
+  # };
 }
 

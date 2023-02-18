@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.myNixOSModules.system.locale;
+  cfg = config.gaelreyrol.system.locale;
 in
 {
-  options.myNixOSModules.system.locale = with types; {
+  options.gaelreyrol.system.locale = with types; {
     enable = mkEnableOption "Whether or not to manage locale settings.";
     keyMap = mkOption {
       type = (enum [ "us" "fr" ]);

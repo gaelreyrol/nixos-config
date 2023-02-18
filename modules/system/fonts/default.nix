@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.myNixOSModules.system.fonts;
+  cfg = config.gaelreyrol.system.fonts;
 in
 {
-  options.myNixOSModules.system.fonts = with types; {
+  options.gaelreyrol.system.fonts = with types; {
     enable = mkEnableOption "Whether or not to manage fonts.";
     fonts = mkOption {
       type = (listOf package);
