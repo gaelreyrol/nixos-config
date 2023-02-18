@@ -27,11 +27,11 @@
 
     settings = {
       auto-optimise-store = true;
-      # trusted-users = [
-      #   "root"
-      #   "gael"
-      #   "lab"
-      # ];
+      trusted-users = [
+        "root"
+        "gael"
+        "lab"
+      ];
       secret-key-files = "/var/nix/cache-priv-key.pem";
       trusted-public-keys = [
         "tower:vj89DUI6QATXfwiGzRGX8Y5FEtOWDQ4GUSscdc5e5vE="
