@@ -8,8 +8,10 @@
   system.stateVersion = "22.11";
 
   networking.hostName = "pi0";
+  networking.firewall.allowedTCPPorts = [ 8123 ];
 
   sdImage.compressImage = false;
+  security.sudo.wheelNeedsPassword = false;
 
   services.openssh = {
     enable = true;
@@ -57,10 +59,13 @@
 
   # services.mosquitto = {
   #   enable = true;
+  #   settings = {
+  #     allow_anonymous = true;
+  #   };
   # };
 
   # services.zigbee2mqtt = {
-  #  enable = true;
+  #   enable = true;
   #   settings = {
   #     homeassistant = config.services.home-assistant.enable;
   #     permit_join = true;
@@ -68,5 +73,5 @@
   #       port = "/dev/ttyACM0";
   #     };
   #   };
-  #  };
+  # };
 }
