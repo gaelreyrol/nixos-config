@@ -10,6 +10,9 @@ home-manager-diff:
 nixos-switch:
 	nixos-rebuild switch --flake .#${HOSTNAME}
 
+nixos-upgrade:
+	nixos-rebuild switch --upgrade --flake .#${HOSTNAME}
+
 nixos-build:
 	nixos-rebuild build --flake .#${HOSTNAME}
 

@@ -14,6 +14,12 @@ rec {
     modules = [
       ({ config, ... }: {
         nixpkgs.overlays = [
+          (final: prev: {
+            unstable = import inputs.unstable {
+              inherit (final) config;
+              inherit system;
+            };
+          })
           nur.overlay
         ];
       })

@@ -2,7 +2,7 @@
 
 {
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.unstable.nix;
 
     # https://jackson.dev/post/nix-reasonable-defaults/
     extraOptions = ''
