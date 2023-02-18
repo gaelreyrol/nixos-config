@@ -18,7 +18,7 @@
 
   gaelreyrol = {
     archetypes = {
-      workstation = true;
+      workstation.enable = true;
     };
   };
 }

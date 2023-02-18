@@ -14,7 +14,7 @@ in
     };
     package = mkOption {
       type = package;
-      default = pkgs.nixFlakes;
+      default = pkgs.nixUnstable;
       description = "Which nix package to use.";
     };
   };

@@ -25,7 +25,7 @@
       fullName = "Personal Homelab";
     };
     archetypes = {
-      homelab = true;
+      homelab.enable = true;
     };
   };
 

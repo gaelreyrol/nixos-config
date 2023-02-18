@@ -51,7 +51,7 @@
       channels-config.allowUnfree = true;
 
       overlays = with inputs; [
-        nur.overlays.default
+        nur.overlay
       ];
 
       systems.modules = with inputs; [
