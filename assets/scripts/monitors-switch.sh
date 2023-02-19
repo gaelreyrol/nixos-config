@@ -9,11 +9,13 @@ function monitors-switch {
     if [ "$a" = "1" ]; then
       clear
       printf "Switching to WORKSTATION..."
-        ln -s ~/.config/nix/assets/monitors/workstation.xml ~/.config/monitors.xml && killall -SIGQUIT gnome-shell
+        rm ~/.config/monitors.xml
+        ln -s ~/.config/nix/assets/monitors/workstation.xml ~/.config/monitors.xml && pkill -SIGQUIT gnome-shell
     elif [ "$a" = "2" ]; then
       clear
       printf "Switching to TV..."
-        ln -s ~/.config/nix/assets/monitors/tv.xml ~/.config/monitors.xml && killall -SIGQUIT gnome-shell
+        rm ~/.config/monitors.xml
+        ln -s ~/.config/nix/assets/monitors/tv.xml ~/.config/monitors.xml && pkill -SIGQUIT gnome-shell
     elif [ "$a" = "3" ]; then
       clear
       printf "Quitting script..." && sleep 1s
