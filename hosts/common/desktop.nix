@@ -2,7 +2,7 @@
 
 let
   gdmHome = config.users.users.gdm.home;
-  monitors = ../../assets/monitors.xml;
+  monitors = ../../assets/monitors/workstation.xml;
 in
 {
   services.xserver.enable = true;
