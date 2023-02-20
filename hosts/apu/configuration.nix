@@ -7,6 +7,11 @@
 
   system.stateVersion = "22.11";
 
+  environment.systemPackages = with pkgs; [
+    # https://wiki.archlinux.org/title/PC_speaker#Beep
+    beep
+  ];
+
   networking.hostName = "apu";
 
   sdImage.compressImage = false;
