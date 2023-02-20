@@ -32,7 +32,7 @@ let
           clear
           printf "Switching to TV..."
             rm $USER_MONITORS_PATH
-            ln -s $MONITORS_PATH/monitors/tv.xml $USER_MONITORS_PATH && pkill -SIGQUIT gnome-shell
+            ln -s $MONITORS_PATH/tv.xml $USER_MONITORS_PATH && pkill -SIGQUIT gnome-shell
         elif [ "$a" = "3" ]; then
           clear
           printf "Quitting script..." && sleep 1s
