@@ -14,6 +14,10 @@
 
   system.stateVersion = "22.11";
 
+  environment.systemPackages = with pkgs; [
+    myPkgs.gnome-monitors-switch
+  ];
+
   networking.hostName = "tower";
 
   console.keyMap = "us";

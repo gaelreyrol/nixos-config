@@ -20,6 +20,7 @@ rec {
               inherit system;
             };
           })
+          (import ../packages)
           nur.overlay
         ];
       })

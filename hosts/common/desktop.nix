@@ -2,7 +2,7 @@
 
 let
   gdmHome = config.users.users.gdm.home;
-  monitors = ../../assets/monitors/workstation.xml;
+  defaultMonitors = ../../assets/monitors/workstation.xml;
 in
 {
   services.xserver.enable = true;
@@ -10,9 +10,11 @@ in
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # https://wiki.archlinux.org/title/GDM#Setup_default_monitor_settings
+  # https://wiki.archlinux.org/title/systemd#systemd-tmpfiles_-_temporary_files
   systemd.tmpfiles.rules = [
     "d ${gdmHome}/.config 0711 gdm gdm"
-    "L+ ${gdmHome}/.config/monitors.xml - - - - ${monitors}"
+    "L+ ${gdmHome}/.config/monitors.xml - - - - ${defaultMonitors}"
   ];
 
   environment.systemPackages = with pkgs; [
