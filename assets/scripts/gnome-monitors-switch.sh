@@ -4,7 +4,7 @@ set -eu
 
 # TODO: Stay complient with https://wiki.archlinux.org/title/GDM#Setup_default_monitor_settings
 
-function monitors-switch {
+function switch {
   clear
   printf "\e[1mSELECTING VIDEO OUTPUT\e[0m\n  1 -> WORKSTATION\n  2 -> TV\n  3 -> CANCEL\n\n"
   read -p "Option: " a
@@ -25,4 +25,4 @@ function monitors-switch {
   exit 0
 }
 
-monitors-switch
+switch
