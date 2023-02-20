@@ -5,11 +5,11 @@
     [
       (modulesPath + "/installer/scan/not-detected.nix")
       (modulesPath + "/installer/sd-card/sd-image-x86_64.nix")
-      inputs.nixos-hardware.nixosModules.pcengines.apu
+      inputs.nixos-hardware.nixosModules.pcengines-apu
     ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.version = 2;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "ehci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
@@ -18,14 +18,9 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-label/nixos";
+      device = "/dev/disk/by-label/NIXOS_SD";
       fsType = "ext4";
-    };
-
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-label/boot";
-      fsType = "vfat";
+      options = [ "noatime" ];
     };
 
   swapDevices = [ ];

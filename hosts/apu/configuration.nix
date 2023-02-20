@@ -20,15 +20,4 @@
   };
 
   console.keyMap = "us";
-
-  services.home-assistant = {
-    enable = true;
-    config = {
-      homeassistant = {
-        unit_system = "metric";
-        time_zone = "Europe/Paris";
-        temperature_unit = "C";
-      };
-    };
-  };
 }
