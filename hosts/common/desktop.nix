@@ -2,7 +2,7 @@
 
 let
   gdmHome = config.users.users.gdm.home;
-  defaultMonitors = ../../assets/monitors/workstation.xml;
+  defaultMonitors = pkgs.myPkgs.gnome-monitors-switch + "/workstation.xml";
 in
 {
   services.xserver.enable = true;
