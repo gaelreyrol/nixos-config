@@ -28,6 +28,11 @@
         }
         {
           system = "x86_64-linux";
+          host = "apu";
+          user = "lab";
+        }
+        {
+          system = "x86_64-linux";
           host = "tower";
           user = "gael";
         }
@@ -41,6 +46,7 @@
       packages = {
         x86_64-linux = {
           pi0Image = self.nixosConfigurations.pi0.config.system.build.sdImage;
+          apuImage = self.nixosConfigurations.apu.config.system.build.sdImage;
         };
       };
     };

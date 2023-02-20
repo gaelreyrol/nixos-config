@@ -11,6 +11,7 @@
   networking.firewall.allowedTCPPorts = [ 8123 ];
 
   sdImage.compressImage = false;
+
   security.sudo.wheelNeedsPassword = false;
 
   services.openssh = {
