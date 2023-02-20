@@ -1,4 +1,4 @@
-{ stdenv, writeShellScriptBin, symlinkJoin }:
+{ stdenv, writeShellApplication, symlinkJoin }:
 
 let
   monitorsFiles = stdenv.mkDerivation {
@@ -9,45 +9,44 @@ let
       cp -r ./monitors $out
     '';
   };
-  shellScript = writeShellScriptBin "gnome-monitors-switch" ''
-    #! /usr/bin/env bash
+  shellApplication = writeShellApplication {
+    name = "gnome-monitors-switch";
+    text = ''
+      MONITORS_PATH="${monitorsFiles}"
 
-    set -eu
+      USER=$(whoami)
+      USER_MONITORS_PATH="/home/$USER/.config/monitors.xml"
 
-    MONITORS_PATH="${monitorsFiles}"
+      function switch {
+        clear
+        printf "\e[1mSELECTING VIDEO OUTPUT\e[0m\n  1 -> WORKSTATION\n  2 -> TV\n  3 -> CANCEL\n\n"
+        read -rp "Option: " a
+          if [ "$a" = "1" ]; then
+            clear
+            printf "Switching to WORKSTATION..."
+              rm "$USER_MONITORS_PATH"
+              ln -s $MONITORS_PATH/workstation.xml "$USER_MONITORS_PATH" && pkill -SIGQUIT gnome-shell
+          elif [ "$a" = "2" ]; then
+            clear
+            printf "Switching to TV..."
+              rm "$USER_MONITORS_PATH"
+              ln -s $MONITORS_PATH/tv.xml "$USER_MONITORS_PATH" && pkill -SIGQUIT gnome-shell
+          elif [ "$a" = "3" ]; then
+            clear
+            printf "Quitting script..." && sleep 1s
+          fi
+        exit 0
+      }
 
-    USER=$(whoami)
-    USER_MONITORS_PATH="/home/$USER/.config/monitors.xml"
-
-    function switch {
-      clear
-      printf "\e[1mSELECTING VIDEO OUTPUT\e[0m\n  1 -> WORKSTATION\n  2 -> TV\n  3 -> CANCEL\n\n"
-      read -p "Option: " a
-        if [ "$a" = "1" ]; then
-          clear
-          printf "Switching to WORKSTATION..."
-            rm $USER_MONITORS_PATH
-            ln -s $MONITORS_PATH/workstation.xml $USER_MONITORS_PATH && pkill -SIGQUIT gnome-shell
-        elif [ "$a" = "2" ]; then
-          clear
-          printf "Switching to TV..."
-            rm $USER_MONITORS_PATH
-            ln -s $MONITORS_PATH/tv.xml $USER_MONITORS_PATH && pkill -SIGQUIT gnome-shell
-        elif [ "$a" = "3" ]; then
-          clear
-          printf "Quitting script..." && sleep 1s
-        fi
-      exit 0
-    }
-
-    switch
-  '';
+      switch
+    '';
+  };
 in
 symlinkJoin {
   name = "gnome-monitors-switch";
 
   paths = [
     monitorsFiles
-    shellScript
+    shellApplication
   ];
 }
