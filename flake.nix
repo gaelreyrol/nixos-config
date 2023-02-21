@@ -41,6 +41,11 @@
           host = "thinkpad";
           user = "gael";
         }
+        {
+          system = "x86_64-linux";
+          host = "mention";
+          user = "gael";
+        }
       ];
 
       packages = {
