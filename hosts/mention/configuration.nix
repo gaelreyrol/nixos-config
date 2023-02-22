@@ -35,4 +35,6 @@
   environment.systemPackages = with pkgs; [
     fprintd
   ];
+
+  mention.enable = true;
 }

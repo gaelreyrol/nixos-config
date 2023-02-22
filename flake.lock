@@ -21,6 +21,27 @@
         "type": "github"
       }
     },
+    "mention": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1677073564,
+        "narHash": "sha256-Rmn+FCoET3obM5OHpjZ+5nrEqR4RhZthkrTUmKdfn0c=",
+        "ref": "main",
+        "rev": "298d06bfa0147ae9dfa26616e621ab529da61097",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/gaelreyrol/nixos-mention"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/gaelreyrol/nixos-mention"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1674550793,
@@ -70,6 +91,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "mention": "mention",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nur": "nur",

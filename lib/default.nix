@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 let
-  inherit (inputs) self nixpkgs nur home-manager;
+  inherit (inputs) self nixpkgs nur home-manager mention;
 in
 rec {
   mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem {
@@ -32,6 +32,7 @@ rec {
 
       home-manager.nixosModules.home-manager
       nur.nixosModules.nur
+      mention.nixosModules.default
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
