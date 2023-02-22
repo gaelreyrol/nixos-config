@@ -4,7 +4,9 @@
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen2
+      inputs.nixos-hardware.nixosModules.common-gpu-amd
     ];
 
   boot.loader.systemd-boot.enable = true;

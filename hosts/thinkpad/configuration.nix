@@ -28,4 +28,10 @@
     layout = "fr";
     xkbVariant = "azerty";
   };
+
+  services.fprintd.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    fprintd
+  ];
 }
