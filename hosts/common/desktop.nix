@@ -42,6 +42,7 @@ in
     gnomeExtensions.no-overview
     gnomeExtensions.wireless-hid
     gnomeExtensions.gtile
+    gnomeExtensions.thinkpad-thermal
   ];
 
   services.gnome.gnome-keyring.enable = true;

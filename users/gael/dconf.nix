@@ -45,6 +45,7 @@ with lib.hm.gvariant;
         "gTile@vibou"
         "wireless-hid@chlumskyvaclav.gmail.com"
         "no-overview@fthx"
+        "thinkpadthermal@moonlight.drive.vk.gmail.com"
       ];
     };
 
