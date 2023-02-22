@@ -26,6 +26,7 @@
     gnumake
     pciutils
     lshw
+    usbutils
     ethtool
     vim
     wget
