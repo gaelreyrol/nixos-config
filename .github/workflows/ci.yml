@@ -31,5 +31,10 @@ jobs:
       - name: Install the Nix package manager
         uses: cachix/install-nix-action@v19
 
+      - name: Add mention deploy key
+        run: |
+          eval `ssh-agent -s`
+          ssh-add - <<< '${{ secrets.MENTION_SSH_KEY }}'
+
       - name: Flake Check
         run: nix flake check
