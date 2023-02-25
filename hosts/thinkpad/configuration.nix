@@ -29,8 +29,9 @@
     xkbVariant = "azerty";
   };
 
+  # P52s fingerprint sensor is not supported
+  # https://github.com/nmikhailov/Validity90/issues/34
   services.fprintd.enable = true;
-
   environment.systemPackages = with pkgs; [
     fprintd
   ];
