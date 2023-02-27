@@ -407,6 +407,25 @@
       signByDefault = true;
     };
 
+    includes = [
+      {
+        condition = "gitdir:/home/gael/Development/Mention/";
+        contents = {
+          core = {
+            excludesFile = "/home/gael/Development/Mention/.gitignore";
+          };
+          user = {
+            email = "gael@mention.com";
+            name = "Gaël Reyrol";
+            signingKey = "28020204CE3BC53A";
+          };
+          commit = {
+            gpgSign = true;
+          };
+        };
+      }
+    ];
+
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = true;
