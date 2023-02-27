@@ -26,4 +26,6 @@
     offload.enable = false;
     nvidiaBusId = "PCI:01:00:0";
   };
+
+  mention.enable = true;
 }
