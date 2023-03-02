@@ -149,11 +149,19 @@
               url = "javascript:(function(){var a=window,b=document,c=encodeURIComponent,e=c(document.title),d=a.open('https://cloud.gaelreyrol.com/apps/bookmarks/bookmarklet?url='+c(b.location)+'&title='+e,'bkmk_popup','left='+((a.screenX||a.screenLeft)+10)+',top='+((a.screenY||a.screenTop)+10)+',height=650px,width=550px,resizable=1,alwaysRaised=1');a.setTimeout(function(){d.focus()},300);})();";
             }
             {
+              name = "Nix Manual";
+              url = "https://nixos.org/manual/nix/stable/index.html";
+            }
+            {
+              name = "Nixpkgs Manual";
+              url = "https://nixos.org/manual/nixpkgs/stable/index.html";
+            }
+            {
               name = "NixOS Manual";
               url = "https://nixos.org/manual/nixos/stable/index.html";
             }
             {
-              name = "Home Manager";
+              name = "Home Manager Manual";
               url = "https://rycee.gitlab.io/home-manager/options.html";
             }
           ];
