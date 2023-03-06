@@ -20,6 +20,8 @@
   #   mode = "challenge-response";
   # };
 
+  services.pcscd.enable = true;
+
   # systemd.services."xlock" = {
   #   description = "Lock all sessions with loginctl";
   #   serviceConfig = {

@@ -19,6 +19,7 @@
     yubikey-personalization
     yubikey-manager
     yubikey-manager-qt
+    yubioath-desktop
 
     _1password
     _1password-gui
