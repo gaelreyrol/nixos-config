@@ -452,9 +452,15 @@
   programs.tmux = {
     enable = true;
     plugins = with pkgs; [
-      tmuxPlugins.cpu
       tmuxPlugins.tmux-fzf
     ];
+    prefix = "M-w";
+    extraConfig = ''
+      bind c new-window -c "#{pane_current_path}"
+      bind '"' split-window -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+      set -g status-right '%a %d-%m-%Y %H:%M'
+    '';
   };
 
   programs.zellij = {
