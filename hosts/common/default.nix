@@ -48,6 +48,7 @@
     httpie
     fish
     nixpkgs-fmt
+    nix-doc
     nixdoc
     nvd
   ];
