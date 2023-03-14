@@ -43,6 +43,7 @@ in
     gnomeExtensions.wireless-hid
     gnomeExtensions.gtile
     gnomeExtensions.thinkpad-thermal
+    gnomeExtensions.nano-system-monitor # incompatible version TODO: Only for tower
   ];
 
   services.gnome.gnome-keyring.enable = true;
