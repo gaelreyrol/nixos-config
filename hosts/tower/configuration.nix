@@ -16,6 +16,7 @@
 
   environment.systemPackages = with pkgs; [
     myPkgs.gnome-monitors-switch
+    myPkgs.mqttx
   ];
 
   networking.hostName = "tower";
