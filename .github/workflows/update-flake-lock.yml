@@ -1,4 +1,4 @@
-name: CI
+name: Update flake.lock
 
 on:
   workflow_dispatch: # allows manual triggering
