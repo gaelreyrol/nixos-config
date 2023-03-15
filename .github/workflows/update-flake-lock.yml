@@ -16,8 +16,13 @@ jobs:
       - name: Install the Nix package manager
         uses: cachix/install-nix-action@v20
 
+      - name: Install Mention deploy key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.MENTION_SSH_KEY  }}
+
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v17
         with:
           pr-title: "Update flake.lock"
-          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+          commit-msg: "chore: update flake"
