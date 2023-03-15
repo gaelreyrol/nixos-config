@@ -26,6 +26,14 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # Type-C controller is not supported https://askubuntu.com/a/1289997
+  # boot.extraModprobeConfig = ''
+  #   blacklist i2c_nvidia_gpu
+  # '';
+
+  # RODE Microphones RØDE NT-USB Mini quirk alias https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/sound/usb/quirks.c
+  # boot.kernelParams = [ "snd-usb-audio.quirk_alias=19f70015:047f02f7" ];
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   fileSystems."/" =
