@@ -6,7 +6,7 @@ on:
     - cron: '0 0 * * 0' # runs weekly on Sunday at 00:00
 
 jobs:
-  check:
+  update:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,3 +20,4 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@v17
         with:
           pr-title: "Update flake.lock"
+          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
