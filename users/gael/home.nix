@@ -460,6 +460,7 @@
       bind '"' split-window -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
       set -g status-right '%a %d-%m-%Y %H:%M'
+      set-option -g renumber-windows on
     '';
   };
 
