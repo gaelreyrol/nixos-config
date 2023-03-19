@@ -11,6 +11,7 @@
     ../common/printing.nix
     ../common/avahi.nix
     ../common/docker.nix
+    ../common/power.nix
   ];
 
   system.stateVersion = "22.11";
@@ -18,12 +19,6 @@
   networking.hostName = "mention";
 
   console.keyMap = "fr";
-
-  # hardware.nvidia.prime = {
-  #   offload.enable = true;
-  #   intelBusId = "PCI:00:02:0";
-  #   nvidiaBusId = "PCI:02:00:0";
-  # };
 
   services.xserver = {
     layout = "fr";

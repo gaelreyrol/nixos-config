@@ -10,6 +10,7 @@
     ../common/bluetooth.nix
     ../common/printing.nix
     ../common/avahi.nix
+    ../common/power.nix
   ];
 
   system.stateVersion = "22.11";
