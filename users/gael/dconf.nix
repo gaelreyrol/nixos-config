@@ -12,6 +12,7 @@ with lib.hm.gvariant;
       clock-show-date = true;
       # text-scaling-factor = 1.25;
       enable-animations = false;
+      show-battery-percentage = true;
     };
 
     "org/gnome/desktop/calendar" = {
