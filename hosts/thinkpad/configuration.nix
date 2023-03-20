@@ -11,6 +11,7 @@
     ../common/printing.nix
     ../common/avahi.nix
     ../common/power.nix
+    ../common/usbguard.nix
   ];
 
   system.stateVersion = "22.11";
