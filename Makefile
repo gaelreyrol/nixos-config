@@ -8,10 +8,10 @@ home-manager-diff:
 	nix profile diff-closures --profile /nix/var/nix/profiles/per-user/${USER}/home-manager
 
 nixos-switch:
-	nixos-rebuild switch --flake .#${HOSTNAME}
+	nixos-rebuild switch --flake .#${HOSTNAME} --use-remote-sudo
 
 nixos-upgrade:
-	nixos-rebuild switch --upgrade --flake .#${HOSTNAME}
+	nixos-rebuild switch --upgrade --flake .#${HOSTNAME} --use-remote-sudo
 
 nixos-build:
 	nixos-rebuild build --flake .#${HOSTNAME}

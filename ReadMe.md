@@ -15,19 +15,19 @@ cd ~/.config/nix
 ### Build system
 
 ```bash
-sudo make nixos-build
+make nixos-build
 ```
 
 ### Switch system
 
 ```bash
-sudo make nixos-switch
+make nixos-switch
 ```
 
 ### Garbage collect
 
 ```bash
-sudo make nix-garbage-collect
+make nix-garbage-collect
 ```
 
 ### Diff system & home-manager generations
