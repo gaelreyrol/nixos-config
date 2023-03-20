@@ -17,7 +17,7 @@
 
   outputs = inputs@{ self, nixpkgs, pre-commit-hooks, ... }:
     let
-      myLib = import ./lib/default.nix { inherit inputs; };
+      myLib = import ./lib { inherit inputs; };
     in
 
 
