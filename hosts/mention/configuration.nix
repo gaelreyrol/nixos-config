@@ -25,11 +25,11 @@
     xkbVariant = "azerty";
   };
 
-  services.fprintd.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    fprintd
-  ];
+  # Cannot use password authentication https://github.com/NixOS/nixpkgs/issues/171136
+  # services.fprintd.enable = true;
+  # environment.systemPackages = with pkgs; [
+  #   fprintd
+  # ];
 
   mention.enable = true;
 }
