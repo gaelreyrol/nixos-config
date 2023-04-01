@@ -51,6 +51,7 @@
     nix-doc
     nixdoc
     nvd
+    myPkgs.shell-utils
   ];
 
   users.defaultUserShell = pkgs.bash;
