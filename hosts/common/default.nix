@@ -51,6 +51,9 @@
     nix-doc
     nixdoc
     nvd
+    sops
+    age
+    ssh-to-age
     myPkgs.shell-utils
   ];
 
