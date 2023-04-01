@@ -386,7 +386,6 @@
       dig = "dog";
       ls = "exa";
       cat = "bat";
-      office = "${pkgs.openssh}/bin/ssh dev.gael.office";
     };
     interactiveShellInit = ''
       if status is-interactive
