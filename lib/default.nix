@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 let
-  inherit (inputs) self nixpkgs nur home-manager mention;
+  inherit (inputs) self nixpkgs sops-nix nur home-manager mention;
 in
 rec {
   mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem {
@@ -30,6 +30,8 @@ rec {
       ../hosts/${host}/configuration.nix
       ../users/${user}/configuration.nix
 
+      sops-nix.nixosModules.sops
+
       home-manager.nixosModules.home-manager
       nur.nixosModules.nur
       mention.nixosModules.default
@@ -37,6 +39,12 @@ rec {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.${user} = builtins.import ../users/${user}/home.nix;
+        home-manager.sharedModules = [
+          sops-nix.homeManagerModules.sops
+        ];
+        sops = {
+          defaultSopsFile = ../secrets/default.yaml;
+        };
       }
     ];
   };

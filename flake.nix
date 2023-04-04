@@ -7,6 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nur.url = github:nix-community/NUR;
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    sops-nix.url = "github:Mic92/sops-nix";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -77,7 +78,6 @@
         x86_64-linux = {
           pi0Image = self.nixosConfigurations.pi0.config.system.build.sdImage;
           apuImage = self.nixosConfigurations.apu.config.system.build.sdImage;
-          mqttx = nixpkgs.legacyPackages.x86_64-linux.callPackage ./packages/mqttx { pkgs = nixpkgs.legacyPackages.x86_64-linux; };
         };
       };
     };
