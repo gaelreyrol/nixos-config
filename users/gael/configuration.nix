@@ -14,8 +14,6 @@
     polkitPolicyOwners = [ "gael" ];
   };
 
-  sops.age.keyFile = "/home/gael/.config/sops/age/keys.txt";
-
   # security.pam.yubico = {
   #   enable = true;
   #   debug = true;
