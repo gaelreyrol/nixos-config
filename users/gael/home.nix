@@ -48,7 +48,7 @@
     jetbrains-mono
 
     vscodium
-    jetbrains.phpstorm
+    unstable.jetbrains.phpstorm
     insomnia
     postman
     zeal
