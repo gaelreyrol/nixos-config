@@ -44,6 +44,7 @@ in
     gnomeExtensions.gtile
     gnomeExtensions.thinkpad-thermal
     gnomeExtensions.nano-system-monitor # incompatible version TODO: Only for tower
+    gnomeExtensions.tailscale-status
   ];
 
   services.gnome.gnome-keyring.enable = true;

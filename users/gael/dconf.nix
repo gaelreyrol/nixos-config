@@ -47,6 +47,7 @@ with lib.hm.gvariant;
         "wireless-hid@chlumskyvaclav.gmail.com"
         "no-overview@fthx"
         "thinkpadthermal@moonlight.drive.vk.gmail.com"
+        "tailscale-status@maxgallup.github.com"
       ];
     };
 

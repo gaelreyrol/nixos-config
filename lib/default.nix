@@ -44,6 +44,13 @@ rec {
         ];
         sops = {
           defaultSopsFile = ../secrets/default.yaml;
+
+          secrets = {
+            tailscale_auth_key = {
+              owner = "root";
+              group = "root";
+            };
+          };
         };
       }
     ];

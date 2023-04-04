@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./tailscale.nix
+  ];
+
   boot.cleanTmpDir = true;
 
   time.timeZone = "Europe/Paris";
