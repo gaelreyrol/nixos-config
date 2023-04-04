@@ -52,6 +52,20 @@ ykman otp chalresp --touch --generate 2
 ykpamcfg -2 -v
 ```
 
+### Add a new host key to SOPS
+
+```bash
+# On user host
+mkdir -p ~/.config/sops/age
+ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
+age-keygen -y ~/.config/sops/age/keys.txt # Add output to .sops.yaml file
+# On server host
+cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age # Add output to .sops.yaml file
+
+# Update secrets files with new keys
+sops updatekeys secrets/default.yaml
+```
+
 ## Credits
 
 - https://github.com/PierreZ/nixos-config
