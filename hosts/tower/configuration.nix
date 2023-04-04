@@ -10,19 +10,18 @@
     ../common/bluetooth.nix
     ../common/printing.nix
     ../common/avahi.nix
-    ../common/tailscale.nix
   ];
 
   system.stateVersion = "22.11";
+
+  networking.hostName = "tower";
+
+  console.keyMap = "us";
 
   environment.systemPackages = with pkgs; [
     myPkgs.gnome-monitors-switch
     myPkgs.mqttx
   ];
-
-  networking.hostName = "tower";
-
-  console.keyMap = "us";
 
   hardware.nvidia.prime = {
     offload.enable = false;
