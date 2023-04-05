@@ -4,7 +4,7 @@
   disko.devices = {
     # Windows
     # Crucial_CT240M50 - 240Go ~ 223Gib
-    disk.sda = {
+    disk.tower-sda = {
       device = "/dev/sda";
       type = "disk";
       format = "gpt";
@@ -27,7 +27,7 @@
     };
     # NixOS
     # Samsung SSD 860 - 500Go ~ 465GiB
-    disk.sdb = {
+    disk.tower-sdb = {
       device = "/dev/sdb";
       type = "disk";
       content = {
