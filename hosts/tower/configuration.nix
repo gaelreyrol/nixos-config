@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./disks.nix
     ./hardware-configuration.nix
     ../common/firmware.nix
     ../common/fonts.nix

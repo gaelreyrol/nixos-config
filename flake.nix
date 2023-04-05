@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = github:nix-community/NUR;
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     sops-nix.url = "github:Mic92/sops-nix";
