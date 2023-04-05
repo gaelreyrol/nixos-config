@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 let
-  inherit (inputs) self nixpkgs sops-nix nur home-manager mention;
+  inherit (inputs) self nixpkgs disko sops-nix nur home-manager mention;
 in
 rec {
   mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem {
@@ -29,6 +29,8 @@ rec {
       ../hosts/common
       ../hosts/${host}/configuration.nix
       ../users/${user}/configuration.nix
+
+      disko.nixosModules.disko
 
       sops-nix.nixosModules.sops
 

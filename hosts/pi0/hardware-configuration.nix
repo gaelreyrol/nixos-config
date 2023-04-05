@@ -4,7 +4,7 @@
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
-      (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
+      (modulesPath + "/installer/sd-card/sd-image-raspberrypi.nix")
     ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
