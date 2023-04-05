@@ -14,8 +14,6 @@
 
   networking.hostName = "apu";
 
-  sdImage.compressImage = false;
-
   security.sudo.wheelNeedsPassword = false;
 
   services.openssh = {

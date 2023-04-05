@@ -23,4 +23,4 @@ pi0-deploy:
 	nixos-rebuild switch -j auto --flake .#pi0 --build-host localhost --target-host lab@192.168.1.14 --use-remote-sudo -v
 
 apu-deploy:
-	nixos-rebuild switch -j auto --flake .#apu --build-host localhost --target-host lab@192.168.1.19 --use-remote-sudo -v
+	nixos-rebuild switch -j auto --flake .#apu --build-host localhost --target-host router@192.168.1.19 --use-remote-sudo -v

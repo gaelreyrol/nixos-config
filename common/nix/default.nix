@@ -31,6 +31,7 @@
         "root"
         "gael"
         "lab"
+        "router"
       ];
       secret-key-files = "/var/nix/cache-priv-key.pem";
       trusted-public-keys = [
