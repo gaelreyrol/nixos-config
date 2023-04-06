@@ -8,7 +8,11 @@
   system.stateVersion = "22.11";
 
   networking.hostName = "pi0";
-  networking.firewall.allowedTCPPorts = [ 8123 1883 8080 ];
+  networking.firewall.allowedTCPPorts = [
+    config.services.home-assistant.config.http.server_port
+    config.services.zigbee2mqtt.settings.frontend.port
+    # TODO: merge config.services.mosquitto.listeners.*.port
+  ];
 
   sdImage.compressImage = false;
 
@@ -148,12 +152,31 @@
       mqtt.server = "mqtt://localhost:1883";
 
       frontend.port = 8080;
+
+      devices = {
+        # Documentation: https://www.zigbee2mqtt.io/devices/ZLinky_TIC.html
+        "0x00158d000966cc70" = {
+          friendly_name = "LiXee ZLinky";
+          description = "This device is connected to my electric meter called Linky.";
+          measurement_poll_interval = 60;
+          linky_mode = "auto";
+          energy_phase = "auto";
+          production = "auto";
+          tarif = "auto";
+          kWh_precision = 3;
+          measurement_poll_chunk = 1;
+          tic_command_whitelist = "all";
+        };
+      };
     };
   };
 
   systemd.services."zigbee2mqtt.service".requires = [ "mosquitto.service" ];
   systemd.services."zigbee2mqtt.service".after = [ "mosquitto.service" ];
 
+  # TODO:
+  # Configure local write user for zigbee2mqtt and remote read user for home assistant
+  # Backup /var/lib/mosquitto/mosquitto.db
   services.mosquitto = {
     enable = true;
     listeners = [
