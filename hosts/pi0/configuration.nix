@@ -8,7 +8,7 @@
   system.stateVersion = "22.11";
 
   networking.hostName = "pi0";
-  networking.firewall.allowedTCPPorts = [ 8123 ];
+  networking.firewall.allowedTCPPorts = [ 8123 1883 8080 ];
 
   sdImage.compressImage = false;
 

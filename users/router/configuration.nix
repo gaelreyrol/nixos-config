@@ -5,7 +5,7 @@
     isNormalUser = true;
     description = "Home Router";
     extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.fish;
+    shell = pkgs.bash;
     password = "router";
 
     openssh.authorizedKeys.keys = [

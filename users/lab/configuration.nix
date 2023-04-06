@@ -5,7 +5,7 @@
     isNormalUser = true;
     description = "Home Lab";
     extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.fish;
+    shell = pkgs.bash;
     password = "lab";
 
     openssh.authorizedKeys.keys = [
