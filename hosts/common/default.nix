@@ -59,6 +59,7 @@
     age
     ssh-to-age
     myPkgs.shell-utils
+    s3cmd
   ];
 
   users.defaultUserShell = pkgs.bash;
