@@ -3,7 +3,7 @@ keys:
   - &thinkpad age173gaqk56n79pf0yhq7t6rh3k6c279xjqu6zywthzksjdp9kzfgts9pz20u
   - &mention age10zq729g0z50ln4v2c3l5msk0zpxwe2pe62ayyz9ht5y9ah6zfd4slcynec
   - &pi0 age1wyp0qkl493emy03h9dng9q5mtjhrzecuwlkcss6q8rsev6fmw53sct8r4d
-  - &apu age10gzkqy5r87rtvq8squ7kfz4wcq3eg2gj7pqpuk348fstjsmpac9qramvk2
+  - &apu age1vzzz8r6m6lztddzsk8hrd9unakch4jprl6y7qhgqjfy7f97x3urqwgqhgx
 
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
