@@ -20,8 +20,6 @@
     let
       myLib = import ./lib { inherit inputs; };
     in
-
-
     rec {
       formatter = {
         x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
