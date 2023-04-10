@@ -15,8 +15,6 @@ nixos-upgrade:
 
 nixos-build:
 	nixos-rebuild build --flake .#${HOSTNAME}
-
-nixos-diff:
 	nvd diff /run/current-system ./result
 
 nix-garbage-collect:
