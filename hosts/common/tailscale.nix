@@ -11,6 +11,7 @@
     enable = true;
     trustedInterfaces = [ config.services.tailscale.interfaceName ];
     allowedUDPPorts = [ config.services.tailscale.port ];
+    checkReversePath = "loose";
   };
 
   systemd.services.tailscale-autoconnect = {

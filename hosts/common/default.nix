@@ -12,7 +12,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking.networkmanager.enable = true;
-  networking.networkmanager.logLevel = "INFO";
+  networking.networkmanager.logLevel = lib.mkDefault "INFO";
   networking.networkmanager.insertNameservers = [
     # dns0.eu
     "193.110.81.0"
