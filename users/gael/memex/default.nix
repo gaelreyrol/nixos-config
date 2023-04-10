@@ -1,16 +1,11 @@
 { config, pkgs, ... }:
 
 let
-  memex = pkgs.writeTextFile {
-    name = "memex.desktop";
-    destination = "/share/applications/memex.desktop";
-    text = ''
-      [Desktop Entry]
-      Type=Application
-      Terminal=false
-      Name=Memex
-      Exec=${pkgs.vscodium}/bin/codium Development/Perso/memex.code-workspace
-    '';
+  memex = pkgs.makeDesktopItem {
+    name = "memex";
+    desktopName = "Memex";
+    exec = "${pkgs.vscodium}/bin/codium Development/Perso/memex.code-workspace";
+    terminal = false;
   };
 in
 {

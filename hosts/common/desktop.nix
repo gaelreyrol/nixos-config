@@ -24,6 +24,7 @@ in
     alacritty
     evolution-data-server
     gthumb
+    desktop-file-utils
 
     gnome.nautilus
     gnome.nautilus-python
