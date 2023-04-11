@@ -76,6 +76,13 @@
   services.gpg-agent.enableFishIntegration = true;
 
   programs.vim.enable = true;
+  programs.vim.plugins = [
+    pkgs.vimPlugins.vim-nix
+  ];
+  programs.vim.extraConfig = ''
+    syntax on
+    set number
+  '';
   programs.jq.enable = true;
   programs.htop.enable = true;
 
