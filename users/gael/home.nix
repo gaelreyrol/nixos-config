@@ -8,6 +8,7 @@
   imports = [
     ./dconf.nix
     ./memex
+    ./nix
     ../../common/activation/home-report-changes.nix
   ];
 
