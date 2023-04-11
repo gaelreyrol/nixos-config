@@ -438,6 +438,7 @@
       key = "DFB9B69A2C427F61";
       signByDefault = true;
     };
+    delta.enable = true;
 
     includes = [
       {
@@ -462,7 +463,6 @@
       init.defaultBranch = "main";
       pull.rebase = true;
       fetch.prune = true;
-      diff.colorMoved = "default";
     };
   };
 
