@@ -43,11 +43,13 @@
     dogdns
     exa
     bat
+    bat-extras.batman
     delta
     duf
+    du-dust
     broot
     fd
-    tldr
+    tealdeer
     procs
     httpie
     fish

@@ -395,6 +395,13 @@
       dig = "dog";
       ls = "exa";
       cat = "bat";
+      grep = "rg";
+      man = "batman";
+      du = "dust";
+      df = "duf";
+      find = "fd";
+      tree = "broot"; # TODO: Use light theme
+      ps = "procs"; # TODO: Use light theme
     };
     interactiveShellInit = ''
       if status is-interactive
