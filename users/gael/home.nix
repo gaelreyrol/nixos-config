@@ -384,6 +384,14 @@
 
   programs.fish = {
     enable = true;
+    # TODO: Try
+    # https://github.com/IlanCosman/tide
+    plugins = [
+      {
+        name = "autopair";
+        inherit (pkgs.fishPlugins.autopair-fish) src;
+      }
+    ];
     functions =
       {
         fish_greeting = "";
