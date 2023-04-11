@@ -5,6 +5,8 @@
     ./tailscale.nix
   ];
 
+  documentation.nixos.enable = false;
+
   boot.cleanTmpDir = true;
 
   time.timeZone = "Europe/Paris";
