@@ -448,7 +448,7 @@
             excludesFile = "/home/gael/Development/Mention/.gitignore";
           };
           user = {
-            email = "gael@mention.com";
+            email = "gael.reyrol@mention.com";
             name = "Gaël Reyrol";
             signingKey = "28020204CE3BC53A";
           };
