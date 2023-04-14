@@ -19,6 +19,7 @@
   outputs = inputs@{ self, nixpkgs, pre-commit-hooks, ... }:
     let
       myLib = import ./lib { inherit inputs; };
+      myPackages = pkgs: import ./packages { inherit pkgs; };
     in
     rec {
       formatter = {
@@ -74,6 +75,7 @@
 
       packages = {
         x86_64-linux = {
+          #myPackages = myPackages { pkgs = nixpkgs.legacyPackages.x86_64-linux; };
           pi0Image = self.nixosConfigurations.pi0.config.system.build.sdImage;
         };
       };

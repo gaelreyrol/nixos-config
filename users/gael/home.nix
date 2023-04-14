@@ -384,12 +384,15 @@
 
   programs.fish = {
     enable = true;
-    # TODO: Try
-    # https://github.com/IlanCosman/tide
+    # TODO: Try https://github.com/IlanCosman/tide
     plugins = [
       {
         name = "autopair";
         inherit (pkgs.fishPlugins.autopair-fish) src;
+      }
+      {
+        name = "tmux";
+        inherit (pkgs.myPkgs.fishPlugins.tmux) src;
       }
     ];
     functions =
@@ -411,11 +414,8 @@
       tree = "broot"; # TODO: Use light theme
       ps = "procs"; # TODO: Use light theme
     };
-    interactiveShellInit = ''
-      if status is-interactive
-      and not set -q TMUX
-        tmux new-session -A -s default
-      end
+    shellInit = ''
+      set -Ux fish_tmux_config $HOME/.config/tmux/tmux.conf
     '';
   };
 

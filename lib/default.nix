@@ -20,7 +20,9 @@ rec {
               inherit system;
             };
           })
-          (import ../packages)
+          (final: prev: {
+            myPkgs = import ../packages { pkgs = prev; };
+          })
           nur.overlay
         ];
       })
