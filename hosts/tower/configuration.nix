@@ -21,6 +21,7 @@
   environment.systemPackages = with pkgs; [
     myPkgs.gnome-monitors-switch
     myPkgs.mqttx
+    myPkgs.ledger-live-desktop
   ];
 
   hardware.nvidia.prime = {

@@ -20,11 +20,11 @@ appimageTools.wrapType2 {
 
   extraInstallCommands = ''
     mv $out/bin/${pname}-${version} $out/bin/${pname}
-    install -m 444 -D ${appimageContents}/mqttx.desktop $out/share/applications/mqttx.desktop
-    install -m 444 -D ${appimageContents}/mqttx.png $out/share/icons/hicolor/1024x1024/apps/mqttx.png
-    ${imagemagick}/bin/convert ${appimageContents}/mqttx.png -resize 512x512 mqttx_512.png
-    install -m 444 -D mqttx_512.png $out/share/icons/hicolor/512x512/apps/mqttx.png
-    substituteInPlace $out/share/applications/mqttx.desktop \
+    install -m 444 -D ${appimageContents}/${pname}.desktop $out/share/applications/${pname}.desktop
+    install -m 444 -D ${appimageContents}/${pname}.png $out/share/icons/hicolor/1024x1024/apps/${pname}.png
+    ${imagemagick}/bin/convert ${appimageContents}/mqttx.png -resize 512x512 ${pname}_512.png
+    install -m 444 -D ${pname}_512.png $out/share/icons/hicolor/512x512/apps/${pname}.png
+    substituteInPlace $out/share/applications/${pname}.desktop \
       --replace 'Exec=AppRun' 'Exec=${pname}'
   '';
 

@@ -39,5 +39,6 @@
 
   environment.systemPackages = with pkgs; [
     myPkgs.mqttx
+    myPkgs.ledger-live-desktop
   ];
 }
