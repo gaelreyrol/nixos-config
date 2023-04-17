@@ -66,6 +66,7 @@
     ssh-to-age
     myPkgs.shell-utils
     s3cmd
+    nvtop
   ];
 
   users.defaultUserShell = pkgs.bash;
