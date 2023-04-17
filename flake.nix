@@ -74,8 +74,7 @@
       ];
 
       packages = {
-        x86_64-linux = {
-          inherit myPackages;
+        x86_64-linux = myPackages // {
           pi0Image = self.nixosConfigurations.pi0.config.system.build.sdImage;
         };
       };
