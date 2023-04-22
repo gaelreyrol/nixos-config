@@ -27,25 +27,18 @@
     _1password-gui
 
     keybase
-    kbfs
-    keybase-gui
 
     chromium
 
     slack
     discord
-    zoom-us
-    fractal
     element-desktop
-    signal-desktop
 
     thunderbird
     vlc
     filezilla
     libreoffice
     spotify
-    psst
-    spotifyd
 
     jetbrains-mono
 
@@ -409,10 +402,10 @@
       grep = "rg";
       man = "batman";
       du = "dust";
-      df = "duf";
+      df = "duf -theme=light";
       find = "fd";
       tree = "broot"; # TODO: Use light theme
-      ps = "procs"; # TODO: Use light theme
+      ps = "procs --theme light"; # TODO: Use light theme
     };
     shellInit = ''
       set -Ux fish_tmux_config $HOME/.config/tmux/tmux.conf
