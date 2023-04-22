@@ -24,6 +24,8 @@
     myPkgs.ledger-live-desktop
   ];
 
+  services.udev.packages = with pkgs; [ myPkgs.ledger-live-desktop ];
+
   hardware.nvidia.prime = {
     offload.enable = false;
     nvidiaBusId = "PCI:01:00:0";
