@@ -62,7 +62,7 @@ rec {
     builtins.map
       (system: {
         name = system.host;
-        value = (mkNixosSystem system);
+        value = mkNixosSystem system;
       })
       systems
   );

@@ -68,10 +68,11 @@ sops updatekeys secrets/default.yaml
 
 ## Credits
 
-- https://github.com/PierreZ/nixos-config
-- https://gitlab.com/putchar/dotnix
-- https://github.com/stefanDeveloper/nixos-lenovo-config
-- https://github.com/hlissner/dotfiles
-- https://github.com/Xe/nixos-configs
-- https://github.com/jakehamilton/config
-- https://github.com/drupol/nixos-x260
+- <https://github.com/PierreZ/nixos-config>
+- <https://gitlab.com/putchar/dotnix>
+- <https://github.com/stefanDeveloper/nixos-lenovo-config>
+- <https://github.com/hlissner/dotfiles>
+- <https://github.com/Xe/nixos-configs>
+- <https://github.com/jakehamilton/config>
+- <https://github.com/drupol/nixos-x260>
+  
