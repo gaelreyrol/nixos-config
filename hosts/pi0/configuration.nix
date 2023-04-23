@@ -127,14 +127,29 @@
       zeroconf = { };
       zone = { };
       # Extra
-      mqtt = { };
+      mqtt = {
+        username = "hass";
+        password = "!secret mqtt_password";
+        discovery = true;
+      };
       meteo_france = {
         city = "59000";
       };
       co2signal = {
+        api_key = "!secret co2signal_token";
         country_code = "FR";
       };
+      waqi = {
+        token = "!secret waqi_token";
+        locations = [ "Lille Leeds, France" ];
+      };
     };
+  };
+
+  sops.secrets."home-assistant-secrets.yaml" = {
+    owner = "hass";
+    path = "/var/lib/hass/secrets.yaml";
+    restartUnits = [ "home-assistant.service" ];
   };
 
   networking.firewall.enable = lib.mkDefault false;
@@ -143,13 +158,21 @@
     127.0.0.1 homeassistant.local
   '';
 
+  services.udev.extraRules = ''
+    SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d4", SYMLINK+="zbdongle", MODE="0660", GROUP="zigbee2mqtt"
+  '';
+
   services.zigbee2mqtt = {
     enable = true;
     settings = {
+      homeassistant = config.services.home-assistant.enable;
+      availability = true;
       permit_join = true;
-      serial.port = "/dev/ttyACM0";
+      serial.port = "/dev/zbdongle";
 
       mqtt.server = "mqtt://localhost:1883";
+      mqtt.user = "zigbee2mqtt";
+      mqtt.password = "!secrets.yaml mqtt_password";
 
       frontend.port = 8080;
 
@@ -174,17 +197,33 @@
   systemd.services."zigbee2mqtt.service".requires = [ "mosquitto.service" ];
   systemd.services."zigbee2mqtt.service".after = [ "mosquitto.service" ];
 
+  sops.secrets."zigbee2mqtt-secrets.yaml" = {
+    owner = "zigbee2mqtt";
+    path = "/var/lib/zigbee2mqtt/secrets.yaml";
+    restartUnits = [ "zigbee2mqtt.service" ];
+  };
+
   # TODO:
-  # Configure local write user for zigbee2mqtt and remote read user for home assistant
   # Backup /var/lib/mosquitto/mosquitto.db
   services.mosquitto = {
     enable = true;
     listeners = [
       {
-        omitPasswordAuth = true;
-        settings.allow_anonymous = true;
-        acl = [ "topic readwrite #" "pattern readwrite #" ];
-        users = { };
+        users = {
+          hass = {
+            acl = [
+              "topic read zigbee2mqtt/#"
+              "topic readwrite homeassistant/#"
+            ];
+            passwordFile = config.sops.secrets."home-assistant-secrets.yaml".mqtt_password.path;
+          };
+          zigbee2mqtt = {
+            acl = [
+              "topic write zigbee2mqtt/#"
+            ];
+            passwordFile = config.sops.secrets."zigbee2mqtt-secrets.yaml".mqtt_password.path;
+          };
+        };
       }
     ];
   };
