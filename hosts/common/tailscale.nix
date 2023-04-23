@@ -40,4 +40,10 @@
       ${tailscale}/bin/tailscale up -authkey $(cat ${config.sops.secrets.tailscale_auth_key.path})
     '';
   };
+
+  sops.secrets.tailscale_auth_key = {
+    restartUnits = [ "tailscale-autoconnect.service" ];
+    owner = "root";
+    group = "root";
+  };
 }

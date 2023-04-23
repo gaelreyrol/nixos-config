@@ -37,8 +37,5 @@
   # services.udev.extraRules = ''
   #   ACTION=="remove", SUBSYSTEM=="input", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", ENV{ID_SECURITY_TOKEN}="1", RUN+="${pkgs.systemd}/bin/systemctl start xlock.service"
   # '';
-
-  # TODO: udev rule to give ownership to user for ledger device
-  # CantOpenDevice: cannot open device with path /dev/hidraw0
 }
 
