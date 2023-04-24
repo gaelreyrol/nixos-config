@@ -100,7 +100,7 @@
         consent-o-matic
         onetab
         gnome-shell-integration
-        gsconnect
+        streetpass-for-mastodon
       ];
       search = {
         default = "Google";
