@@ -19,6 +19,8 @@
 
   console.keyMap = "fr";
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   hardware.nvidia.prime = {
     offload.enable = true;
     intelBusId = "PCI:00:02:0";

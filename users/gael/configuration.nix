@@ -16,6 +16,9 @@
 
   sops.age.keyFile = "/home/gael/.config/sops/age/keys.txt";
 
+  # services.xserver.displayManager.autoLogin.enable = true;
+  # services.xserver.displayManager.autoLogin.user = "gael";
+
   # security.pam.yubico = {
   #   enable = true;
   #   debug = true;
