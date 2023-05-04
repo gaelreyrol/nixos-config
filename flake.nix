@@ -6,9 +6,17 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nur.url = "github:nix-community/NUR";
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "unstable";
+
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    pre-commit-hooks.inputs.nixpkgs-stable.follows = "nixpkgs";
+    pre-commit-hooks.inputs.nixpkgs.follows = "unstable";
+
     sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
+    sops-nix.inputs.nixpkgs.follows = "unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
