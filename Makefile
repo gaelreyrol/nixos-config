@@ -17,8 +17,11 @@ nixos-build:
 	nixos-rebuild build --flake .#${HOSTNAME}
 	nvd diff /run/current-system ./result
 
-nix-garbage-collect:
+nix-purge:
 	nix-collect-garbage -d
+
+nix-check:
+	nix-store --verify --check-contents
 
 pi0-deploy:
 	nixos-rebuild switch -j auto --flake .#pi0 --build-host localhost --target-host lab@192.168.1.14 --use-remote-sudo -v
