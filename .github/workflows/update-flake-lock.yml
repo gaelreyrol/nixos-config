@@ -26,3 +26,7 @@ jobs:
         with:
           pr-title: "Update flake.lock"
           commit-msg: "chore: update flake"
+          pr-labels: |
+            dependencies
+          pr-assignees: GaelReyrol
+          inputs: nixpkgs unstable
