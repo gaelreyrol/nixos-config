@@ -496,6 +496,7 @@
       octref.vetur
       foam.foam-vscode
       yzhang.markdown-all-in-one
+      ## TODO: Package extension kortina.vscode-markdown-notes
       hashicorp.terraform
       redhat.vscode-yaml
 
