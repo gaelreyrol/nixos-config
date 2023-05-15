@@ -56,6 +56,8 @@
         default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
           packages = [
             nixpkgs.legacyPackages.x86_64-linux.treefmt
+            nixpkgs.legacyPackages.x86_64-linux.nix-tree
+            nixpkgs.legacyPackages.x86_64-linux.nix-du
           ];
           inherit (self.checks.x86_64-linux.pre-commit-check) shellHook;
         };
