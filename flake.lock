@@ -173,9 +173,30 @@
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "pre-commit-hooks": "pre-commit-hooks",
+        "sbomnix": "sbomnix",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix",
         "unstable": "unstable"
+      }
+    },
+    "sbomnix": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683717722,
+        "narHash": "sha256-s6A9Hne+y1mjDv5VKoA/URM+7udRLVLBzupDdp6wKxw=",
+        "owner": "tiiuae",
+        "repo": "sbomnix",
+        "rev": "8b922c39647cdbd67d2f3d2839b8e46f81e5a85a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tiiuae",
+        "repo": "sbomnix",
+        "type": "github"
       }
     },
     "sops-nix": {

@@ -23,6 +23,12 @@ nix-purge:
 nix-check:
 	nix-store --verify --check-contents
 
+nix-optimise:
+  nix store optimise
+
+nix-meta:
+  nix-env -qa --meta --json '.*' > meta.json
+
 pi0-deploy:
 	nixos-rebuild switch -j auto --flake .#pi0 --build-host localhost --target-host lab@192.168.1.14 --use-remote-sudo -v
 

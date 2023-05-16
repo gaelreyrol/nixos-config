@@ -21,11 +21,14 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    sbomnix.url = "github:tiiuae/sbomnix";
+    sbomnix.inputs.nixpkgs.follows = "unstable";
+
     mention.url = "git+ssh://git@github.com/gaelreyrol/nixos-mention?ref=main";
     mention.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, treefmt-nix, pre-commit-hooks, ... }:
+  outputs = inputs@{ self, nixpkgs, treefmt-nix, pre-commit-hooks, sbomnix, ... }:
     let
       myLib = import ./lib { inherit inputs; };
       myPackages = import ./packages {
@@ -35,7 +38,7 @@
         };
       };
     in
-    rec {
+    {
       formatter.x86_64-linux = treefmt-nix.lib.mkWrapper nixpkgs.legacyPackages.x86_64-linux {
         projectRootFile = "flake.nix";
         programs.nixpkgs-fmt.enable = true;
@@ -58,6 +61,8 @@
             nixpkgs.legacyPackages.x86_64-linux.treefmt
             nixpkgs.legacyPackages.x86_64-linux.nix-tree
             nixpkgs.legacyPackages.x86_64-linux.nix-du
+            sbomnix.packages.x86_64-linux.sbomnix
+            sbomnix.packages.x86_64-linux.vulnxscan
           ];
           inherit (self.checks.x86_64-linux.pre-commit-check) shellHook;
         };
