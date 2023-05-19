@@ -54,6 +54,7 @@
     dhall
     dhall-json
     dhall-lsp-server
+    myPkgs.gh-diff-pr
 
     exercism
   ];
