@@ -18,7 +18,6 @@
     checkmake
     dhall
     dhall-json
-    dhall-lsp-server
   ];
 
   programs.vim.enable = true;
