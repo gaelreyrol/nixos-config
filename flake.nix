@@ -31,21 +31,29 @@
   outputs = inputs@{ self, nixpkgs, treefmt-nix, pre-commit-hooks, sbomnix, ... }:
     let
       myLib = import ./lib { inherit inputs; };
-      myPackages = import ./packages {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
-        };
-      };
+      forSystems = function:
+        nixpkgs.lib.genAttrs [
+          "x86_64-linux"
+        ]
+          (system:
+            function {
+              inherit system;
+              pkgs = import nixpkgs {
+                inherit system;
+                config.allowUnfree = true;
+              };
+            }
+          );
+
     in
     {
-      formatter.x86_64-linux = treefmt-nix.lib.mkWrapper nixpkgs.legacyPackages.x86_64-linux {
+      formatter = forSystems ({ pkgs, system }: treefmt-nix.lib.mkWrapper pkgs {
         projectRootFile = "flake.nix";
         programs.nixpkgs-fmt.enable = true;
-      };
+      });
 
-      checks.x86_64-linux = {
-        pre-commit-check = pre-commit-hooks.lib.x86_64-linux.run {
+      checks = forSystems ({ pkgs, system }: {
+        pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
             nixpkgs-fmt.enable = true;
@@ -53,20 +61,20 @@
             markdownlint.enable = true;
           };
         };
-      };
+      });
 
-      devShells.x86_64-linux = {
-        default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+      devShells = forSystems ({ pkgs, system }: {
+        default = pkgs.mkShell {
           packages = [
-            nixpkgs.legacyPackages.x86_64-linux.treefmt
-            nixpkgs.legacyPackages.x86_64-linux.nix-tree
-            nixpkgs.legacyPackages.x86_64-linux.nix-du
-            sbomnix.packages.x86_64-linux.sbomnix
-            sbomnix.packages.x86_64-linux.vulnxscan
+            pkgs.treefmt
+            pkgs.nix-tree
+            pkgs.nix-du
+            sbomnix.packages."${system}".sbomnix
+            sbomnix.packages."${system}".vulnxscan
           ];
-          inherit (self.checks.x86_64-linux.pre-commit-check) shellHook;
+          inherit (self.checks."${system}".pre-commit-check) shellHook;
         };
-      };
+      });
 
       nixosConfigurations = myLib.mkNixosSystems [
         {
@@ -96,6 +104,6 @@
         }
       ];
 
-      packages.x86_64-linux = removeAttrs myPackages [ "fishPlugins" ];
+      packages = forSystems ({ pkgs, system }: removeAttrs (import ./packages { inherit pkgs; }) [ "fishPlugins" ]);
     };
 }
