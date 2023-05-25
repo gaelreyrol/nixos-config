@@ -169,6 +169,10 @@
               name = "Home Manager Manual";
               url = "https://rycee.gitlab.io/home-manager/options.html";
             }
+            {
+              name = "Nix & Nixpkgs Functions";
+              url = "https://teu5us.github.io/nix-lib.html";
+            }
           ];
         }
       ];
