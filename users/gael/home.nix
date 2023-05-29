@@ -173,6 +173,10 @@
               name = "Nix & Nixpkgs Functions";
               url = "https://teu5us.github.io/nix-lib.html";
             }
+            {
+              name = "Nix package versions";
+              url = "https://lazamar.co.uk/nix-versions/";
+            }
           ];
         }
       ];
