@@ -28,7 +28,7 @@
     mention.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, treefmt-nix, pre-commit-hooks, sbomnix, ... }:
+  outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, sbomnix, ... }:
     let
       myLib = import ./lib { inherit inputs; };
       forSystems = function:
@@ -42,31 +42,42 @@
                 inherit system;
                 config.allowUnfree = true;
               };
+              unstable = import unstable {
+                inherit system;
+                config.allowUnfree = true;
+              };
             }
           );
 
     in
     {
-      formatter = forSystems ({ pkgs, system }: treefmt-nix.lib.mkWrapper pkgs {
+      formatter = forSystems ({ pkgs, unstable, system }: treefmt-nix.lib.mkWrapper pkgs {
         projectRootFile = "flake.nix";
         programs.nixpkgs-fmt.enable = true;
       });
 
-      checks = forSystems ({ pkgs, system }: {
+      checks = forSystems ({ pkgs, unstable, system }: {
         pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
             nixpkgs-fmt.enable = true;
             statix.enable = true;
             markdownlint.enable = true;
+            editorconfig-checker.enable = true;
+            actionlint.enable = true;
           };
         };
       });
 
-      devShells = forSystems ({ pkgs, system }: {
+      devShells = forSystems ({ pkgs, unstable, system }: {
         default = pkgs.mkShell {
           packages = [
-            pkgs.treefmt
+            unstable.nixpkgs-fmt
+            unstable.statix
+            unstable.nodePackages.markdownlint-cli
+            unstable.treefmt
+            unstable.editorconfig-checker
+            unstable.actionlint
             pkgs.nix-tree
             pkgs.nix-du
             sbomnix.packages."${system}".sbomnix
@@ -104,6 +115,6 @@
         }
       ];
 
-      packages = forSystems ({ pkgs, system }: removeAttrs (import ./packages { inherit pkgs; }) [ "fishPlugins" ]);
+      packages = forSystems ({ pkgs, unstable, system }: removeAttrs (import ./packages { inherit pkgs; }) [ "fishPlugins" ]);
     };
 }

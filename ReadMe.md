@@ -75,4 +75,3 @@ sops updatekeys secrets/default.yaml
 - <https://github.com/Xe/nixos-configs>
 - <https://github.com/jakehamilton/config>
 - <https://github.com/drupol/nixos-x260>
-  
