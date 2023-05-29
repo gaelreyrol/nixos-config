@@ -116,5 +116,17 @@
       ];
 
       packages = forSystems ({ pkgs, unstable, system }: removeAttrs (import ./packages { inherit pkgs; }) [ "fishPlugins" ]);
+
+      templates = {
+        trivial = {
+          path = ./templates/trivial;
+          description = "A trivial but enhanced flake";
+        };
+        php = {
+          path = ./templates/php;
+          description = "A php flake";
+        };
+        default = self.templates.trivial;
+      };
     };
 }
