@@ -31,6 +31,20 @@
   outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, sbomnix, ... }:
     let
       myLib = import ./lib { inherit inputs; };
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
+        (final: prev: {
+          unstable = import unstable {
+            inherit (prev) system;
+            inherit config;
+          };
+        })
+        (final: prev: {
+          sbomnix = sbomnix.packages."${prev.system}";
+        })
+      ];
       forSystems = function:
         nixpkgs.lib.genAttrs [
           "x86_64-linux"
@@ -39,24 +53,19 @@
             function {
               inherit system;
               pkgs = import nixpkgs {
-                inherit system;
-                config.allowUnfree = true;
-              };
-              unstable = import unstable {
-                inherit system;
-                config.allowUnfree = true;
+                inherit overlays system config;
               };
             }
           );
 
     in
     {
-      formatter = forSystems ({ pkgs, unstable, system }: treefmt-nix.lib.mkWrapper pkgs {
+      formatter = forSystems ({ pkgs, system }: treefmt-nix.lib.mkWrapper unstable {
         projectRootFile = "flake.nix";
         programs.nixpkgs-fmt.enable = true;
       });
 
-      checks = forSystems ({ pkgs, unstable, system }: {
+      checks = forSystems ({ pkgs, system }: {
         pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
@@ -69,19 +78,19 @@
         };
       });
 
-      devShells = forSystems ({ pkgs, unstable, system }: {
+      devShells = forSystems ({ pkgs, system }: {
         default = pkgs.mkShell {
           packages = [
-            unstable.nixpkgs-fmt
-            unstable.statix
-            unstable.nodePackages.markdownlint-cli
-            unstable.treefmt
-            unstable.editorconfig-checker
-            unstable.actionlint
+            pkgs.unstable.treefmt
+            pkgs.unstable.nixpkgs-fmt
+            pkgs.unstable.statix
+            pkgs.unstable.nodePackages.markdownlint-cli
+            pkgs.unstable.editorconfig-checker
+            pkgs.unstable.actionlint
             pkgs.nix-tree
             pkgs.nix-du
-            sbomnix.packages."${system}".sbomnix
-            sbomnix.packages."${system}".vulnxscan
+            pkgs.sbomnix.sbomnix
+            pkgs.sbomnix.vulnxscan
           ];
           inherit (self.checks."${system}".pre-commit-check) shellHook;
         };
@@ -115,7 +124,7 @@
         }
       ];
 
-      packages = forSystems ({ pkgs, unstable, system }: removeAttrs (import ./packages { inherit pkgs; }) [ "fishPlugins" ]);
+      packages = forSystems ({ pkgs, system }: removeAttrs (import ./packages { inherit pkgs; }) [ "fishPlugins" ]);
 
       templates = {
         trivial = {

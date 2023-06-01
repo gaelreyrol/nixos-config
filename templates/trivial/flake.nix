@@ -13,8 +13,19 @@
     pre-commit-hooks.inputs.nixpkgs.follows = "unstable";
   };
 
-  outputs = { self, nixpkgs, treefmt-nix, pre-commit-hooks, ... }:
+  outputs = { self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, ... }:
     let
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
+        (final: prev: {
+          unstable = import unstable {
+            inherit (prev) system;
+            inherit config;
+          };
+        })
+      ];
       forSystems = function:
         nixpkgs.lib.genAttrs [
           "x86_64-linux"
@@ -23,7 +34,7 @@
             function {
               inherit system;
               pkgs = import nixpkgs {
-                inherit system;
+                inherit system overlays config;
               };
             }
           );
@@ -51,9 +62,10 @@
       devShells = forSystems ({ pkgs, system }: {
         default = pkgs.mkShell {
           packages = [
-            pkgs.treefmt
-            pkgs.editorconfig-checker
-            pkgs.actionlint
+            pkgs.unstable.treefmt
+            pkgs.unstable.nodePackages.markdownlint-cli
+            pkgs.unstable.editorconfig-checker
+            pkgs.unstable.actionlint
           ];
           inherit (self.checks."${system}".pre-commit-check) shellHook;
         };

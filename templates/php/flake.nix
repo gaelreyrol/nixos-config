@@ -13,10 +13,22 @@
     pre-commit-hooks.inputs.nixpkgs.follows = "unstable";
 
     php-shell.url = "github:loophp/nix-shell";
+    php-shell.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, treefmt-nix, pre-commit-hooks, php-shell, ... }:
+  outputs = { self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, php-shell, ... }:
     let
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
+        (final: prev: {
+          unstable = import unstable {
+            inherit (prev) system;
+            inherit config;
+          };
+        })
+      ];
       forSystems = function:
         nixpkgs.lib.genAttrs [
           "x86_64-linux"
@@ -25,7 +37,7 @@
             function {
               inherit system;
               pkgs = import nixpkgs {
-                inherit system;
+                inherit system overlays config;
               };
             }
           );
@@ -45,7 +57,7 @@
 
     in
     {
-      formatter = forSystems ({ pkgs, system }: treefmt-nix.lib.mkWrapper pkgs {
+      formatter = forSystems ({ pkgs, system }: treefmt-nix.lib.mkWrapper unstable {
         projectRootFile = "flake.nix";
         programs.nixpkgs-fmt.enable = true;
       });
@@ -67,9 +79,10 @@
       devShells = forSystems ({ pkgs, system }: {
         default = pkgs.mkShell {
           buildInputs = [
-            pkgs.treefmt
-            pkgs.editorconfig-checker
-            pkgs.actionlint
+            pkgs.unstable.treefmt
+            pkgs.unstable.nodePackages.markdownlint-cli
+            pkgs.unstable.editorconfig-checker
+            pkgs.unstable.actionlint
             (php system)
           ] ++ phpTools;
           inherit (self.checks."${system}".pre-commit-check) shellHook;

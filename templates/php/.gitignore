@@ -1,2 +1,3 @@
 .direnv
 vendor
+.pre-commit-config.yaml
