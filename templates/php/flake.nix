@@ -57,7 +57,7 @@
 
     in
     {
-      formatter = forSystems ({ pkgs, system }: treefmt-nix.lib.mkWrapper unstable {
+      formatter = forSystems ({ pkgs, system }: treefmt-nix.lib.mkWrapper pkgs.unstable {
         projectRootFile = "flake.nix";
         programs.nixpkgs-fmt.enable = true;
       });
