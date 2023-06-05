@@ -13,8 +13,8 @@
       experimental-features = nix-command flakes
       fallback = true
       warn-dirty = false
-      keep-outputs = true
-      keep-derivations = true
+      # keep-outputs = true
+      # keep-derivations = true
       plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
     '';
 
