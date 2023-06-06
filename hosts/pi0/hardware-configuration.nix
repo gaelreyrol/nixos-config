@@ -15,6 +15,8 @@
 
   boot.initrd.availableKernelModules = [ "usbhid" ];
   boot.initrd.kernelModules = [ ];
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [

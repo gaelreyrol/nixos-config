@@ -15,7 +15,7 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
