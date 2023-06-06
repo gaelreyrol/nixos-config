@@ -66,7 +66,8 @@
     ssh-to-age
     myPkgs.shell-utils
     s3cmd
-    nvtop
+    # Requires the huge package cudatoolkit
+    # nvtop
   ];
 
   users.defaultUserShell = pkgs.bash;
