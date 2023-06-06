@@ -9,7 +9,7 @@
     ./dconf.nix
     ./memex
     ./nix
-    ../../common/activation/home-report-changes.nix
+    ../../mixins/activation/home-report-changes.nix
   ];
 
   home.sessionVariables = {

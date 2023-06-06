@@ -27,8 +27,8 @@ rec {
         ];
       })
 
-      ../common/nix
-      ../hosts/common
+      ../mixins/nix
+      ../mixins
       ../hosts/${host}/configuration.nix
       ../users/${user}/configuration.nix
 

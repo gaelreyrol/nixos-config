@@ -3,15 +3,15 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common/firmware.nix
-    ../common/fonts.nix
-    ../common/desktop.nix
-    ../common/audio.nix
-    ../common/bluetooth.nix
-    ../common/printing.nix
-    ../common/avahi.nix
-    ../common/docker.nix
-    ../common/power.nix
+    ../../mixins/firmware.nix
+    ../../mixins/fonts.nix
+    ../../mixins/desktop.nix
+    ../../mixins/audio.nix
+    ../../mixins/bluetooth.nix
+    ../../mixins/printing.nix
+    ../../mixins/avahi.nix
+    ../../mixins/docker.nix
+    ../../mixins/power.nix
   ];
 
   networking.hostName = "mention";

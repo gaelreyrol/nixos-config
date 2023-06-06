@@ -6,7 +6,7 @@
   home.stateVersion = "22.11";
 
   imports = [
-    ../../common/activation/home-report-changes.nix
+    ../../mixins/activation/home-report-changes.nix
   ];
 
   home.sessionVariables = {
