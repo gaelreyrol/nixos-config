@@ -5,8 +5,6 @@
     ./hardware-configuration.nix
   ];
 
-  system.stateVersion = "22.11";
-
   networking.hostName = "pi0";
   networking.firewall.allowedTCPPorts = [
     config.services.home-assistant.config.http.server_port
@@ -20,8 +18,10 @@
 
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
-    permitRootLogin = "no";
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
   };
 
   console.keyMap = "us";

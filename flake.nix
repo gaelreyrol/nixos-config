@@ -2,7 +2,7 @@
   description = "system configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nur.url = "github:nix-community/NUR";
@@ -18,7 +18,7 @@
     sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     sbomnix.url = "github:tiiuae/sbomnix";

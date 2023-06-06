@@ -12,8 +12,6 @@
     ../common/avahi.nix
   ];
 
-  system.stateVersion = "22.11";
-
   networking.hostName = "tower";
 
   console.keyMap = "us";

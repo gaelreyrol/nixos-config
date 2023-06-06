@@ -3,7 +3,7 @@
 {
   programs.home-manager.enable = true;
 
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
 
   imports = [
     ./dconf.nix
@@ -21,7 +21,7 @@
     yubikey-personalization
     yubikey-manager
     yubikey-manager-qt
-    yubioath-desktop
+    yubioath-flutter
 
     _1password
     _1password-gui

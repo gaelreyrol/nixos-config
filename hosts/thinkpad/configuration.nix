@@ -13,8 +13,6 @@
     ../common/power.nix
   ];
 
-  system.stateVersion = "22.11";
-
   networking.hostName = "thinkpad";
 
   console.keyMap = "fr";

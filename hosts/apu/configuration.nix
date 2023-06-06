@@ -5,8 +5,6 @@
     ./hardware-configuration.nix
   ];
 
-  system.stateVersion = "22.11";
-
   environment.systemPackages = with pkgs; [
     # https://wiki.archlinux.org/title/PC_speaker#Beep
     beep
@@ -18,8 +16,10 @@
 
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
-    permitRootLogin = "no";
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
   };
 
   console.keyMap = "us";

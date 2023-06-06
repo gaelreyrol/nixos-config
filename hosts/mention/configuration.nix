@@ -14,8 +14,6 @@
     ../common/power.nix
   ];
 
-  system.stateVersion = "22.11";
-
   networking.hostName = "mention";
 
   console.keyMap = "fr";
