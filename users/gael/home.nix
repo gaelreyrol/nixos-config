@@ -63,7 +63,6 @@
   fonts.fontconfig.enable = true;
 
   services.keybase.enable = true;
-  services.kbfs.enable = true;
 
   programs.gpg.enable = true;
   services.gpg-agent.enable = true;
