@@ -30,7 +30,7 @@ nix-meta:
 	nix-env -qa --meta --json '.*' > meta.json
 
 pi0-deploy:
-	nixos-rebuild switch -j auto --flake .#pi0 --build-host localhost --target-host lab@192.168.1.14 --use-remote-sudo -v |& nom
+	nixos-rebuild switch -j auto --flake .#pi0 --target-host lab@192.168.1.14 --use-remote-sudo -v |& nom
 
 apu-deploy:
-	nixos-rebuild switch -j auto --flake .#apu --build-host localhost --target-host router@192.168.1.19 --use-remote-sudo -v |& nom
+	nixos-rebuild switch -j auto --flake .#apu --target-host router@192.168.1.19 --use-remote-sudo -v |& nom
