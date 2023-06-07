@@ -96,7 +96,7 @@
         };
       });
 
-      nixosConfigurations = myLib.mkNixosSystems [
+      nixosConfigurations = myLib.os.mkNixosSystems [
         {
           system = "aarch64-linux";
           host = "pi0";
