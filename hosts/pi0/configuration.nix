@@ -33,6 +33,7 @@
     home-assistant-cli
     mosquitto
     zigbee2mqtt
+    sqlite
   ];
 
   # services.nginx = {
@@ -50,39 +51,9 @@
   #   };
   # };
 
+  # refer to Mic92 config when modifying: https://github.com/Mic92/dotfiles/blob/main/nixos/eve/modules/home-assistant/default.nix
   services.home-assistant = {
     enable = true;
-    extraComponents = [
-      "met"
-      "bluetooth"
-      "esphome"
-      "profiler"
-      "backup"
-      "recorder"
-      "dhcp"
-      "air_quality"
-      "http"
-      "ssdp"
-      "upnp"
-      "calendar"
-      "discovery"
-      "mqtt"
-      "ipp"
-      "mobile_app"
-      "zeroconf"
-      "version"
-      "season"
-      "meteo_france"
-      "workday"
-      "rpi_power"
-      "sun"
-      "co2signal"
-    ];
-    extraPackages = python3Packages: with python3Packages; [
-      # https://www.home-assistant.io/docs/authentication/multi-factor-auth/
-      pyqrcode
-      pyotp
-    ];
     config = {
       homeassistant = {
         name = "Home";
@@ -91,50 +62,61 @@
         elevation = "22";
         unit_system = "metric";
         temperature_unit = "C";
-        # country = "FR"; # 2022.12.0
+        country = "FR";
         time_zone = "Europe/Paris";
         currency = "EUR";
-        # language = "en-US";
+        language = "en";
         internal_url = "http://homeassistant.local:8123";
         external_url = "http://192.168.1.14:8123";
       };
-      # Native
-      automation = { };
-      backup = { };
-      bluetooth = { };
-      config = { };
-      counter = { };
-      dhcp = { };
-      energy = { };
-      frontend = { };
-      hardware = { };
-      history = { };
-      logbook = { };
-      logger = { };
-      map = { };
-      my = { };
-      mobile_app = { };
-      network = { };
-      person = { };
-      schedule = { };
-      scene = { };
-      script = { };
-      ssdp = { };
-      sun = { };
-      system_health = { };
-      timer = { };
-      usb = { };
-      zeroconf = { };
-      zone = { };
-      # Extra
-      mqtt = { };
-      meteo_france = {
-        city = "59000";
+
+      # https://www.home-assistant.io/integrations/default_config/
+      default_config = { };
+      logger = {
+        default = "warn";
       };
+
+      # extra
+      air_quality = { };
       co2signal = {
         country_code = "FR";
       };
+      discovery = { };
+      esphome = { };
+      http = { };
+      # meteo_france = { };
+      mqtt = { };
+      profiler = { };
+      recorder = { };
+      rpi_power = { };
+      season = { };
+      # upnp = { };
+      version = { };
+      workday = { };
+      zha = { };
     };
+    extraComponents = [
+      "air_quality"
+      "co2signal"
+      "discovery"
+      "esphome"
+      "http"
+      "meteo_france"
+      "mqtt"
+      "profiler"
+      "recorder"
+      "rpi_power"
+      "season"
+      "upnp"
+      "version"
+      "workday"
+      "zha"
+    ];
+    extraPackages = python3Packages: with python3Packages; [
+      # https://www.home-assistant.io/docs/authentication/multi-factor-auth/
+      pyqrcode
+      pyotp
+    ];
   };
 
   networking.firewall.enable = lib.mkDefault false;
