@@ -176,6 +176,10 @@
               name = "Nix package versions";
               url = "https://lazamar.co.uk/nix-versions/";
             }
+            {
+              name = "Nixpkgs Pull Request Tracker";
+              url = "https://nixpk.gs/pr-tracker.html";
+            }
           ];
         }
       ];
