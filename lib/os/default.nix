@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 let
-  inherit (inputs) self nixpkgs sops-nix nur home-manager mention;
+  inherit (inputs) self nixpkgs sops-nix nur home-manager nixd mention;
 in
 rec {
   mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem {
@@ -14,16 +14,16 @@ rec {
     modules = [
       ({ config, ... }: {
         nixpkgs.overlays = [
-          (final: prev: {
-            unstable = import inputs.unstable {
-              inherit (final) config;
+          (self: super: {
+            unstable = builtins.import inputs.unstable {
+              inherit (self) config;
               inherit system;
             };
           })
-          (final: prev: {
-            myPkgs = import ../../packages { pkgs = prev; };
-          })
+          (self: super: builtins.import ../../overlays/packages { inherit self super; })
+          (self: super: builtins.import ../../overlays/patches { inherit self super; })
           nur.overlay
+          nixd.overlays.default
         ];
       })
 

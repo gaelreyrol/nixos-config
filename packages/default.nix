@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ self, super }:
 
 {
-  fishPlugins = import ./fish/plugins { inherit pkgs; };
-  gh-diff-pr = pkgs.callPackage ./gh-diff-pr { inherit pkgs; };
-  gnome-monitors-switch = pkgs.callPackage ./gnome-monitors-switch { };
-  ledger-live-desktop = pkgs.callPackage ./ledger-live-desktop { inherit pkgs; };
-  mqttx = pkgs.callPackage ./mqttx { inherit pkgs; };
-  shell-utils = pkgs.callPackage ./shell-utils { };
+  gh-diff-pr = super.callPackage ./gh-diff-pr { };
+  gnome-monitors-switch = super.callPackage ./gnome-monitors-switch { };
+  ledger-live-desktop = super.callPackage ./ledger-live-desktop { };
+  mqttx = super.callPackage ./mqttx { };
+  shell-utils = super.callPackage ./shell-utils { };
 }

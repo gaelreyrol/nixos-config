@@ -1,4 +1,4 @@
-{ lib, fetchurl, appimageTools, imagemagick, pkgs }:
+{ lib, fetchurl, appimageTools }:
 
 # TODO: Package from source: https://github.com/LedgerHQ/ledger-live
 let
@@ -22,7 +22,7 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
 
-  extraPkgs = pkgs: with pkgs; [ ];
+  extraPkgs = pkgs: [ ];
 
   extraInstallCommands = ''
     mv $out/bin/${pname}-${version} $out/bin/${pname}

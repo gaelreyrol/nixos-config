@@ -1,4 +1,4 @@
-{ lib, pkgs, modulesPath, ... }:
+{ lib, modulesPath, ... }:
 
 {
   imports =
@@ -15,8 +15,6 @@
 
   boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" ];
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_rpi3;
-  boot.kernelModules = [ "ahci" ];
   boot.kernelParams = [
     "console=ttyS1,115200n8"
   ];

@@ -1,6 +1,6 @@
-{ lib, fetchFromGitHub, pkgs }:
+{ lib, fishPlugins, fetchFromGitHub, tmux }:
 
-pkgs.fishPlugins.buildFishPlugin rec {
+fishPlugins.buildFishPlugin rec {
   pname = "tmux.fish";
   version = "2023-02-09";
 
@@ -11,7 +11,7 @@ pkgs.fishPlugins.buildFishPlugin rec {
     sha256 = "sha256-ds1WN10Xlp6BYk1Wooq8NIkVyt5gJguKBH4JBrPo/Qo=";
   };
 
-  checkInputs = with pkgs; [ tmux ];
+  checkInputs = [ tmux ];
 
   #buildFishplugin will only move the .fish files, but conf files are needed
   postInstall = ''
@@ -22,6 +22,6 @@ pkgs.fishPlugins.buildFishPlugin rec {
     description = "Tmux plugin for fish shell";
     homepage = "https://github.com/budimanjojo/tmux.fish";
     license = licenses.mit;
-    maintainers = with maintainers; [ ];
+    maintainers = [ ];
   };
 }

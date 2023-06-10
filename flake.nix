@@ -24,6 +24,9 @@
     sbomnix.url = "github:tiiuae/sbomnix";
     sbomnix.inputs.nixpkgs.follows = "unstable";
 
+    nixd.url = "github:nix-community/nixd";
+    nixd.inputs.nixpkgs.follows = "unstable";
+
     mention.url = "git+ssh://git@github.com/gaelreyrol/nixos-mention?ref=main";
     mention.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -35,14 +38,15 @@
         allowUnfree = true;
       };
       overlays = [
-        (final: prev: {
+        (self: super: {
           unstable = import unstable {
-            inherit (prev) system;
+            inherit (super) system;
             inherit config;
           };
         })
-        (final: prev: {
-          sbomnix = sbomnix.packages."${prev.system}";
+        (self: super: import ./overlays/packages { inherit self super; })
+        (self: super: {
+          sbomnix = sbomnix.packages."${super.system}";
         })
       ];
       forSystems = function:
@@ -124,7 +128,7 @@
         }
       ];
 
-      packages = forSystems ({ pkgs, system }: removeAttrs (import ./packages { inherit pkgs; }) [ "fishPlugins" ]);
+      packages = forSystems ({ pkgs, system }: pkgs.myPkgs);
 
       templates = {
         trivial = {

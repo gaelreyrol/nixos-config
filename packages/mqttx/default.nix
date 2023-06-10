@@ -1,4 +1,4 @@
-{ lib, fetchurl, appimageTools, imagemagick, pkgs }:
+{ lib, fetchurl, appimageTools, imagemagick }:
 
 let
   pname = "mqttx";
@@ -16,7 +16,7 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
 
-  extraPkgs = pkgs: with pkgs; [ ];
+  extraPkgs = pkgs: [ ];
 
   extraInstallCommands = ''
     mv $out/bin/${pname}-${version} $out/bin/${pname}
