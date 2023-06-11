@@ -24,8 +24,8 @@
     sbomnix.url = "github:tiiuae/sbomnix";
     sbomnix.inputs.nixpkgs.follows = "unstable";
 
-    nixd.url = "github:nix-community/nixd";
-    nixd.inputs.nixpkgs.follows = "unstable";
+    # nixd.url = "github:nix-community/nixd";
+    # nixd.inputs.nixpkgs.follows = "unstable";
 
     mention.url = "git+ssh://git@github.com/gaelreyrol/nixos-mention?ref=main";
     mention.inputs.nixpkgs.follows = "nixpkgs";

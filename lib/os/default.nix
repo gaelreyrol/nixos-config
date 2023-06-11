@@ -23,7 +23,7 @@ rec {
           (self: super: builtins.import ../../overlays/packages { inherit self super; })
           (self: super: builtins.import ../../overlays/patches { inherit self super; })
           nur.overlay
-          nixd.overlays.default
+          # nixd.overlays.default
         ];
       })
 
