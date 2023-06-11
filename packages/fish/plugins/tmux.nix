@@ -23,5 +23,6 @@ fishPlugins.buildFishPlugin rec {
     homepage = "https://github.com/budimanjojo/tmux.fish";
     license = licenses.mit;
     maintainers = [ ];
+    platforms = with platforms; unix;
   };
 }
