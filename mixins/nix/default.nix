@@ -1,8 +1,8 @@
-{ config, lib, pkgs, nur, ... }:
+{ pkgs, ... }:
 
 {
   nix = {
-    package = pkgs.unstable.nix;
+    package = pkgs.unstable.nixVersions.nix_2_16;
 
     # https://jackson.dev/post/nix-reasonable-defaults/
     extraOptions = ''
@@ -15,7 +15,7 @@
       warn-dirty = false
       # keep-outputs = true
       # keep-derivations = true
-      plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
+      # plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
     '';
 
     gc = {
