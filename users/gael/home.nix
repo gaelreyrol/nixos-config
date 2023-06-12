@@ -163,6 +163,10 @@
               url = "https://teu5us.github.io/nix-lib.html";
             }
             {
+              name = "Noogle";
+              url = "https://noogle.dev/";
+            }
+            {
               name = "Nix package versions";
               url = "https://lazamar.co.uk/nix-versions/";
             }
