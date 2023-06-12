@@ -439,10 +439,10 @@
         name = "tmux";
         inherit (pkgs.fishPlugins.tmux) src;
       }
-      # {
-      #   name = "jump";
-      #   inherit (pkgs.fishPlugins.jump) src;
-      # }
+      {
+        name = "jump";
+        inherit (pkgs.fishPlugins.jump) src;
+      }
     ];
     functions =
       {
@@ -475,6 +475,7 @@
       find = "fd";
       tree = "broot";
       ps = "procs --theme light";
+      j = "jump";
     };
     shellInit = ''
       set -Ux fish_tmux_config $HOME/.config/tmux/tmux.conf
