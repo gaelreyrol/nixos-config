@@ -49,7 +49,7 @@
     zeal
 
     nil # Nix LSP
-    # nixd # Nix LSP
+    myPkgs.nixd # Nix LSP
     shellcheck
     checkmake
     dhall
@@ -354,7 +354,7 @@
       "editor.fontFamily" = "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace";
       "editor.fontSize" = 16;
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
+      "nix.serverPath" = "nixd";
       "nix.formatterPath" = "nixpkgs-fmt";
       "vscode-dhall-lsp-server.executable" = "dhall-lsp-server";
     };
