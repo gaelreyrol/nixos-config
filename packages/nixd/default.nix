@@ -1,24 +1,25 @@
 { stdenv
+, lib
+, fetchFromGitHub
 , meson
 , ninja
 , cmake
 , pkg-config
 , lit
-, unstable
+, nixUnstable
 , boost182
 , gtest
 , llvmPackages_16
 , libbacktrace
-, lib
-, fetchFromGitHub
+, nix-update-script
+
+  # The default Nix package to use as build dependency
+, nixPackage ? nixUnstable
 }:
 
 let
   filterMesonBuild = builtins.filterSource
     (path: type: type != "directory" || baseNameOf path != "build");
-
-  llvmPackages = llvmPackages_16;
-
 in
 stdenv.mkDerivation rec {
   pname = "nixd";
@@ -40,27 +41,29 @@ stdenv.mkDerivation rec {
     # Testing only
     lit
 
-    unstable.nixUnstable.dev
-    boost182.dev
-    gtest.dev
-    llvmPackages.llvm.dev
-    llvmPackages.clang
+    (lib.getDev nixPackage)
+    (lib.getDev boost182)
+    (lib.getDev gtest)
+    (lib.getDev llvmPackages_16.llvm)
+    llvmPackages_16.clang
   ];
 
   buildInputs = [
     libbacktrace
-    unstable.nixUnstable
+    nixPackage
     gtest
-    boost182.dev
-
-    llvmPackages.llvm.lib
+    (lib.getDev boost182)
+    (lib.getLib llvmPackages_16.llvm)
   ];
 
-  CXXFLAGS = "-include ${unstable.nixUnstable.dev}/include/nix/config.h";
+  CXXFLAGS = "-include ${lib.getDev nixPackage}/include/nix/config.h";
+
+  passthru.updateScript = nix-update-script { };
 
   meta = {
     description = "Nix language server";
     homepage = "https://github.com/nix-community/nixd";
+    changelog = "https://github.com/nix-community/nixd/releases/tag/${version}";
     license = lib.licenses.lgpl3Plus;
     maintainers = [ ];
     platforms = lib.platforms.unix;
