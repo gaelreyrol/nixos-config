@@ -14,14 +14,14 @@ rec {
     modules = [
       ({ config, ... }: {
         nixpkgs.overlays = [
-          (self: super: {
+          (final: prev: {
             unstable = builtins.import inputs.unstable {
-              inherit (self) config;
+              inherit (final) config;
               inherit system;
             };
           })
-          (self: super: builtins.import ../../overlays/packages { inherit self super; })
-          (self: super: builtins.import ../../overlays/patches { inherit self super; })
+          (final: prev: builtins.import ../../overlays/packages { inherit final prev; })
+          (final: prev: builtins.import ../../overlays/patches { inherit final prev; })
           nur.overlay
         ];
       })

@@ -1,9 +1,9 @@
-{ self, super }:
+{ final, prev }:
 
 {
-  myPkgs = import ../../packages { inherit self super; };
-  fishPlugins = super.fishPlugins.overrideScope' (fself: fsuper: {
-    tmux = super.callPackage ../../packages/fish/plugins/tmux.nix { };
-    jump = super.callPackage ../../packages/fish/plugins/jump.nix { };
+  myPkgs = import ../../packages { inherit final prev; };
+  fishPlugins = prev.fishPlugins.overrideScope' (ffinal: fprev: {
+    tmux = prev.callPackage ../../packages/fish/plugins/tmux.nix { };
+    jump = prev.callPackage ../../packages/fish/plugins/jump.nix { };
   });
 }

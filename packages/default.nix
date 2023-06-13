@@ -1,10 +1,10 @@
-{ self, super }:
+{ final, prev }:
 
 {
-  gh-diff-pr = super.callPackage ./gh-diff-pr { };
-  gnome-monitors-switch = super.callPackage ./gnome-monitors-switch { };
-  ledger-live-desktop = super.callPackage ./ledger-live-desktop { };
-  mqttx = super.callPackage ./mqttx { };
-  nixd = super.callPackage ./nixd { nixPackage = super.unstable.nixUnstable; };
-  shell-utils = super.callPackage ./shell-utils { };
+  gh-diff-pr = prev.callPackage ./gh-diff-pr { };
+  gnome-monitors-switch = prev.callPackage ./gnome-monitors-switch { };
+  ledger-live-desktop = prev.callPackage ./ledger-live-desktop { };
+  mqttx = prev.callPackage ./mqttx { };
+  nixd = prev.callPackage ./nixd { nixPackage = prev.unstable.nixUnstable; };
+  shell-utils = prev.callPackage ./shell-utils { };
 }

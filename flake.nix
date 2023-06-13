@@ -38,15 +38,15 @@
         allowUnfree = true;
       };
       overlays = [
-        (self: super: {
+        (final: prev: {
           unstable = import unstable {
-            inherit (super) system;
+            inherit (prev) system;
             inherit config;
           };
         })
-        (self: super: import ./overlays/packages { inherit self super; })
-        (self: super: {
-          sbomnix = sbomnix.packages."${super.system}";
+        (final: prev: import ./overlays/packages { inherit final prev; })
+        (final: prev: {
+          sbomnix = sbomnix.packages."${prev.system}";
         })
       ];
       forSystems = function:
