@@ -83,11 +83,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1678952947,
-        "narHash": "sha256-9mg2rrRUN2bvkX/CpEJGLqC0Stcwt6hY1mv6sTbIbJ8=",
+        "lastModified": 1686669836,
+        "narHash": "sha256-QCE3OVzH+NDBHEwZwEyEVVeoaBwsCoTFyY9NdbDPXkg=",
         "ref": "main",
-        "rev": "1a7d4ae20789d3e2752722dc69feda4554529961",
-        "revCount": 13,
+        "rev": "7690a1692708f9f49a3fb63cfc8ac4327dcd372c",
+        "revCount": 21,
         "type": "git",
         "url": "ssh://git@github.com/gaelreyrol/nixos-mention"
       },

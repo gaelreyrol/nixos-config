@@ -30,4 +30,6 @@
   # ];
 
   mention.enable = true;
+  mention.firstname = "gael";
+  mention.lastname = "reyrol";
 }
