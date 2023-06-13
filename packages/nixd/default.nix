@@ -14,9 +14,8 @@
 }:
 
 let
-  filterMesonBuild = dir: builtins.filterSource
-    (path: type: type != "directory" || baseNameOf path != "build")
-    dir;
+  filterMesonBuild = builtins.filterSource
+    (path: type: type != "directory" || baseNameOf path != "build");
 
   llvmPackages = llvmPackages_16;
 
