@@ -17,19 +17,20 @@
 , nixPackage ? nixUnstable
 }:
 
+# ToDo: Remove when merge in nixos-unstable https://nixpk.gs/pr-tracker.html?pr=236675
 let
   filterMesonBuild = builtins.filterSource
     (path: type: type != "directory" || baseNameOf path != "build");
 in
 stdenv.mkDerivation rec {
   pname = "nixd";
-  version = "1.0.0";
+  version = "2023-06-15";
 
   src = filterMesonBuild (fetchFromGitHub {
     owner = "nix-community";
     repo = "nixd";
-    rev = version;
-    hash = "sha256-kTDPbsQi9gzFAFkiAPF+V3yI1WBmILEnnsqdgHMqXJA=";
+    rev = "d38d09ab343f17653fabb68cfc3b65a67e5a7a3e";
+    hash = "sha256-SWoZJRpOdeOmiktgV5PleWL9W+314MBg9ExPx+z/koE=";
   });
 
   nativeBuildInputs = [
