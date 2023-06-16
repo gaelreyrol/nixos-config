@@ -8,14 +8,14 @@
         Env = {
           "POWER_SUPPLY_ONLINE" = operators.match "0";
         };
-        Run = operators.assign "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver";
+        Run = operators.add "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver";
       };
       "Performance mode" = {
         Subsystem = operators.match "power_supply";
         Env = {
           "POWER_SUPPLY_ONLINE" = operators.match "1";
         };
-        Run = operators.assign "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance";
+        Run = operators.add "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance";
       };
     };
   };
