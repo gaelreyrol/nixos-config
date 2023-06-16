@@ -24,14 +24,15 @@
     sbomnix.url = "github:tiiuae/sbomnix";
     sbomnix.inputs.nixpkgs.follows = "unstable";
 
-    # nixd.url = "github:nix-community/nixd";
-    # nixd.inputs.nixpkgs.follows = "unstable";
+    udev-nix.url = "github:gaelreyrol/udev-nix";
+    udev-nix.inputs.nixpkgs.follows = "nixpkgs";
+    udev-nix.inputs.unstable.follows = "unstable";
 
     mention.url = "git+ssh://git@github.com/gaelreyrol/nixos-mention?ref=main";
     mention.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, sbomnix, ... }:
+  outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, sbomnix, udev-nix, ... }:
     let
       myLib = import ./lib { inherit inputs; };
       config = {

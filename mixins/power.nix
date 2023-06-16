@@ -1,8 +1,22 @@
 { config, pkgs, ... }:
 
 {
-  services.udev.extraRules = ''
-    SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="0",RUN+="${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver"
-    SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="1",RUN+="${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance"
-  '';
+  services.udev.extraRules = pkgs.udev-nix.toUdevFile "power-supply.rules" {
+    rules = with pkgs.udev-nix; {
+      "Power Saver mode" = {
+        Subsystem = operators.match "power_supply";
+        Env = {
+          "POWER_SUPPLY_ONLINE" = operators.match "0";
+        };
+        Run = operators.assign "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver";
+      };
+      "Performance mode" = {
+        Subsystem = operators.match "power_supply";
+        Env = {
+          "POWER_SUPPLY_ONLINE" = operators.match "1";
+        };
+        Run = operators.assign "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance";
+      };
+    };
+  };
 }

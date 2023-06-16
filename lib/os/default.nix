@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 let
-  inherit (inputs) self nixpkgs sops-nix nur home-manager nixd mention;
+  inherit (inputs) self nixpkgs sops-nix nur home-manager udev-nix mention;
 in
 rec {
   mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem {
@@ -19,6 +19,9 @@ rec {
               inherit (final) config;
               inherit system;
             };
+          })
+          (final: prev: {
+            udev-nix = udev-nix.lib.${system};
           })
           (final: prev: builtins.import ../../overlays/packages { inherit final prev; })
           (final: prev: builtins.import ../../overlays/patches { inherit final prev; })
