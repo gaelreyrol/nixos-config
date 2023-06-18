@@ -49,7 +49,7 @@
     zeal
 
     nil # Nix LSP
-    myPkgs.nixd # Nix LSP
+    unstable.nixd # Nix LSP
     shellcheck
     checkmake
     dhall
