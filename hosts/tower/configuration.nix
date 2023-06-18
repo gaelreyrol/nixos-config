@@ -10,6 +10,7 @@
     ../../mixins/bluetooth.nix
     ../../mixins/printing.nix
     ../../mixins/avahi.nix
+    ../../mixins/energy.nix
   ];
 
   networking.hostName = "tower";

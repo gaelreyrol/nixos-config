@@ -12,6 +12,7 @@
     ../../mixins/avahi.nix
     ../../mixins/docker.nix
     ../../mixins/power.nix
+    ../../mixins/energy.nix
   ];
 
   networking.hostName = "mention";
