@@ -19,7 +19,7 @@ in
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
-      ExecStart = "${pkgs.myPkgs.scaphandre}/bin/scaphandre prometheus --port=${builtins.toString port}";
+      ExecStart = "${pkgs.unstable.scaphandre}/bin/scaphandre prometheus --port=${builtins.toString port}";
     };
   };
 }
