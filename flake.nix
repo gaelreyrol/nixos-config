@@ -128,6 +128,11 @@
           host = "mention";
           user = "gael";
         }
+        {
+          system = "x86_64-linux";
+          host = "gandi0";
+          user = "cloud";
+        }
       ];
 
       packages = forSystems ({ pkgs, system }: pkgs.myPkgs);

@@ -5,8 +5,6 @@
     ./tailscale.nix
   ];
 
-  system.stateVersion = "23.05";
-
   documentation.nixos.enable = false;
 
   boot.tmp.cleanOnBoot = true;

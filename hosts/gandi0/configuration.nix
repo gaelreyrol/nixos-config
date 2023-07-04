@@ -7,12 +7,8 @@
     ./hardware-configuration.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    # https://wiki.archlinux.org/title/PC_speaker#Beep
-    beep
-  ];
-
-  networking.hostName = "apu";
+  networking.hostName = "gandi0";
+  networking.firewall.enable = lib.mkForce true;
 
   security.sudo.wheelNeedsPassword = false;
 
