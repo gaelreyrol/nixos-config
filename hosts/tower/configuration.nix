@@ -22,6 +22,7 @@
     myPkgs.mqttx
     myPkgs.ledger-live-desktop
     klavaro
+    cntr
   ];
 
   services.udev.packages = with pkgs; [ myPkgs.ledger-live-desktop ];
@@ -50,4 +51,8 @@
 
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "gael" ];
+
+  programs.ccache.enable = true;
+  programs.ccache.packageNames = [];
+  nix.settings.extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
 }
