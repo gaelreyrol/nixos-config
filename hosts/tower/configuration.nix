@@ -53,6 +53,6 @@
   users.extraGroups.vboxusers.members = [ "gael" ];
 
   programs.ccache.enable = true;
-  programs.ccache.packageNames = [];
+  programs.ccache.packageNames = [ ];
   nix.settings.extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
 }
