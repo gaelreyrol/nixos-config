@@ -145,6 +145,9 @@
         snitun = super.snitun.overridePythonAttrs (oldAtts: {
           doCheck = false;
         });
+        zigpy-znp = super.zigpy-znp.overridePythonAttrs (oldAtts: {
+          doCheck = false;
+        });
       };
     };
   };
