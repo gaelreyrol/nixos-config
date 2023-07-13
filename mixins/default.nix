@@ -68,6 +68,7 @@
     ssh-to-age
     myPkgs.shell-utils
     s3cmd
+    cntr
     # Requires the huge package cudatoolkit
     # nvtop
   ];

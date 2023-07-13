@@ -22,7 +22,6 @@
     myPkgs.mqttx
     myPkgs.ledger-live-desktop
     klavaro
-    cntr
   ];
 
   services.udev.packages = with pkgs; [ myPkgs.ledger-live-desktop ];
