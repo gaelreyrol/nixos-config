@@ -354,7 +354,7 @@
       "editor.fontFamily" = "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace";
       "editor.fontSize" = 16;
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nixd";
+      "nix.serverPath" = "nil";
       "nix.formatterPath" = "nixpkgs-fmt";
       "vscode-dhall-lsp-server.executable" = "dhall-lsp-server";
     };
