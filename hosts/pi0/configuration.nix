@@ -9,7 +9,7 @@
   networking.firewall.allowedTCPPorts = [
     config.services.home-assistant.config.http.server_port
     config.services.zigbee2mqtt.settings.frontend.port
-    # TODO: merge config.services.mosquitto.listeners.*.port
+    1883 # TODO: merge config.services.mosquitto.listeners.*.port
   ];
 
   sdImage.compressImage = false;
