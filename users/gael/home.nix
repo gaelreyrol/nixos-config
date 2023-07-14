@@ -347,6 +347,7 @@
       dhall.vscode-dhall-lsp-server
       bungcip.better-toml
       dhall.dhall-lang
+      golang.go
     ];
     userSettings = {
       "redhat.telemetry.enabled" = false;
