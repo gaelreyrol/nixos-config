@@ -69,6 +69,7 @@
     myPkgs.shell-utils
     s3cmd
     cntr
+    ast-grep
     # Requires the huge package cudatoolkit
     # nvtop
   ];
