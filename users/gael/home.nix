@@ -348,6 +348,7 @@
       bungcip.better-toml
       dhall.dhall-lang
       golang.go
+      redhat.java
     ];
     userSettings = {
       "redhat.telemetry.enabled" = false;
