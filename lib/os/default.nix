@@ -21,6 +21,12 @@ rec {
             };
           })
           (final: prev: {
+            master = builtins.import inputs.master {
+              inherit (final) config;
+              inherit system;
+            };
+          })
+          (final: prev: {
             udev-nix = udev-nix.lib.${system};
           })
           (final: prev: builtins.import ../../overlays/packages { inherit final prev; })

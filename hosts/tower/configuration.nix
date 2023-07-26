@@ -44,9 +44,13 @@
     nvidiaBusId = "PCI:01:00:0";
   };
 
-  mention.enable = true;
-  mention.firstname = "gael";
-  mention.lastname = "reyrol";
+  mention = {
+    enable = true;
+    firstname = "gael";
+    lastname = "reyrol";
+    # https://github.com/NixOS/nixpkgs/issues/244159
+    dockerPackage = pkgs.master.docker;
+  };
 
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "gael" ];
