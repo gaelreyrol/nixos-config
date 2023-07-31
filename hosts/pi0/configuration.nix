@@ -121,7 +121,7 @@
       # https://github.com/NixOS/nixpkgs/pull/234880
       packageOverrides = self: super: {
         aiohttp = super.aiohttp.overrideAttrs (oldAttrs: {
-          patches = oldAttrs.patches ++ [
+          patches = (oldAttrs.patches or [ ]) ++ [
             (pkgs.fetchpatch {
               url = "https://github.com/aio-libs/aiohttp/commit/7dcc235cafe0c4521bbbf92f76aecc82fee33e8b.patch";
               hash = "sha256-ZzhlE50bmA+e2XX2RH1FuWQHZIAa6Dk/hZjxPoX5t4g=";
@@ -129,7 +129,7 @@
           ];
         });
         uvloop = super.uvloop.overridePythonAttrs (oldAttrs: {
-          disabledTestPaths = oldAttrs.disabledTestPaths ++ [
+          disabledTestPaths = (oldAttrs.disabledTestPaths or [ ]) ++ [
             "tests/test_regr1.py"
           ];
         });
