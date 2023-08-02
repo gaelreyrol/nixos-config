@@ -50,6 +50,7 @@
     lastname = "reyrol";
     # https://github.com/NixOS/nixpkgs/issues/244159
     dockerPackage = pkgs.master.docker;
+    dockerComposePackage = pkgs.master.docker-compose;
   };
 
   virtualisation.virtualbox.host.enable = true;
