@@ -3,7 +3,7 @@
 {
   users.users.cloud = {
     isNormalUser = true;
-    description = "Online Cloud";
+    description = "Remote Cloud";
     extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.bash;
     password = "cloud";

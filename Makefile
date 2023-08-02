@@ -18,7 +18,7 @@ nixos-build:
 	nvd diff /run/current-system ./result
 
 nix-purge:
-	rm -r result*
+	rm -f result*
 	nix-collect-garbage -d
 
 nix-check:
