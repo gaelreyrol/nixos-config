@@ -41,4 +41,15 @@
   # services.udev.extraRules = ''
   #   ACTION=="remove", SUBSYSTEM=="input", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", ENV{ID_SECURITY_TOKEN}="1", RUN+="${pkgs.systemd}/bin/systemctl start xlock.service"
   # '';
+
+
+  programs.nixvim = {
+    enable = true;
+    extraPlugins = with pkgs.vimPlugins; [
+      vim-nix
+      solarized-nvim
+    ];
+
+    colorscheme = "solarized";
+  };
 }

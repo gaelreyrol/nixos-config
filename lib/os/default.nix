@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 let
-  inherit (inputs) self nixpkgs sops-nix nur home-manager udev-nix mention;
+  inherit (inputs) self nixpkgs sops-nix nur home-manager nixvim udev-nix mention;
 in
 rec {
   mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem {
@@ -55,6 +55,7 @@ rec {
       sops-nix.nixosModules.sops
 
       home-manager.nixosModules.home-manager
+      nixvim.nixosModules.nixvim
       nur.nixosModules.nur
       mention.nixosModules.default
       {

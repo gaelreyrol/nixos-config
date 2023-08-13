@@ -25,6 +25,10 @@
     sbomnix.url = "github:tiiuae/sbomnix";
     sbomnix.inputs.nixpkgs.follows = "unstable";
 
+    nixvim.url = "github:nix-community/nixvim/nixos-23.05";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.inputs.pre-commit-hooks.follows = "pre-commit-hooks";
+
     udev-nix.url = "github:gaelreyrol/udev-nix";
     udev-nix.inputs.nixpkgs.follows = "nixpkgs";
     udev-nix.inputs.unstable.follows = "unstable";
