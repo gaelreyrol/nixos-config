@@ -45,11 +45,33 @@
 
   programs.nixvim = {
     enable = true;
-    extraPlugins = with pkgs.vimPlugins; [
-      vim-nix
-      solarized-nvim
-    ];
 
     colorscheme = "solarized";
+
+    plugins = {
+      cmp-treesitter.enable = true;
+      # dap.enable = true;
+      # diffview.enable = true;
+      gitsigns.enable = true;
+      indent-blankline.enable = true;
+      lsp.enable = true;
+      neo-tree.enable = true;
+      nix.enable = true;
+      telescope.enable = true;
+      treesitter.enable = true;
+      # trouble.enable = true; in error
+      which-key.enable = true;
+    };
+
+    extraPlugins = with pkgs.vimPlugins; [
+      heirline-nvim
+      nvim-autopairs
+      solarized-nvim
+      vim-hardtime
+
+      # not available in nixvim/nixos-23.05
+      nvim-dap
+      diffview-nvim
+    ];
   };
 }
