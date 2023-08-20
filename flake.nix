@@ -25,8 +25,8 @@
     sbomnix.url = "github:tiiuae/sbomnix";
     sbomnix.inputs.nixpkgs.follows = "unstable";
 
-    nixvim.url = "github:nix-community/nixvim/nixos-23.05";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "unstable";
     nixvim.inputs.pre-commit-hooks.follows = "pre-commit-hooks";
 
     udev-nix.url = "github:gaelreyrol/udev-nix";
@@ -37,7 +37,7 @@
     mention.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, sbomnix, udev-nix, ... }:
+  outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, sbomnix, udev-nix, nixvim, ... }:
     let
       myLib = import ./lib { inherit inputs; };
       config = {
@@ -85,6 +85,10 @@
             editorconfig-checker.enable = true;
             actionlint.enable = true;
           };
+        };
+        nvim = nixvim.lib.${system}.check.mkTestDerivationFromNvim {
+          inherit (self.packages.${system}) nvim;
+          name = "A nixvim configuration";
         };
       });
 
@@ -134,7 +138,12 @@
         }
       ];
 
-      packages = forSystems ({ pkgs, system }: pkgs.myPkgs);
+      packages = forSystems ({ pkgs, system }: pkgs.myPkgs // {
+        nvim = nixvim.legacyPackages."${system}".makeNixvimWithModule {
+          pkgs = pkgs.unstable;
+          module = import ./users/gael/neovim.nix;
+        };
+      });
 
       templates = {
         trivial = {

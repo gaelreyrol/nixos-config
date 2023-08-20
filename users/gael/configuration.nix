@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ system, pkgs, inputs, ... }:
 
+let
+  inherit (inputs) nixvim;
+in
 {
   users.users.gael = {
     isNormalUser = true;
@@ -42,36 +45,10 @@
   #   ACTION=="remove", SUBSYSTEM=="input", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", ENV{ID_SECURITY_TOKEN}="1", RUN+="${pkgs.systemd}/bin/systemctl start xlock.service"
   # '';
 
-
-  programs.nixvim = {
-    enable = true;
-
-    colorscheme = "solarized";
-
-    plugins = {
-      cmp-treesitter.enable = true;
-      # dap.enable = true;
-      # diffview.enable = true;
-      gitsigns.enable = true;
-      indent-blankline.enable = true;
-      lsp.enable = true;
-      neo-tree.enable = true;
-      nix.enable = true;
-      telescope.enable = true;
-      treesitter.enable = true;
-      # trouble.enable = true; in error
-      which-key.enable = true;
-    };
-
-    extraPlugins = with pkgs.vimPlugins; [
-      heirline-nvim
-      nvim-autopairs
-      solarized-nvim
-      vim-hardtime
-
-      # not available in nixvim/nixos-23.05
-      nvim-dap
-      diffview-nvim
-    ];
-  };
+  environment.systemPackages = [
+    (nixvim.legacyPackages."${system}".makeNixvimWithModule {
+      pkgs = pkgs.unstable;
+      module = import ./neovim.nix;
+    })
+  ];
 }

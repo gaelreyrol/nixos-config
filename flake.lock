@@ -246,23 +246,22 @@
         "beautysh": "beautysh",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs"
+          "unstable"
         ],
         "pre-commit-hooks": [
           "pre-commit-hooks"
         ]
       },
       "locked": {
-        "lastModified": 1692191366,
-        "narHash": "sha256-WmEMwDFENSrGpmdYaUQ5/OTatcw3uBthY+Uq2nom8FE=",
+        "lastModified": 1692476227,
+        "narHash": "sha256-PDHK8tNTveeWcWgKGq+tGiovl/PUB51lsnAemQj6Zss=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "ac21d4d85ea28fd877aa5c9676a53fe95979621d",
+        "rev": "4ef53c788b99768f3ab948d53078d9bd1594f03c",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "nixos-23.05",
         "repo": "nixvim",
         "type": "github"
       }
