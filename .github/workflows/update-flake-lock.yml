@@ -22,7 +22,7 @@ jobs:
           ssh-private-key: ${{ secrets.MENTION_SSH_KEY  }}
 
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@v19
+        uses: DeterminateSystems/update-flake-lock@v20
         with:
           pr-title: "Update flake.lock"
           commit-msg: "chore: update flake"
