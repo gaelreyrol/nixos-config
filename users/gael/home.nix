@@ -92,6 +92,7 @@
         onetab
         gnome-shell-integration
         streetpass-for-mastodon
+        sidebery
       ];
       search = {
         default = "Google";
