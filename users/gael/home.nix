@@ -33,6 +33,7 @@
     slack
     discord
     element-desktop
+    signal-desktop
 
     thunderbird
     vlc
