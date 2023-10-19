@@ -21,6 +21,9 @@
     # dns0.eu
     "193.110.81.0"
     "185.253.5.0"
+    # quad9
+    "9.9.9.9"
+    "149.112.112.112"
   ];
   networking.useDHCP = lib.mkDefault true;
 
