@@ -25,6 +25,7 @@ in
     evolution-data-server
     gthumb
     desktop-file-utils
+    easyeffects
 
     gnome.nautilus
     gnome.nautilus-python
@@ -46,6 +47,7 @@ in
     gnomeExtensions.thinkpad-thermal
     gnomeExtensions.nano-system-monitor # incompatible version TODO: Only for tower
     gnomeExtensions.tailscale-status
+    gnomeExtensions.easyeffects-preset-selector
   ];
 
   services.gnome.gnome-keyring.enable = true;
