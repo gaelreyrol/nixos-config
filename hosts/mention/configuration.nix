@@ -33,4 +33,10 @@
   mention.enable = true;
   mention.firstname = "gael";
   mention.lastname = "reyrol";
+
+  programs.captive-browser = {
+    enable = true;
+    interface = "wlp3s0";
+  };
+
 }
