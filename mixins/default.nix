@@ -15,17 +15,21 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  networking.networkmanager.enable = true;
-  networking.networkmanager.logLevel = lib.mkDefault "INFO";
-  networking.networkmanager.insertNameservers = [
-    # dns0.eu
-    "193.110.81.0"
-    "185.253.5.0"
-    # quad9
-    "9.9.9.9"
-    "149.112.112.112"
-  ];
-  networking.useDHCP = lib.mkDefault true;
+  networking = {
+    networkmanager = {
+      enable = true;
+      logLevel = lib.mkDefault "INFO";
+      insertNameservers = [
+        # dns0.eu
+        "193.110.81.0"
+        "185.253.5.0"
+        # quad9
+        "9.9.9.9"
+        "149.112.112.112"
+      ];
+    };
+    useDHCP = lib.mkDefault true;
+  };
 
   systemd.services.NetworkManager-wait-online.enable = false;
 

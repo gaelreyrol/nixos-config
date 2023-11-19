@@ -8,29 +8,43 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nur.url = "github:nix-community/NUR";
 
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-    treefmt-nix.inputs.nixpkgs.follows = "unstable";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "unstable";
+    };
 
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    pre-commit-hooks.inputs.nixpkgs-stable.follows = "nixpkgs";
-    pre-commit-hooks.inputs.nixpkgs.follows = "unstable";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
+    };
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
-    sops-nix.inputs.nixpkgs.follows = "unstable";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
+    };
 
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    sbomnix.url = "github:tiiuae/sbomnix";
-    sbomnix.inputs.nixpkgs.follows = "unstable";
+    sbomnix = {
+      url = "github:tiiuae/sbomnix";
+      inputs.nixpkgs.follows = "unstable";
+    };
 
-    udev-nix.url = "github:gaelreyrol/udev-nix";
-    udev-nix.inputs.nixpkgs.follows = "nixpkgs";
-    udev-nix.inputs.unstable.follows = "unstable";
+    udev-nix = {
+      url = "github:gaelreyrol/udev-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.unstable.follows = "unstable";
+    };
 
-    mention.url = "git+ssh://git@github.com/gaelreyrol/nixos-mention?ref=main";
-    mention.inputs.nixpkgs.follows = "nixpkgs";
+    mention = {
+      url = "git+ssh://git@github.com/gaelreyrol/nixos-mention?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, sbomnix, udev-nix, ... }:

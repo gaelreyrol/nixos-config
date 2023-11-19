@@ -7,15 +7,21 @@
       inputs.nixos-hardware.nixosModules.pcengines-apu
     ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  boot = {
+    loader = {
+      grub.enable = true;
+      grub.device = "/dev/sda";
+    };
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "ehci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ ];
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "ahci" "ehci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
+      kernelModules = [ ];
+    };
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" =
     {

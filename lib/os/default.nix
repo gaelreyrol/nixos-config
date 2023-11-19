@@ -58,12 +58,14 @@ rec {
       nur.nixosModules.nur
       mention.nixosModules.default
       {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.${user} = builtins.import ../../users/${user}/home.nix;
-        home-manager.sharedModules = [
-          sops-nix.homeManagerModules.sops
-        ];
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.${user} = builtins.import ../../users/${user}/home.nix;
+          sharedModules = [
+            sops-nix.homeManagerModules.sops
+          ];
+        };
         sops = {
           defaultSopsFile = ../../secrets/default.yaml;
         };

@@ -5,10 +5,16 @@ let
   defaultMonitors = pkgs.myPkgs.gnome-monitors-switch + "/workstation.xml";
 in
 {
-  services.xserver.enable = true;
-  services.xserver.libinput.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      libinput.enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
+    gnome.gnome-keyring.enable = true;
+    gnome.gnome-browser-connector.enable = true;
+  };
 
   # https://wiki.archlinux.org/title/GDM#Setup_default_monitor_settings
   # https://wiki.archlinux.org/title/systemd#systemd-tmpfiles_-_temporary_files
@@ -50,12 +56,12 @@ in
     gnomeExtensions.easyeffects-preset-selector
   ];
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
-  security.pam.services."gdm-password".enableGnomeKeyring = true;
-  security.pam.services."gdm-launch-environment".enableGnomeKeyring = true;
+  security.pam.services = {
+    gdm.enableGnomeKeyring = true;
+    "gdm-password".enableGnomeKeyring = true;
+    "gdm-launch-environment".enableGnomeKeyring = true;
+  };
 
-  services.gnome.gnome-browser-connector.enable = true;
   programs.dconf.enable = true;
 
   environment.gnome.excludePackages = (with pkgs; [
@@ -78,13 +84,17 @@ in
   services.dbus.packages = with pkgs; [ dconf ];
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
-  xdg.autostart.enable = true;
-  xdg.mime.enable = true;
-  xdg.mime.defaultApplications = {
-    "text/html" = "firefox.desktop";
-    "x-scheme-handler/http" = "firefox.desktop";
-    "x-scheme-handler/https" = "firefox.desktop";
-    "x-scheme-handler/about" = "firefox.desktop";
-    "x-scheme-handler/unknown" = "firefox.desktop";
+  xdg = {
+    autostart.enable = true;
+    mime = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = "firefox.desktop";
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
+        "x-scheme-handler/about" = "firefox.desktop";
+        "x-scheme-handler/unknown" = "firefox.desktop";
+      };
+    };
   };
 }

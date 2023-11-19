@@ -8,11 +8,13 @@
     shell = pkgs.fish;
   };
 
-  programs.fish.enable = true;
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "gael" ];
+  programs = {
+    fish.enable = true;
+    _1password.enable = true;
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "gael" ];
+    };
   };
 
   sops.age.keyFile = "/home/gael/.config/sops/age/keys.txt";

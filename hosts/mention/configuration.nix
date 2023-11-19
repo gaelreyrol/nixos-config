@@ -30,9 +30,11 @@
   #   fprintd
   # ];
 
-  mention.enable = true;
-  mention.firstname = "gael";
-  mention.lastname = "reyrol";
+  mention = {
+    enable = true;
+    firstname = "gael";
+    lastname = "reyrol";
+  };
 
   programs.captive-browser = {
     enable = true;

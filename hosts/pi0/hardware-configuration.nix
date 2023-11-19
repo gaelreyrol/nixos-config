@@ -1,30 +1,32 @@
 { lib, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-      (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
-    ];
-
-  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
-  boot.loader.grub.enable = false;
-
-  # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
-
-  boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" ];
-
-  boot.kernelParams = [
-    "console=ttyS1,115200n8"
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
   ];
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-label/NIXOS_SD";
-      fsType = "ext4";
-      options = [ "noatime" ];
+  boot = {
+    loader = {
+      # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
+      grub.enable = false;
+
+      # Enables the generation of /boot/extlinux/extlinux.conf
+      generic-extlinux-compatible.enable = true;
     };
+
+    initrd.availableKernelModules = [ "usbhid" "usb_storage" ];
+
+    kernelParams = [
+      "console=ttyS1,115200n8"
+    ];
+  };
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/NIXOS_SD";
+    fsType = "ext4";
+    options = [ "noatime" ];
+  };
 
   swapDevices = [ ];
 
