@@ -33,6 +33,7 @@
     sbomnix = {
       url = "github:tiiuae/sbomnix";
       inputs.nixpkgs.follows = "unstable";
+      inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
     udev-nix = {

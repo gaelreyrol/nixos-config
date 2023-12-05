@@ -29,4 +29,4 @@ jobs:
           pr-labels: |
             dependencies
           pr-assignees: GaelReyrol
-          inputs: nixpkgs unstable master nixos-hardware nur home-manager nixvim
+          inputs: nixpkgs unstable master nixos-hardware nur home-manager
