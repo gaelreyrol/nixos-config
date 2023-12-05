@@ -25,7 +25,7 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@v20
         with:
           pr-title: "Update flake.lock"
-          commit-msg: "chore: update flake"
+          commit-msg: "chore(flake): update lock"
           pr-labels: |
             dependencies
           pr-assignees: GaelReyrol
