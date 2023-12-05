@@ -31,7 +31,7 @@
     useDHCP = lib.mkDefault true;
   };
 
-  systemd.services.NetworkManager-wait-online.enable = false;
+  # systemd.services.NetworkManager-wait-online.enable = false;
 
   services.journald.extraConfig = ''
     SystemMaxUse=100M
@@ -54,7 +54,8 @@
     ripgrep
     fzf
     dogdns
-    exa
+    # exa
+    eza
     bat
     bat-extras.batman
     delta
