@@ -1,8 +1,16 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   nix = {
-    package = pkgs.unstable.nixVersions.nix_2_16;
+    package = pkgs.unstable.nixVersions.nix_2_19;
+
+    registry.nixpkgs.flake = inputs.nixpkgs;
+
+    nixPath = [
+      "nixpkgs=${inputs.nixpkgs.outPath}"
+      "unstable=${inputs.unstable.outPath}"
+      "master=${inputs.master.outPath}"
+    ];
 
     # https://jackson.dev/post/nix-reasonable-defaults/
     extraOptions = ''
