@@ -45,6 +45,7 @@
     lshw
     usbutils
     ethtool
+    trippy
     vim
     wget
     curl
