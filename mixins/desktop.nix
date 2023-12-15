@@ -43,15 +43,15 @@ in
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
     gnomeExtensions.removable-drive-menu
-    gnomeExtensions.audio-output-switcher # incompatible version
+    # gnomeExtensions.audio-output-switcher # incompatible version
     gnomeExtensions.sound-output-device-chooser # incompatible version
     gnomeExtensions.systemd-manager
-    gnomeExtensions.big-avatar # incompatible version
+    # gnomeExtensions.big-avatar # incompatible version
     gnomeExtensions.no-overview
     gnomeExtensions.wireless-hid
     gnomeExtensions.gtile
     gnomeExtensions.thinkpad-thermal
-    gnomeExtensions.nano-system-monitor # incompatible version TODO: Only for tower
+    # gnomeExtensions.nano-system-monitor # incompatible version TODO: Only for tower
     gnomeExtensions.tailscale-status
     gnomeExtensions.easyeffects-preset-selector
   ];

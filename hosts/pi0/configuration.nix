@@ -142,6 +142,31 @@
             measurement_poll_chunk = 1;
             tic_command_whitelist = "all";
           };
+          # Documentation: https://www.zigbee2mqtt.io/devices/LYWSD03MMC.html
+          "0xa4c138cdaeead363" = {
+            friendly_name = "Xiaomi LWSD03MMC (ATC_CDAEEA) - Living Room";
+            description = "This device is a temperature and humidity sensor.";
+            temperature_precision = 3;
+            temperature_calibration = 0;
+            humidity_precision = 3;
+            humidity_calibration = 0;
+          };
+          "0xa4c138c824c73de8" = {
+            friendly_name = "Xiaomi LWSD03MMC (ATC_CDAEEA) - Kitchen";
+            description = "This device is a temperature and humidity sensor.";
+            temperature_precision = 3;
+            temperature_calibration = 0;
+            humidity_precision = 3;
+            humidity_calibration = 0;
+          };
+          "0xa4c138f9ba317028" = {
+            friendly_name = "Xiaomi LWSD03MMC (ATC_CDAEEA) - Bedroom";
+            description = "This device is a temperature and humidity sensor.";
+            temperature_precision = 3;
+            temperature_calibration = 0;
+            humidity_precision = 3;
+            humidity_calibration = 0;
+          };
         };
       };
     };

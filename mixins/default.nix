@@ -5,7 +5,7 @@
     ./tailscale.nix
   ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 
   documentation.nixos.enable = false;
 
@@ -22,11 +22,12 @@
       insertNameservers = [
         # dns0.eu
         "193.110.81.0"
-        "185.253.5.0"
         # quad9
         "9.9.9.9"
-        "149.112.112.112"
       ];
+      extraConfig = ''
+        systemd-resolved=false
+      '';
     };
     useDHCP = lib.mkDefault true;
   };
@@ -45,6 +46,7 @@
     lshw
     usbutils
     ethtool
+    trippy
     vim
     wget
     curl
@@ -54,7 +56,8 @@
     ripgrep
     fzf
     dogdns
-    exa
+    # exa
+    eza
     bat
     bat-extras.batman
     delta

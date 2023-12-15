@@ -1,8 +1,16 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   nix = {
-    package = pkgs.unstable.nixVersions.nix_2_16;
+    package = pkgs.unstable.nixVersions.nix_2_19;
+
+    registry.nixpkgs.flake = inputs.nixpkgs;
+
+    nixPath = [
+      "nixpkgs=${inputs.nixpkgs.outPath}"
+      "unstable=${inputs.unstable.outPath}"
+      "master=${inputs.master.outPath}"
+    ];
 
     # https://jackson.dev/post/nix-reasonable-defaults/
     extraOptions = ''
@@ -10,7 +18,7 @@
       log-lines = 25
       min-free = 128000000
       max-free = 1000000000
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
       fallback = true
       warn-dirty = false
       # keep-outputs = true

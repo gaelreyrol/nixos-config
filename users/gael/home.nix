@@ -43,7 +43,7 @@
       vscodium
       unstable.jetbrains.phpstorm
       insomnia
-      postman
+      # postman
       zeal
 
       nil # Nix LSP
@@ -479,7 +479,7 @@
         pbpaste = "${pkgs.xclip}/bin/xclip -selection clipboard -o";
         code = "${pkgs.vscodium}/bin/codium";
         dig = "dog";
-        ls = "exa";
+        ls = "eza";
         cat = "bat";
         grep = "rg";
         man = "batman";

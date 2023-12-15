@@ -2,7 +2,7 @@
   description = "system configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -26,14 +26,8 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sbomnix = {
-      url = "github:tiiuae/sbomnix";
-      inputs.nixpkgs.follows = "unstable";
-      inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
     udev-nix = {
@@ -48,7 +42,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, sbomnix, udev-nix, ... }:
+  outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, udev-nix, ... }:
     let
       myLib = import ./lib { inherit inputs; };
       config = {
@@ -62,9 +56,6 @@
           };
         })
         (final: prev: import ./overlays/packages { inherit final prev; })
-        (final: prev: {
-          sbomnix = sbomnix.packages."${prev.system}";
-        })
       ];
       forSystems = function:
         nixpkgs.lib.genAttrs [
@@ -110,8 +101,6 @@
             pkgs.unstable.actionlint
             pkgs.nix-tree
             pkgs.nix-du
-            pkgs.sbomnix.sbomnix
-            pkgs.sbomnix.vulnxscan
           ];
           inherit (self.checks."${system}".pre-commit-check) shellHook;
         };
