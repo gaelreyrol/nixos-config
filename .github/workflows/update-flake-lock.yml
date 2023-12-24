@@ -13,8 +13,8 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v4
 
-      - name: Install the Nix package manager
-        uses: cachix/install-nix-action@v24
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
 
       - name: Install Mention deploy key
         uses: webfactory/ssh-agent@v0.8.0
