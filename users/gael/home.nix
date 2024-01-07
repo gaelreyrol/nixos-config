@@ -163,7 +163,7 @@
               }
               {
                 name = "Home Manager Manual";
-                url = "https://rycee.gitlab.io/home-manager/options.html";
+                url = "https://nix-community.github.io/home-manager/options.xhtml";
               }
               {
                 name = "Nix & Nixpkgs Functions";
@@ -428,6 +428,7 @@
 
     jq.enable = true;
     htop.enable = true;
+    btop.enable = true;
 
     ssh = {
       enable = true;
