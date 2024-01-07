@@ -366,6 +366,7 @@
         "nix.serverPath" = "nil";
         "nix.formatterPath" = "nixpkgs-fmt";
         "vscode-dhall-lsp-server.executable" = "dhall-lsp-server";
+        "window.zoomLevel" = 1;
       };
     };
 
