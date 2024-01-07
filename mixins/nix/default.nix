@@ -56,4 +56,14 @@
       allowUnfreePredicate = pkg: true;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    nix-init
+    nix-update
+    nixpkgs-review
+    nixpkgs-fmt
+    cachix
+    nix-doc
+    nixdoc
+  ];
 }

@@ -69,9 +69,6 @@
     procs
     httpie
     fish
-    nixpkgs-fmt
-    nix-doc
-    nixdoc
     nvd
     sops
     age
