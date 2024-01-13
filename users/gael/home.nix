@@ -139,6 +139,21 @@
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@nm" ];
             };
+
+            "PHP Documentation" = {
+              urls = [{ template = "https://www.php.net/manual-lookup.php?pattern={searchTerms}"; }];
+              definedAliases = [ "@pd" ];
+            };
+
+            "PHP Packagist" = {
+              urls = [{ template = "https://packagist.org/?query={searchTerms}"; }];
+              definedAliases = [ "@pp" ];
+            };
+
+            "Symfony Documentation" = {
+              urls = [{ template = "https://symfony.com/doc/current/index.html?query={searchTerms}"; }];
+              definedAliases = [ "@sd" ];
+            };
           };
         };
         bookmarks = [
