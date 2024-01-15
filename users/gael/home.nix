@@ -41,7 +41,11 @@
       jetbrains-mono
 
       vscodium
-      unstable.jetbrains.phpstorm
+      # https://nixos.wiki/wiki/Jetbrains_Tools
+      # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/jetbrains/plugins/plugins.json
+      (jetbrains.plugins.addPlugins jetbrains.phpstorm [
+        "github-copilot"
+      ])
       insomnia
       # postman
       zeal
