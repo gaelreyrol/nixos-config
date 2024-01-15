@@ -43,7 +43,7 @@
       vscodium
       # https://nixos.wiki/wiki/Jetbrains_Tools
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/jetbrains/plugins/plugins.json
-      (jetbrains.plugins.addPlugins jetbrains.phpstorm [
+      (unstable.jetbrains.plugins.addPlugins unstable.jetbrains.phpstorm [
         "github-copilot"
       ])
       insomnia
