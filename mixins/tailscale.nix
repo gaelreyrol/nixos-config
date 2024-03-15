@@ -31,13 +31,13 @@
       sleep 2
 
       # check if we are already authenticated to tailscale
-      status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
+      status="$(${tailscale}/bin/tailscale status --json | ${jq}/bin/jq -r .BackendState)"
       if [ $status = "Running" ]; then # if so, then do nothing
         exit 0
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up -reset -authkey $(cat ${config.sops.secrets.tailscale_auth_key.path})
+      ${tailscale}/bin/tailscale up --reset --auth-key $(cat ${config.sops.secrets.tailscale_auth_key.path})
     '';
   };
 
