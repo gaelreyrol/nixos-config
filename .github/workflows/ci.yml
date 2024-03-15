@@ -15,11 +15,6 @@ jobs:
       - name: Install the Nix package manager
         uses: cachix/install-nix-action@v26
 
-      - name: Install Mention deploy key
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.MENTION_SSH_KEY  }}
-
       - name: Flake Check
         run: nix flake check
 

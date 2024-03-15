@@ -16,11 +16,6 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v10
 
-      - name: Install Mention deploy key
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.MENTION_SSH_KEY  }}
-
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v21
         with:

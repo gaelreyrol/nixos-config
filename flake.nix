@@ -35,11 +35,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.unstable.follows = "unstable";
     };
-
-    mention = {
-      url = "git+ssh://git@github.com/gaelreyrol/nixos-mention?ref=main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, udev-nix, ... }:
@@ -125,11 +120,6 @@
         {
           system = "x86_64-linux";
           host = "thinkpad";
-          user = "gael";
-        }
-        {
-          system = "x86_64-linux";
-          host = "mention";
           user = "gael";
         }
       ];

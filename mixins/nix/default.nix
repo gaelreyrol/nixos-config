@@ -45,7 +45,6 @@
       trusted-public-keys = [
         "tower:vj89DUI6QATXfwiGzRGX8Y5FEtOWDQ4GUSscdc5e5vE="
         "thinkpad:IdGPnji32UUVFHffGtYW/0OdGJ0CBzqPw7cle/+zNec="
-        "mention:ldKF4a2iMpBMl4JqIUPF+hTw9H4ShBj4x3LFojj7dPg="
       ];
     };
   };

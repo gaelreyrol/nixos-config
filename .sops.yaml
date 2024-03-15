@@ -1,7 +1,6 @@
 keys:
   - &tower age1r68wyfhzkpkm9j2jwyg0vfud4qds3a74x7qkfgk39mv5q758lfjqwnu4nz
   - &thinkpad age173gaqk56n79pf0yhq7t6rh3k6c279xjqu6zywthzksjdp9kzfgts9pz20u
-  - &mention age10zq729g0z50ln4v2c3l5msk0zpxwe2pe62ayyz9ht5y9ah6zfd4slcynec
   - &pi0 age1wyp0qkl493emy03h9dng9q5mtjhrzecuwlkcss6q8rsev6fmw53sct8r4d
   - &apu age1vzzz8r6m6lztddzsk8hrd9unakch4jprl6y7qhgqjfy7f97x3urqwgqhgx
 
@@ -11,6 +10,5 @@ creation_rules:
       - age:
         - *tower
         - *thinkpad
-        - *mention
         - *pi0
         - *apu
