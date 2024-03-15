@@ -38,11 +38,6 @@
   #   fprintd
   # ];
 
-  environment.systemPackages = with pkgs; [
-    myPkgs.mqttx
-    myPkgs.ledger-live-desktop
-  ];
-
   programs.captive-browser = {
     enable = true;
     interface = "wlp3s0";
