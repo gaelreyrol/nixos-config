@@ -55,7 +55,6 @@
       zeal
 
       nil # Nix LSP
-      unstable.nixd # Nix LSP
       shellcheck
       checkmake
       dhall
