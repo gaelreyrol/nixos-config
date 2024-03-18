@@ -11,6 +11,7 @@
     ../../mixins/printing.nix
     ../../mixins/avahi.nix
     ../../mixins/energy.nix
+    ../../mixins/docker.nix
   ];
 
   networking.hostName = "tower";

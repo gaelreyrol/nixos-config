@@ -12,6 +12,7 @@
     ../../mixins/avahi.nix
     ../../mixins/power.nix
     ../../mixins/energy.nix
+    ../../mixins/docker.nix
   ];
 
   networking.hostName = "thinkpad";
