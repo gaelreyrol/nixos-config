@@ -79,6 +79,7 @@
     ast-grep
     # Requires the huge package cudatoolkit
     # nvtop
+    gh
   ];
 
   users.defaultUserShell = pkgs.bash;
