@@ -18,7 +18,7 @@
       log-lines = 25
       min-free = 128000000
       max-free = 1000000000
-      experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
+      experimental-features = nix-command flakes auto-allocate-uids
       fallback = true
       warn-dirty = false
       # keep-outputs = true
