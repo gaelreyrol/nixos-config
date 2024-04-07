@@ -4,7 +4,7 @@ let
   inherit (inputs) self nixpkgs sops-nix nur home-manager udev-nix;
 in
 rec {
-  mkNixosSystem = { system, host, user, ... }: nixpkgs.lib.nixosSystem {
+  mkNixosSystem = { system, host, user, iso ? false, ... }: nixpkgs.lib.nixosSystem {
     inherit system;
 
     specialArgs = {
@@ -47,29 +47,30 @@ rec {
         );
       })
 
-      ../../mixins/nix
-      ../../mixins
       ../../hosts/${host}/configuration.nix
       ../../users/${user}/configuration.nix
 
-      sops-nix.nixosModules.sops
-
       home-manager.nixosModules.home-manager
       nur.nixosModules.nur
-      {
+      ({
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${user} = builtins.import ../../users/${user}/home.nix;
-          sharedModules = [
+          sharedModules = [] ++ (nixpkgs.lib.optionals (!iso) [
             sops-nix.homeManagerModules.sops
-          ];
+          ]);
         };
+      } // (nixpkgs.lib.optionalAttrs (!iso) {
         sops = {
           defaultSopsFile = ../../secrets/default.yaml;
         };
-      }
-    ];
+      }))
+    ] ++ (nixpkgs.lib.optionals (!iso) [
+      ../../mixins/nix
+      ../../mixins
+      sops-nix.nixosModules.sops
+    ]);
   };
 
   mkNixosSystems = systems: builtins.listToAttrs (

@@ -34,3 +34,6 @@ pi0-deploy:
 
 apu-deploy:
 	nixos-rebuild switch -j auto --flake .#apu --target-host router@192.168.1.19 --use-remote-sudo -v
+
+iso:
+	nix build .#nixosConfigurations.iso.config.system.build.isoImage

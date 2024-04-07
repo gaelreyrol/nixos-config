@@ -122,6 +122,12 @@
           host = "thinkpad";
           user = "gael";
         }
+        {
+          system = "x86_64-linux";
+          host = "iso";
+          user = "nixos";
+          iso = true;
+        }
       ];
 
       packages = forSystems ({ pkgs, system }: pkgs.myPkgs);
