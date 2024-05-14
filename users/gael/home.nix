@@ -540,6 +540,20 @@
         signByDefault = true;
       };
       delta.enable = true;
+      includes = [
+        {
+          condition = "gitdir:/home/gael/Development/Kiosc/";
+          contents = {
+            core = {
+              excludesFile = "/home/gael/Development/Kiosc/.gitignore";
+            };
+            user = {
+              email = "greyrol@kiosc.com";
+              name = "Gaël Reyrol";
+            };
+          };
+        }
+      ];
       extraConfig = {
         init.defaultBranch = "main";
         pull.rebase = true;
