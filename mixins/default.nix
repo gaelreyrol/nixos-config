@@ -80,6 +80,7 @@
     # Requires the huge package cudatoolkit
     # nvtop
     gh
+    rclone
   ];
 
   users.defaultUserShell = pkgs.bash;
