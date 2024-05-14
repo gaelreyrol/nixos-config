@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  port = 8080;
+  port = 8888;
 in
 {
   boot.kernelModules = [ "intel_rapl_common" ];
