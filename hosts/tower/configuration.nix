@@ -54,4 +54,9 @@
 
   # expo.dev
   networking.firewall.interfaces.eno1.allowedTCPPorts = [ 8081 ];
+
+  # Allow Docker containers to reach PHPStorm debugging sessions
+  networking.firewall = {
+    extraCommands = "iptables -I nixos-fw -p tcp -m tcp -m multiport --dports 9000:9003 -j ACCEPT";
+  };
 }
