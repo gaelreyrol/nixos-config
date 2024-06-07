@@ -81,6 +81,8 @@
     # nvtop
     gh
     rclone
+    terraform
+    tflint
   ];
 
   users.defaultUserShell = pkgs.bash;
