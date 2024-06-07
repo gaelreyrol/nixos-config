@@ -83,6 +83,7 @@
     rclone
     terraform
     tflint
+    teleport
   ];
 
   users.defaultUserShell = pkgs.bash;
