@@ -84,6 +84,8 @@
     terraform
     tflint
     teleport
+    kubectl
+    kubernetes-helm
   ];
 
   users.defaultUserShell = pkgs.bash;
