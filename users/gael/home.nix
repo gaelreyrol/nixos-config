@@ -550,6 +550,10 @@
             user = {
               email = "greyrol@kiosc.com";
               name = "Gaël Reyrol";
+              signingKey = "5D37286F3B2E505A";
+            };
+            commit = {
+              gpgSign = true;
             };
           };
         }
