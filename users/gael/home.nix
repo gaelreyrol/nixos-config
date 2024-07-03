@@ -44,7 +44,6 @@
       # https://nixos.wiki/wiki/Jetbrains_Tools
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/jetbrains/plugins/plugins.json
       (unstable.jetbrains.plugins.addPlugins unstable.jetbrains.phpstorm [
-        "github-copilot"
         "symfony-support"
         "php-annotations"
         "nixidea"
@@ -562,6 +561,7 @@
         init.defaultBranch = "main";
         pull.rebase = true;
         fetch.prune = true;
+        push.autoSetupRemote = true;
       };
     };
 
