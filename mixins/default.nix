@@ -5,7 +5,7 @@
     ./tailscale.nix
   ];
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 
   documentation.nixos.enable = false;
 
@@ -25,9 +25,7 @@
         # quad9
         "9.9.9.9"
       ];
-      extraConfig = ''
-        systemd-resolved=false
-      '';
+      settings.main.systemd-resolved = "false";
     };
     useDHCP = lib.mkDefault true;
   };

@@ -9,7 +9,7 @@
   ];
 
   home = {
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     sessionVariables = {
       EDITOR = "vim";
       BAT_THEME = "Solarized (light)";

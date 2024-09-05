@@ -2,7 +2,7 @@
 
 {
   nix = {
-    package = pkgs.unstable.nixVersions.nix_2_19;
+    package = pkgs.unstable.nixVersions.nix_2_23;
 
     registry.nixpkgs.flake = inputs.nixpkgs;
 

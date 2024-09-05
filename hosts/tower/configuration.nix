@@ -20,12 +20,11 @@
 
   environment.systemPackages = with pkgs; [
     myPkgs.gnome-monitors-switch
-    myPkgs.mqttx
-    myPkgs.ledger-live-desktop
+    # myPkgs.mqttx
     klavaro
   ];
 
-  services.udev.packages = with pkgs; [ myPkgs.ledger-live-desktop ];
+  # services.udev.packages = with pkgs; [ myPkgs.ledger-live-desktop ];
 
   hardware.opengl = {
     enable = true;

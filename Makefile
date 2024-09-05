@@ -11,7 +11,7 @@ nixos-switch:
 	nixos-rebuild switch --flake .#${HOSTNAME} --use-remote-sudo
 
 nixos-upgrade:
-	nixos-rebuild switch --upgrade --flake .#${HOSTNAME} --use-remote-sudo
+	nixos-rebuild switch --upgrade --flake .#${HOSTNAME} --use-remote-sudo --option eval-cache false
 
 nixos-build:
 	nixos-rebuild build --flake .#${HOSTNAME} |& nom
