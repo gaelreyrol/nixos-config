@@ -27,9 +27,9 @@
     nvidiaBusId = "PCI:02:00:0";
   };
 
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "fr";
-    xkbVariant = "azerty";
+    variant = "azerty";
   };
 
   # P52s fingerprint sensor is not supported

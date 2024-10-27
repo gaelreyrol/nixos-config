@@ -37,7 +37,7 @@
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up --reset --auth-key $(cat ${config.sops.secrets.tailscale_auth_key.path})
+      ${tailscale}/bin/tailscale up --reset --auth-key="file:${config.sops.secrets.tailscale_auth_key.path}"
     '';
   };
 
