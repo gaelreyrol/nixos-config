@@ -63,6 +63,7 @@
       nix-output-monitor
 
       exercism
+      darktable
     ];
   };
 
