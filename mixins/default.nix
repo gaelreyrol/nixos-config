@@ -84,6 +84,9 @@
     teleport
     kubectl
     kubernetes-helm
+    pre-commit
+    commitizen
+    gnumake
   ];
 
   users.defaultUserShell = pkgs.bash;

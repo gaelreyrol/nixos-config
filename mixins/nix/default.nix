@@ -60,7 +60,9 @@
   environment.systemPackages = with pkgs; [
     nix-init
     nix-update
+    nixfmt-rfc-style
     nixpkgs-review
+    nixpkgs-update
     nixpkgs-fmt
     cachix
     nix-doc
