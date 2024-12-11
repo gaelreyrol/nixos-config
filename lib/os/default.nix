@@ -31,7 +31,7 @@ rec {
           })
           (final: prev: builtins.import ../../overlays/packages { inherit final prev; })
           (final: prev: builtins.import ../../overlays/patches { inherit final prev; })
-          nur.overlay
+          nur.overlays.default
         ] ++ (nixpkgs.lib.optionals config.programs.ccache.enable [
           (self: super: {
             ccacheWrapper = super.ccacheWrapper.override {
@@ -51,7 +51,7 @@ rec {
       ../../users/${user}/configuration.nix
 
       home-manager.nixosModules.home-manager
-      nur.nixosModules.nur
+      nur.modules.nixos.default
       ({
         home-manager = {
           useGlobalPkgs = true;
