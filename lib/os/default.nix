@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 let
-  inherit (inputs) self nixpkgs sops-nix nur home-manager udev-nix;
+  inherit (inputs) self nixpkgs sops-nix nur home-manager udev-nix _1password-shell-plugins;
 in
 rec {
   mkNixosSystem = { system, host, user, iso ? false, ... }: nixpkgs.lib.nixosSystem {
@@ -59,6 +59,7 @@ rec {
           users.${user} = builtins.import ../../users/${user}/home.nix;
           sharedModules = [] ++ (nixpkgs.lib.optionals (!iso) [
             sops-nix.homeManagerModules.sops
+            _1password-shell-plugins.hmModules.default
           ]);
         };
       } // (nixpkgs.lib.optionalAttrs (!iso) {
@@ -70,6 +71,7 @@ rec {
       ../../mixins/nix
       ../../mixins
       sops-nix.nixosModules.sops
+      _1password-shell-plugins.nixosModules.default
     ]);
   };
 

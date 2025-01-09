@@ -35,6 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.unstable.follows = "unstable";
     };
+
+    _1password-shell-plugins = {
+      url = "github:1Password/shell-plugins";
+      inputs.nixpkgs.follows = "unstable";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, udev-nix, ... }:

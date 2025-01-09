@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
-{
+let
+  inherit (inputs) _1password-shell-plugins;
+in {
   users.users.gael = {
     isNormalUser = true;
     description = "Gaël Reyrol";
@@ -14,6 +16,10 @@
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = [ "gael" ];
+    };
+    _1password-shell-plugins = {
+      enable = true;
+      plugins = with pkgs; [ gh cachix mysql ];
     };
   };
 
