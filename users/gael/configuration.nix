@@ -19,7 +19,7 @@ in {
     };
     _1password-shell-plugins = {
       enable = true;
-      plugins = with pkgs; [ gh cachix mysql ];
+      plugins = with pkgs; [ gh cachix ];
     };
   };
 
