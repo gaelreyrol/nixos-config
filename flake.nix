@@ -69,6 +69,34 @@
               };
             }
           );
+      inventory = [
+        {
+          system = "aarch64-linux";
+          host = "pi0";
+          user = "lab";
+        }
+        {
+          system = "x86_64-linux";
+          host = "apu";
+          user = "router";
+        }
+        {
+          system = "x86_64-linux";
+          host = "tower";
+          user = "gael";
+        }
+        {
+          system = "x86_64-linux";
+          host = "thinkpad";
+          user = "gael";
+        }
+        {
+          system = "x86_64-linux";
+          host = "iso";
+          user = "nixos";
+          iso = true;
+        }
+      ];
 
     in
     {
@@ -106,34 +134,8 @@
         };
       });
 
-      nixosConfigurations = myLib.os.mkNixosSystems [
-        {
-          system = "aarch64-linux";
-          host = "pi0";
-          user = "lab";
-        }
-        {
-          system = "x86_64-linux";
-          host = "apu";
-          user = "router";
-        }
-        {
-          system = "x86_64-linux";
-          host = "tower";
-          user = "gael";
-        }
-        {
-          system = "x86_64-linux";
-          host = "thinkpad";
-          user = "gael";
-        }
-        {
-          system = "x86_64-linux";
-          host = "iso";
-          user = "nixos";
-          iso = true;
-        }
-      ];
+      nixosConfigurations = myLib.os.mkNixosSystems inventory;
+      homeConfigurations = myLib.user.mkHomeManagerEnvironements inventory;
 
       packages = forSystems ({ pkgs, system }: pkgs.myPkgs);
 

@@ -406,6 +406,8 @@
         };
         theme = {
           mode = "system";
+          dark = "Solarized Dark";
+          ligh = "Solarized Light";
         };
         load_direnv = "direct";
         ui_font_family = "JetBrains Mono";
