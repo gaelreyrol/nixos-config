@@ -1,6 +1,6 @@
 # nixos-config
 
-[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+[![Built with Nix](https://img.shields.io/badge/Built_With-Nix-5277C3.svg?logo=nixos)](https://builtwithnix.org/)
 [![.github/workflows/ci.yml](https://github.com/gaelreyrol/nixos-config/actions/workflows/ci.yml/badge.svg)](https://github.com/gaelreyrol/nixos-config/actions/workflows/ci.yml)
 
 ## Setup

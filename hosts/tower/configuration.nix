@@ -14,7 +14,15 @@
     ../../mixins/docker.nix
   ];
 
-  networking.hostName = "tower";
+  networking = {
+    hostName = "tower";
+    firewall = {
+      # expo.dev
+      interfaces.eno1.allowedTCPPorts = [ 8081 ];
+      # Allow Docker containers to reach PHPStorm debugging sessions
+      extraCommands = "iptables -I nixos-fw -p tcp -m tcp -m multiport --dports 9000:9003 -j ACCEPT";
+    };
+  };
 
   console.keyMap = "us";
 
@@ -50,12 +58,4 @@
   programs.ccache.enable = true;
   programs.ccache.packageNames = [ ];
   nix.settings.extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
-
-  # expo.dev
-  networking.firewall.interfaces.eno1.allowedTCPPorts = [ 8081 ];
-
-  # Allow Docker containers to reach PHPStorm debugging sessions
-  networking.firewall = {
-    extraCommands = "iptables -I nixos-fw -p tcp -m tcp -m multiport --dports 9000:9003 -j ACCEPT";
-  };
 }
