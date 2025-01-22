@@ -9,7 +9,7 @@
   nixpkgs.config.allowUnfree = true;
 
   boot = {
-    kernelPackages = pkgs.unstable.linuxKernel.packages.linux_6_8;
+    kernelPackages = pkgs.unstable.linuxKernel.packages.linux_6_12;
 
     # Needed for https://github.com/NixOS/nixpkgs/issues/58959
     supportedFilesystems = lib.mkForce [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" ];

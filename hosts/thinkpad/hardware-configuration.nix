@@ -27,7 +27,7 @@
       };
     };
 
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     binfmt.emulatedSystems = [ "aarch64-linux" ];
