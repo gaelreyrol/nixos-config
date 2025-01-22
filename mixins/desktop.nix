@@ -27,17 +27,17 @@ in
     dconf2nix
     xdg-utils
     xclip
-    alacritty
     evolution-data-server
     gthumb
     desktop-file-utils
     easyeffects
 
-    gnome.nautilus
-    gnome.nautilus-python
-    gnome.gnome-tweaks
-    gnome.dconf-editor
-    gnome.gnome-themes-extra
+    # gnome
+    nautilus
+    nautilus-python
+    gnome-tweaks
+    dconf-editor
+    gnome-themes-extra
 
     gnomeExtensions.user-themes
     gnomeExtensions.appindicator
@@ -67,7 +67,7 @@ in
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
     gnome-tour
-  ]) ++ (with pkgs.gnome; [
+  ]) ++ (with pkgs; [
     cheese # webcam tool
     gnome-music
     gnome-maps

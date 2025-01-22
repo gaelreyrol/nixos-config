@@ -19,12 +19,15 @@
 
   console.keyMap = "fr";
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    intelBusId = "PCI:00:02:0";
-    nvidiaBusId = "PCI:02:00:0";
+  hardware.nvidia = {
+    open = true;
+    prime = {
+      offload.enable = true;
+      intelBusId = "PCI:00:02:0";
+      nvidiaBusId = "PCI:02:00:0";
+    };
   };
 
   services.xserver.xkb = {

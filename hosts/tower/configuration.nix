@@ -26,21 +26,22 @@
 
   # services.udev.packages = with pkgs; [ myPkgs.ledger-live-desktop ];
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [
       vaapiVdpau
       libvdpau-va-gl
     ];
   };
-  services.xserver.videoDrivers = [ "intel" "nvidia" ];
+  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
-  hardware.nvidia.prime = {
-    offload.enable = false;
-    sync.enable = false;
-    nvidiaBusId = "PCI:01:00:0";
+  hardware.nvidia = {
+    open = true;
+    prime = {
+      offload.enable = false;
+      sync.enable = false;
+      nvidiaBusId = "PCI:01:00:0";
+    };
   };
 
   virtualisation.virtualbox.host.enable = true;

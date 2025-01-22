@@ -9,7 +9,7 @@
   ];
 
   home = {
-    stateVersion = "24.05";
+    stateVersion = "24.11";
     sessionVariables = {
       EDITOR = "vim";
       BAT_THEME = "Solarized (light)";
@@ -20,7 +20,7 @@
       yubikey-manager-qt
       yubioath-flutter
 
-      _1password
+      _1password-cli
       _1password-gui
 
       keybase
