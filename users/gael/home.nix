@@ -40,7 +40,6 @@
 
       jetbrains-mono
 
-      vscodium
       # https://nixos.wiki/wiki/Jetbrains_Tools
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/jetbrains/plugins/plugins.json
       (unstable.jetbrains.plugins.addPlugins unstable.jetbrains.phpstorm [
@@ -49,9 +48,8 @@
         "nixidea"
         "csv-editor"
       ])
-      insomnia
-      # postman
-      zeal
+      bruno
+      bruno-cli
 
       nil # Nix LSP
       shellcheck
@@ -396,10 +394,22 @@
       };
     };
 
-    zellij = {
+    zed-editor = {
       enable = true;
-      settings = {
-        theme = "solarized-light";
+      extensions = [ "toml" "nix" "terraform" "php" ];
+      userSettings = {
+        features = {
+          copilot = false;
+        };
+        telemetry = {
+          metrics = false;
+        };
+        theme = {
+          mode =  "system";
+        };
+        load_direnv = "direct";
+        ui_font_family = "JetBrains Mono";
+        ui_font_size = 16;
       };
     };
 
@@ -441,6 +451,16 @@
             white = "#fdf6e3";
           };
         };
+      };
+    };
+
+    ghostty = {
+      enable = true;
+      enableFishIntegration = true;
+      settings = {
+        theme = "iTerm2 Solarized Light";
+        font-family = "JetBrains Mono";
+        font-size = 6;
       };
     };
 
@@ -544,24 +564,7 @@
         signByDefault = true;
       };
       delta.enable = true;
-      includes = [
-        {
-          condition = "gitdir:/home/gael/Development/Kiosc/";
-          contents = {
-            core = {
-              excludesFile = "/home/gael/Development/Kiosc/.gitignore";
-            };
-            user = {
-              email = "greyrol@kiosc.com";
-              name = "Gaël Reyrol";
-              signingKey = "5D37286F3B2E505A";
-            };
-            commit = {
-              gpgSign = true;
-            };
-          };
-        }
-      ];
+      includes = [];
       extraConfig = {
         init.defaultBranch = "main";
         pull.rebase = true;
@@ -589,6 +592,13 @@
         set -g status-right '%a %d-%m-%Y %H:%M'
         set-option -g renumber-windows on
       '';
+    };
+
+    zellij = {
+      enable = true;
+      settings = {
+        theme = "solarized-light";
+      };
     };
 
     broot = {
