@@ -405,7 +405,7 @@
           metrics = false;
         };
         theme = {
-          mode =  "system";
+          mode = "system";
         };
         load_direnv = "direct";
         ui_font_family = "JetBrains Mono";
@@ -564,7 +564,7 @@
         signByDefault = true;
       };
       delta.enable = true;
-      includes = [];
+      includes = [ ];
       extraConfig = {
         init.defaultBranch = "main";
         pull.rebase = true;

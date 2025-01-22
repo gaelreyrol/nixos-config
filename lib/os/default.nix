@@ -57,7 +57,7 @@ rec {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${user} = builtins.import ../../users/${user}/home.nix;
-          sharedModules = [] ++ (nixpkgs.lib.optionals (!iso) [
+          sharedModules = [ ] ++ (nixpkgs.lib.optionals (!iso) [
             sops-nix.homeManagerModules.sops
             _1password-shell-plugins.hmModules.default
           ]);

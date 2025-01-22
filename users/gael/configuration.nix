@@ -2,7 +2,8 @@
 
 let
   inherit (inputs) _1password-shell-plugins;
-in {
+in
+{
   users.users.gael = {
     isNormalUser = true;
     description = "Gaël Reyrol";
