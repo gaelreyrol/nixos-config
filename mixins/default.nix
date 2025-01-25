@@ -87,6 +87,7 @@
     pre-commit
     commitizen
     gnumake
+    unstable.nixos-facter
   ];
 
   users.defaultUserShell = pkgs.bash;

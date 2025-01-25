@@ -6,6 +6,7 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     nur.url = "github:nix-community/NUR";
 
     treefmt-nix = {
@@ -126,6 +127,7 @@
           system = "x86_64-linux";
           host = "thinkpad";
           user = "gael";
+          facter = true;
         }
         {
           system = "x86_64-linux";

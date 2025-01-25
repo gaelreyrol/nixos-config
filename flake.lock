@@ -190,6 +190,21 @@
         "type": "github"
       }
     },
+    "nixos-facter-modules": {
+      "locked": {
+        "lastModified": 1736931726,
+        "narHash": "sha256-aY55yiifyo1XPPpbpH0kWlV1g2dNGBlx6622b7OK8ks=",
+        "owner": "nix-community",
+        "repo": "nixos-facter-modules",
+        "rev": "fa11d87b61b2163efbb9aed7b7a5ae0299e5ab9c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixos-facter-modules",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1736978406,
@@ -315,6 +330,7 @@
         "_1password-shell-plugins": "_1password-shell-plugins",
         "home-manager": "home-manager",
         "master": "master",
+        "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nur": "nur",

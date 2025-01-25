@@ -1,10 +1,10 @@
 { inputs, ... }:
 
 let
-  inherit (inputs) self nixpkgs sops-nix nur home-manager udev-nix _1password-shell-plugins;
+  inherit (inputs) self nixpkgs sops-nix nur home-manager nixos-facter-modules udev-nix _1password-shell-plugins;
 in
 rec {
-  mkNixosSystem = { system, host, user, iso ? false, ... }: nixpkgs.lib.nixosSystem {
+  mkNixosSystem = { system, host, user, iso ? false, facter ? false, ... }: nixpkgs.lib.nixosSystem {
     inherit system;
 
     specialArgs = {
@@ -46,6 +46,7 @@ rec {
         ]
         );
       })
+      nixos-facter-modules.nixosModules.facter
 
       ../../hosts/${host}/configuration.nix
       ../../users/${user}/configuration.nix
@@ -66,6 +67,8 @@ rec {
         sops = {
           defaultSopsFile = ../../secrets/default.yaml;
         };
+      }) // (nixpkgs.lib.optionalAttrs facter {
+        facter.reportPath = ../../hosts/${host}/facter.json;
       }))
     ] ++ (nixpkgs.lib.optionals (!iso) [
       ../../mixins/nix
