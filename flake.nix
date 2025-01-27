@@ -122,6 +122,7 @@
           system = "x86_64-linux";
           host = "tower";
           user = "gael";
+          facter = true;
         }
         {
           system = "x86_64-linux";
