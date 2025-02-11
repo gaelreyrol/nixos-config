@@ -30,7 +30,8 @@
     useDHCP = lib.mkDefault true;
   };
 
-  systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.network.wait-online.enable = lib.mkForce false;
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   services.journald.extraConfig = ''
     SystemMaxUse=100M

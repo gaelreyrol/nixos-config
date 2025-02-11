@@ -27,6 +27,7 @@
     initrd = {
       availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
       kernelModules = [ ];
+      systemd.network.wait-online.enable = lib.mkForce false;
     };
 
     kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
