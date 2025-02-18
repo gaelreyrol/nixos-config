@@ -396,6 +396,7 @@
 
     zed-editor = {
       enable = true;
+      package = pkgs.unstable.zed-editor;
       extensions = [ "toml" "nix" "terraform" "php" ];
       userSettings = {
         features = {
