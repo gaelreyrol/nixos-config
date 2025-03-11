@@ -51,7 +51,7 @@
       bruno
       bruno-cli
 
-      nil # Nix LSP
+      nixd # Nix LSP
       shellcheck
       checkmake
       dhall
@@ -387,7 +387,7 @@
         "editor.fontFamily" = "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace";
         "editor.fontSize" = 16;
         "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
+        "nix.serverPath" = "nixd";
         "nix.formatterPath" = "nixpkgs-fmt";
         "vscode-dhall-lsp-server.executable" = "dhall-lsp-server";
         "window.zoomLevel" = 1;
@@ -397,20 +397,49 @@
     zed-editor = {
       enable = true;
       package = pkgs.unstable.zed-editor;
-      extensions = [ "toml" "nix" "terraform" "php" ];
+      extensions = [
+        "git-firefly"
+        "sql"
+        "make"
+        "log"
+        "dockerfile"
+        "docker-compose"
+        "toml"
+        "jsonnet"
+        "just"
+        "nix"
+        "terraform"
+        "helm"
+        "php"
+        "neosolarized"
+      ];
       userSettings = {
         features = {
           copilot = false;
+          edit_prediction_provider = "none";
         };
         telemetry = {
           metrics = false;
+          diagnostics = false;
         };
         theme = {
-          mode = "system";
+          mode = "light";
+          dark = "NeoSolarized Dark";
+          light = "NeoSolarized Light";
+        };
+        assistant = {
+          enabled = true;
+          version = "2";
+          default_model = {
+            model = "codestral-latest";
+            provider = "mistral";
+          };
         };
         load_direnv = "direct";
         ui_font_family = "JetBrains Mono";
-        ui_font_size = 16;
+        ui_font_size = 20;
+        buffer_font_family = "JetBrains Mono";
+        buffer_font_size = 20;
       };
     };
 
