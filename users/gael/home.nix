@@ -40,6 +40,10 @@
 
       jetbrains-mono
 
+      unstable.windsurf
+      unstable.code-cursor
+      unstable.aider-chat
+
       # https://nixos.wiki/wiki/Jetbrains_Tools
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/jetbrains/plugins/plugins.json
       (unstable.jetbrains.plugins.addPlugins unstable.jetbrains.phpstorm [
