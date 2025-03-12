@@ -118,25 +118,41 @@
           force = true;
           engines = {
             "Nix Packages" = {
-              urls = [{
-                template = "https://search.nixos.org/packages";
-                params = [
-                  { name = "type"; value = "packages"; }
-                  { name = "query"; value = "{searchTerms}"; }
-                ];
-              }];
+              urls = [
+                {
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    {
+                      name = "type";
+                      value = "packages";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@np" ];
             };
 
             "Nix Options" = {
-              urls = [{
-                template = "https://search.nixos.org/options";
-                params = [
-                  { name = "type"; value = "packages"; }
-                  { name = "query"; value = "{searchTerms}"; }
-                ];
-              }];
+              urls = [
+                {
+                  template = "https://search.nixos.org/options";
+                  params = [
+                    {
+                      name = "type";
+                      value = "packages";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@no" ];
             };
@@ -148,7 +164,9 @@
             };
 
             "Nix Manual" = {
-              urls = [{ template = "https://nixos.org/manual/nix/stable/introduction.html?search={searchTerms}"; }];
+              urls = [
+                { template = "https://nixos.org/manual/nix/stable/introduction.html?search={searchTerms}"; }
+              ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@nm" ];
             };
@@ -166,6 +184,11 @@
             "Symfony Documentation" = {
               urls = [{ template = "https://symfony.com/doc/current/index.html?query={searchTerms}"; }];
               definedAliases = [ "@sd" ];
+            };
+
+            "Artifact HUB" = {
+              urls = [{ template = "https://artifacthub.io/packages/search?ts_query_web={searchTerms}"; }];
+              definedAliases = [ "@ah" ];
             };
           };
         };
@@ -283,7 +306,8 @@
           # https://github.com/tlswg/tls13-spec/issues/1001
           "security.tls.enable_0rtt_data" = false;
           # Use Mozilla geolocation service instead of Google if given permission
-          "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
+          "geo.provider.network.url" =
+            "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
           "geo.provider.use_gpsd" = false;
           # https://support.mozilla.org/en-US/kb/extension-recommendations
           "browser.newtabpage.activity-stream.asrouter.userprefs.cfr" = false;
@@ -444,6 +468,7 @@
         ui_font_size = 20;
         buffer_font_family = "JetBrains Mono";
         buffer_font_size = 20;
+        base_keymap = "JetBrains";
       };
     };
 
@@ -539,23 +564,22 @@
           inherit (pkgs.fishPlugins.jump) src;
         }
       ];
-      functions =
-        {
-          fish_greeting = "";
-          phpEnv = ''
-            function phpEnv --description 'start a nix-shell with the given PHP packages' --argument phpVersion
-              if set -q argv[2]
-                set argv $argv[2..-1]
-              end
-
-              for el in $argv
-                set ppkgs $ppkgs "php"$phpVersion"Packages.$el"
-              end
-
-              nix-shell -p $ppkgs
+      functions = {
+        fish_greeting = "";
+        phpEnv = ''
+          function phpEnv --description 'start a nix-shell with the given PHP packages' --argument phpVersion
+            if set -q argv[2]
+              set argv $argv[2..-1]
             end
-          '';
-        };
+
+            for el in $argv
+              set ppkgs $ppkgs "php"$phpVersion"Packages.$el"
+            end
+
+            nix-shell -p $ppkgs
+          end
+        '';
+      };
       shellAliases = {
         pbcopy = "${pkgs.xclip}/bin/xclip -selection clipboard";
         pbpaste = "${pkgs.xclip}/bin/xclip -selection clipboard -o";
