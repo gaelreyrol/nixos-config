@@ -50,8 +50,18 @@
         "symfony-support"
         "php-annotations"
         "nixidea"
+        "nix-lsp"
         "csv-editor"
+        "string-manipulation"
+        "ini"
+        "toml"
+        "-env-files"
+        "key-promoter-x"
+        "better-direnv"
+        "mermaid"
+        "continue"
       ])
+      unstable.android-studio
       bruno
       bruno-cli
 
