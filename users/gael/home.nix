@@ -519,7 +519,7 @@
       settings = {
         theme = "iTerm2 Solarized Light";
         font-family = "JetBrains Mono";
-        font-size = 6;
+        font-size = 14;
       };
     };
 
