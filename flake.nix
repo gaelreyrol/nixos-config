@@ -7,7 +7,13 @@
     master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
+
     nur.url = "github:nix-community/NUR";
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -41,7 +47,14 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, unstable, treefmt-nix, pre-commit-hooks, udev-nix, ... }:
+  outputs =
+    inputs@{ self
+    , nixpkgs
+    , unstable
+    , treefmt-nix
+    , pre-commit-hooks
+    , ...
+    }:
     let
       myLib = import ./lib { inherit inputs; };
       config = {
@@ -56,11 +69,15 @@
         })
         (final: prev: import ./overlays/packages { inherit final prev; })
       ];
-      forSystems = function:
-        nixpkgs.lib.genAttrs [
-          "x86_64-linux"
-        ]
-          (system:
+      forSystems =
+        function:
+        nixpkgs.lib.genAttrs
+          [
+            "x86_64-linux"
+            "aarch64-darwin"
+          ]
+          (
+            system:
             function {
               inherit system;
               pkgs = import nixpkgs {
@@ -71,39 +88,48 @@
 
     in
     {
-      formatter = forSystems ({ pkgs, system }: treefmt-nix.lib.mkWrapper pkgs.unstable {
-        projectRootFile = "flake.nix";
-        programs.nixpkgs-fmt.enable = true;
-      });
+      formatter = forSystems (
+        { pkgs, system }:
+        treefmt-nix.lib.mkWrapper pkgs.unstable {
+          projectRootFile = "flake.nix";
+          programs.nixpkgs-fmt.enable = true;
+        }
+      );
 
-      checks = forSystems ({ pkgs, system }: {
-        pre-commit-check = pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            nixpkgs-fmt.enable = true;
-            statix.enable = true;
-            markdownlint.enable = true;
-            editorconfig-checker.enable = true;
-            actionlint.enable = true;
+      checks = forSystems (
+        { pkgs, system }:
+        {
+          pre-commit-check = pre-commit-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              nixpkgs-fmt.enable = true;
+              statix.enable = true;
+              markdownlint.enable = true;
+              editorconfig-checker.enable = true;
+              actionlint.enable = true;
+            };
           };
-        };
-      });
+        }
+      );
 
-      devShells = forSystems ({ pkgs, system }: {
-        default = pkgs.mkShell {
-          packages = [
-            pkgs.unstable.treefmt
-            pkgs.unstable.nixpkgs-fmt
-            pkgs.unstable.statix
-            pkgs.unstable.nodePackages.markdownlint-cli
-            pkgs.unstable.editorconfig-checker
-            pkgs.unstable.actionlint
-            pkgs.nix-tree
-            pkgs.nix-du
-          ];
-          inherit (self.checks."${system}".pre-commit-check) shellHook;
-        };
-      });
+      devShells = forSystems (
+        { pkgs, system }:
+        {
+          default = pkgs.mkShell {
+            packages = [
+              pkgs.unstable.treefmt
+              pkgs.unstable.nixpkgs-fmt
+              pkgs.unstable.statix
+              pkgs.unstable.nodePackages.markdownlint-cli
+              pkgs.unstable.editorconfig-checker
+              pkgs.unstable.actionlint
+              pkgs.nix-tree
+              pkgs.nix-du
+            ];
+            inherit (self.checks."${system}".pre-commit-check) shellHook;
+          };
+        }
+      );
 
       nixosConfigurations = myLib.os.mkNixosSystems [
         {
@@ -133,6 +159,14 @@
           host = "iso";
           user = "nixos";
           iso = true;
+        }
+      ];
+
+      darwinConfigurations = myLib.os.mkDarwinSystems [
+        {
+          system = "aarch64-darwin";
+          host = "macbookpro";
+          user = "gReyrol";
         }
       ];
 

@@ -17,6 +17,13 @@ nixos-build:
 	nixos-rebuild build --flake .#${HOSTNAME} |& nom
 	nvd diff /run/current-system ./result
 
+macos-switch:
+	darwin-rebuild switch --flake .#${HOSTNAME} --use-remote-sudo
+
+macos-build:
+	darwin-rebuild build --flake .#${HOSTNAME} |& nom
+	nvd diff /run/current-system ./result
+
 nix-purge:
 	nix-collect-garbage -d
 
